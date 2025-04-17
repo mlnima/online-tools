@@ -1,0 +1,90 @@
+.home {
+  width: 100%;
+  padding: 2.5rem 2vw 3rem 2vw;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.3rem;
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 0;
+    color: var(--color-primary);
+    letter-spacing: -1px;
+  }
+}
+
+.subtitle {
+  font-size: 1.15rem;
+  color: var(--color-text);
+  margin-bottom: 2.2rem;
+  line-height: 1.6;
+}
+
+.allToolsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
+  width: 100%;
+}
+
+
+.toolCard {
+  background: var(--color-card);
+  border: 1.5px solid var(--color-border);
+  border-radius: 1.1rem;
+  padding: 1.7rem 1.3rem 1.3rem 1.3rem;
+  color: var(--color-text);
+  box-shadow: 0 2px 22px 0 rgba(0,0,0,0.12);
+  transition: box-shadow 0.23s, border-color 0.19s, transform 0.13s, background 0.19s;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  min-height: 150px;
+  position: relative;
+  overflow: hidden;
+  h2 {
+    margin: 0 0 0.7rem 0;
+    font-size: 1.32rem;
+    color: var(--color-primary);
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    text-shadow: none;
+  }
+  p {
+    margin: 0;
+    color: var(--color-text);
+    opacity: 0.93;
+    font-size: 1.01rem;
+    font-weight: 500;
+    line-height: 1.5;
+  }
+  &:hover, &:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 4px 18px 0 rgba(255,153,0,0.10);
+    transform: translateY(-2px) scale(1.01);
+    background: var(--color-bg-secondary);
+  }
+}
+
+
+.browseAll {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1.2rem;
+}
+
+.browseAllLink {
+  color: var(--color-primary);
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
