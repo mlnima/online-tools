@@ -3,11 +3,16 @@
 
 import React from "react";
 
-const GoogleAdPlaceholder = () => (
-  <div style={{ width: "100%", minHeight: 90, background: "#f5f5f5", textAlign: "center", padding: 16, margin: "24px 0", border: "1px dashed #ccc" }}>
-    {/* Place Google AdSense or other ad code here later */}
-    <span style={{ color: '#999' }}>Ad Placeholder</span>
-  </div>
-);
+// later we put ad for now returns null
 
+// const GoogleAdPlaceholder = () => (
+//   <div style={{ width: "100%", minHeight: 90, background: "#f5f5f5", textAlign: "center", padding: 16, margin: "24px 0", border: "1px dashed #ccc" }}>
+//     {/* Place Google AdSense or other ad code here later */}
+//     <span style={{ color: '#999' }}>Ad Placeholder</span>
+//   </div>
+// );
+
+
+
+const GoogleAdPlaceholder = () => null
 export default GoogleAdPlaceholder;

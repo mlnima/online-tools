@@ -13,6 +13,16 @@ export const metadata: Metadata = { ...seoMetadata };
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
+      <head>
+        {/* Google Analytics */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZTFX076VKN"></script>
+        <script dangerouslySetInnerHTML={{__html: `
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-ZTFX076VKN');
+        `}} />
+      </head>
       <body>
         <ThemeProvider>
           <header className={styles.header}>
@@ -22,7 +32,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <ThemeSwitcher />
           </header>
           {/* Placeholder for Google Ads or other advertising - replace as needed */}
-          <GoogleAdPlaceholder />
+        <GoogleAdPlaceholder />
           {children}
         </ThemeProvider>
       </body>
