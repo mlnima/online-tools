@@ -4,14 +4,14 @@
   padding: 2.5rem 1.5rem 3rem 1.5rem;
 }
 
-h1 {
+.tools h1 {
   color: var(--color-primary);
   font-size: 2rem;
   font-weight: 700;
   margin-bottom: 1.5rem;
 }
 
-.toolList {
+.tools .toolList {
   list-style: none;
   padding: 0;
   display: grid;

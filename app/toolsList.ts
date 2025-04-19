@@ -37,9 +37,6 @@ export const tools = [
   { name: "JPEG to Base64", slug: "jpeg-to-base64", description: "Convert JPEG images to Base64." },
   { name: "JSON Beautifier", slug: "json-beautifier", description: "Format and beautify your JSON data." },
   { name: "JSON to Base64", slug: "json-to-base64", description: "Encode JSON to Base64." },
-
-// AUTO-GENERATED TOOL ENTRIES BELOW
-// Each entry is { name, slug, description } and covers every tool in app/tools
   { name: "AI Tools", slug: "ai-tools", description: "Online AI Tools." },
   { name: "Base64 Decode", slug: "base64-decode", description: "Online Base64 Decode Tool." },
   { name: "Binary to Text", slug: "binary-to-text", description: "Online Binary to Text Tool." },

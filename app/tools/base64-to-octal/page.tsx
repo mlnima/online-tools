@@ -1,4 +1,5 @@
 "use client";
+"use client";
 import React, { useState } from "react";
 
 function base64ToOctal(base64: string): string {

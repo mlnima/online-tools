@@ -1,4 +1,5 @@
 "use client";
+"use client";
 import { useState } from "react";
 import MonacoEditor from "@monaco-editor/react";
 import styles from "../../styles/ToolPage.module.scss";

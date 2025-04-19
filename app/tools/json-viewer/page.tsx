@@ -1,6 +1,5 @@
+"use client";
 import React, { useState } from "react";
-
-import { useState } from "react";
 
 function Tree({ data, level = 0 }: { data: any; level?: number }) {
   if (typeof data === "object" && data !== null) {
@@ -29,6 +28,7 @@ export default function JsonViewer() {
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
   const [error, setError] = useState("");
+  const [parsed, setParsed] = useState<any | null>(null);
 
   function syntaxHighlight(json: string) {
     return json.replace(/(&quot;|\")([^\"]+)\1(?=:)/g, '<span style="color:#a31515">$&</span>')
@@ -48,10 +48,17 @@ export default function JsonViewer() {
       setOutput("");
     }
   }
-      setError(e.message);
-      setParsed(null);
+
+  function handleParse() {
+    setError("");
+    setParsed(null);
+    try {
+      const obj = JSON.parse(input);
+      setParsed(obj);
+    } catch (e: any) {
+      setError(e.message || "Invalid JSON.");
     }
-  };
+  }
 
   return (
     <div style={{ maxWidth: 700, margin: "40px auto", padding: 32 }}>

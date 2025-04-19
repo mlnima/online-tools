@@ -1,3 +1,4 @@
+"use client";
 import React, { useState, useRef } from "react";
 
 function binaryToBase64(bin: string): string {
