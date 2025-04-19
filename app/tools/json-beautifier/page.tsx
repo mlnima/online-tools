@@ -6,14 +6,18 @@ import styles from "../../styles/ToolPage.module.scss";
 export default function JSONBeautifierPage() {
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
+  const [error, setError] = useState<string | null>(null);
 
-  function handleBeautify() {
+  const beautifyJson = () => {
     try {
-      setOutput(JSON.stringify(JSON.parse(input), null, 2));
-    } catch (e) {
-      setOutput("Invalid JSON");
+      const obj = JSON.parse(input);
+      setOutput(JSON.stringify(obj, null, 2));
+      setError(null);
+    } catch (e: any) {
+      setError(e.message);
+      setOutput("");
     }
-  }
+  };
 
   return (
     <div className={styles.toolPage}>
@@ -27,7 +31,7 @@ export default function JSONBeautifierPage() {
         theme="vs-dark"
         options={{ minimap: { enabled: false }, fontSize: 16 }}
       />
-      <button className={styles.actionButton} onClick={handleBeautify}>Beautify</button>
+      <button onClick={beautifyJson} style={{ padding: "8px 24px", fontSize: 16 }}>Beautify</button>
       <label>Output:</label>
       <MonacoEditor
         height="120px"
