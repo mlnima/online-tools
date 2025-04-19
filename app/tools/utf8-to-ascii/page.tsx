@@ -1,5 +1,4 @@
 "use client";
-"use client";
 import React, { useState } from "react";
 
 function utf8ToAscii(input: string): string {
