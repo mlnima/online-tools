@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import styles from "../../styles/ToolPage.module.scss";
 
 function formatHtml(html: string): string {
   let formatted = '', indent = '';
@@ -42,7 +43,7 @@ const HtmlFormatter: React.FC = () => {
         placeholder="Paste your HTML here..."
       />
       <div style={{ marginTop: 16 }}>
-        <button onClick={handleFormat} style={{ padding: "8px 24px", fontSize: 16 }}>Format</button>
+        <button onClick={handleFormat} className={styles.actionButton}>Format</button>
       </div>
       {output && (
         <div style={{ marginTop: 24 }}>
@@ -53,7 +54,7 @@ const HtmlFormatter: React.FC = () => {
             rows={10}
             style={{ width: "100%", fontFamily: "monospace", fontSize: 16 }}
           />
-          <button onClick={handleCopy} style={{ marginTop: 8 }}>Copy</button>
+          <button onClick={handleCopy} className={styles.actionButton} style={{ marginTop: 8 }}>Copy</button>
         </div>
       )}
       {error && <div style={{ color: "red", marginTop: 16 }}>{error}</div>}

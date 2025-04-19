@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import styles from "../../styles/ToolPage.module.scss";
 
 const CssToScss: React.FC = () => {
   const [input, setInput] = useState("");
@@ -25,7 +26,7 @@ const CssToScss: React.FC = () => {
         placeholder="Paste your CSS here..."
       />
       <div style={{ marginTop: 16 }}>
-        <button onClick={handleConvert} style={{ padding: "8px 24px", fontSize: 16 }}>Convert</button>
+        <button onClick={handleConvert} className={styles.actionButton}>Convert</button>
       </div>
       {output && (
         <div style={{ marginTop: 24 }}>
@@ -36,7 +37,7 @@ const CssToScss: React.FC = () => {
             rows={10}
             style={{ width: "100%", fontFamily: "monospace", fontSize: 16 }}
           />
-          <button onClick={handleCopy} style={{ marginTop: 8 }}>Copy</button>
+          <button onClick={handleCopy} className={styles.actionButton} style={{ marginTop: 8 }}>Copy</button>
         </div>
       )}
     </div>

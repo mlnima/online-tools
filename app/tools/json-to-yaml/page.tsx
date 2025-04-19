@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import styles from "../../styles/ToolPage.module.scss";
 
 function jsonToYaml(obj: any, indent = 0): string {
   if (typeof obj !== "object" || obj === null) return JSON.stringify(obj);
@@ -47,7 +48,7 @@ const JsonToYaml: React.FC = () => {
         placeholder="Paste your JSON here..."
       />
       <div style={{ marginTop: 16 }}>
-        <button onClick={handleConvert} style={{ padding: "8px 24px", fontSize: 16 }}>Convert</button>
+        <button onClick={handleConvert} className={styles.actionButton}>Convert</button>
       </div>
       {output && (
         <div style={{ marginTop: 24 }}>
@@ -58,7 +59,7 @@ const JsonToYaml: React.FC = () => {
             rows={10}
             style={{ width: "100%", fontFamily: "monospace", fontSize: 16 }}
           />
-          <button onClick={handleCopy} style={{ marginTop: 8 }}>Copy</button>
+          <button onClick={handleCopy} className={styles.actionButton} style={{ marginTop: 8 }}>Copy</button>
         </div>
       )}
       {error && <div style={{ color: "red", marginTop: 16 }}>{error}</div>}

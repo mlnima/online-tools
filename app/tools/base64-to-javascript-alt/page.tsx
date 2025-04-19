@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import styles from "../../styles/ToolPage.module.scss";
 
 export default function Base64ToJavascriptAlt() {
   return (

@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import styles from "../../styles/ToolPage.module.scss";
 
 function diffJson(a: any, b: any, path = ""): string[] {
   let diffs: string[] = [];
@@ -61,7 +62,7 @@ const JsonDiff: React.FC = () => {
           placeholder="Second JSON..."
         />
       </div>
-      <button onClick={handleCompare} style={{ padding: "8px 24px", fontSize: 16 }}>Compare</button>
+      <button onClick={handleCompare} className={styles.actionButton}>Compare</button>
       {error && <div style={{ color: "red", marginTop: 16 }}>{error}</div>}
       {diffs.length > 0 && (
         <div style={{ marginTop: 24 }}>

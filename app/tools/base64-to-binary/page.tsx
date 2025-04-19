@@ -35,11 +35,9 @@ export default function Base64ToBinary() {
           placeholder="Enter Base64 string..."
           value={base64}
           onChange={e => setBase64(e.target.value)}
-          style={{ width: "100%", fontSize: 16 }}
+          className={styles.actionButton}
         />
-        <button className={styles.actionButton} onClick={handleConvert}>
-          Convert
-        </button>
+        <button onClick={handleConvert} className={styles.actionButton}>Convert</button>
       </div>
       <label>Binary Output:</label>
       <div className={styles.formRow}>

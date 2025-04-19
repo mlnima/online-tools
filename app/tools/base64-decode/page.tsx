@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import styles from "../../styles/ToolPage.module.scss";
 
 export default function Base64Decode() {
   const [input, setInput] = useState("");
@@ -22,7 +23,7 @@ export default function Base64Decode() {
       <div style={{ maxWidth: 500, margin: '32px auto', textAlign: 'left' }}>
         <label htmlFor="base64input" style={{ fontWeight: 500 }}>Base64 Input</label>
         <textarea id="base64input" style={{ width: '100%', minHeight: 80, margin: '8px 0', padding: 8, fontSize: 16 }} placeholder="Paste Base64 string here..." value={input} onChange={e => setInput(e.target.value)} />
-        <button style={{ margin: '8px 0', padding: '8px 16px', fontSize: 16 }} onClick={handleDecode}>Decode</button>
+        <button onClick={handleDecode} className={styles.actionButton}>Decode</button>
         <div style={{ marginTop: 16 }}>
           <label style={{ fontWeight: 500 }}>Decoded Output</label>
           <textarea style={{ width: '100%', minHeight: 80, margin: '8px 0', padding: 8, fontSize: 16 }} value={output} readOnly />

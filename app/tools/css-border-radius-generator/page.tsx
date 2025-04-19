@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import styles from "../../styles/ToolPage.module.scss";
 
 const CssBorderRadiusGenerator: React.FC = () => {
   const [tl, setTl] = useState(16);
@@ -83,7 +84,7 @@ const CssBorderRadiusGenerator: React.FC = () => {
           rows={2}
           style={{ width: "100%", fontFamily: "monospace", fontSize: 16 }}
         />
-        <button onClick={handleCopy} style={{ marginTop: 8 }}>Copy</button>
+        <button onClick={handleCopy} className={styles.actionButton}>Copy</button>
       </div>
     </div>
   );

@@ -1,6 +1,7 @@
 "use client";
 "use client";
 import React, { useState } from "react";
+import styles from "../../styles/ToolPage.module.scss";
 
 function base64ToOctal(base64: string): string {
   try {
@@ -37,7 +38,7 @@ export default function Base64ToOctal() {
         onChange={e => setBase64(e.target.value)}
       />
       <br />
-      <button onClick={handleConvert} style={{ margin: 8 }}>Convert</button>
+      <button onClick={handleConvert} className={styles.actionButton}>Convert</button>
       <div style={{ marginTop: 16, marginBottom: 8, textAlign: "left" }}>
         <label>Octal Output:</label>
         <textarea

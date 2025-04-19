@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import styles from "../../styles/ToolPage.module.scss";
 
 const JsonEscapeUnescape: React.FC = () => {
   const [input, setInput] = useState("");
@@ -42,8 +43,8 @@ const JsonEscapeUnescape: React.FC = () => {
         placeholder="Enter text to escape/unescape..."
       />
       <div style={{ margin: "16px 0" }}>
-        <button onClick={handleEscape} style={{ padding: "8px 24px", fontSize: 16, marginRight: 8 }}>Escape</button>
-        <button onClick={handleUnescape} style={{ padding: "8px 24px", fontSize: 16 }}>Unescape</button>
+        <button onClick={handleEscape} className={styles.actionButton} style={{ marginRight: 8 }}>Escape</button>
+        <button onClick={handleUnescape} className={styles.actionButton}>Unescape</button>
       </div>
       {output && (
         <div style={{ marginTop: 24 }}>
@@ -54,7 +55,7 @@ const JsonEscapeUnescape: React.FC = () => {
             rows={6}
             style={{ width: "100%", fontFamily: "monospace", fontSize: 16 }}
           />
-          <button onClick={handleCopy} style={{ marginTop: 8 }}>Copy</button>
+          <button onClick={handleCopy} className={styles.actionButton} style={{ marginTop: 8 }}>Copy</button>
         </div>
       )}
       {error && <div style={{ color: "red", marginTop: 16 }}>{error}</div>}

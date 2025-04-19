@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import styles from "../../styles/ToolPage.module.scss";
 
 import { useState } from "react";
 
@@ -30,7 +31,7 @@ export default function JsonParserOnline() {
         placeholder="Paste your JSON here..."
       />
       <div style={{ marginTop: 16 }}>
-        <button onClick={parseJson} style={{ padding: "8px 24px", fontSize: 16 }}>Parse</button>
+        <button onClick={parseJson} className={styles.actionButton}>Parse</button>
       </div>
       {error && <div style={{ color: "red", marginTop: 16 }}>{error}</div>}
       {output && (

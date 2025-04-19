@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
-import MonacoEditor from "@monaco-editor/react";
 import styles from "../../styles/ToolPage.module.scss";
+import MonacoEditor from "@monaco-editor/react";
 
 export default function JSONBeautifierPage() {
   const [input, setInput] = useState("");
@@ -31,7 +31,7 @@ export default function JSONBeautifierPage() {
         theme="vs-dark"
         options={{ minimap: { enabled: false }, fontSize: 16 }}
       />
-      <button onClick={beautifyJson} style={{ padding: "8px 24px", fontSize: 16 }}>Beautify</button>
+      <button onClick={beautifyJson} className={styles.actionButton}>Beautify</button>
       <label>Output:</label>
       <MonacoEditor
         height="120px"

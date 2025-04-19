@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import styles from "../../styles/ToolPage.module.scss";
 
 import { useState } from "react";
 
@@ -39,7 +40,7 @@ export default function JsonCleaner() {
         placeholder="Paste your JSON here..."
       />
       <div style={{ marginTop: 16 }}>
-        <button onClick={handleClean} style={{ padding: "8px 24px", fontSize: 16 }}>Clean JSON</button>
+        <button onClick={handleClean} className={styles.actionButton}>Clean JSON</button>
       </div>
       {error && <div style={{ color: "red", marginTop: 16 }}>{error}</div>}
       {output && (

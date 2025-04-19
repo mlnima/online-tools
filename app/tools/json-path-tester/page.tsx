@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import styles from "../../styles/ToolPage.module.scss";
 
 // Minimal JSONPath evaluator (dot and bracket notation only)
 function evalJsonPath(obj: any, path: string): any {
@@ -50,7 +51,7 @@ const JsonPathTester: React.FC = () => {
           style={{ fontSize: 16, width: 400, fontFamily: "monospace" }}
           placeholder="Enter JSONPath (e.g. a.b[0].c)"
         />
-        <button onClick={handleTest} style={{ marginLeft: 16, padding: "8px 24px", fontSize: 16 }}>Test</button>
+        <button onClick={handleTest} className={styles.actionButton} style={{ marginLeft: 16 }}>Test</button>
       </div>
       {result && (
         <div style={{ marginTop: 24 }}>

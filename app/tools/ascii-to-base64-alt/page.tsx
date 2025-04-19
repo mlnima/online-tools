@@ -29,11 +29,9 @@ export default function AsciiToBase64Alt() {
           placeholder="Enter ASCII text..."
           value={ascii}
           onChange={e => setAscii(e.target.value)}
-          style={{ width: "100%", fontSize: 16 }}
+          className={styles.textarea}
         />
-        <button className={styles.actionButton} onClick={handleConvert}>
-          Convert
-        </button>
+        <button onClick={handleConvert} className={styles.actionButton}>Convert</button>
       </div>
       <label>Base64 Output:</label>
       <div className={styles.formRow}>
@@ -43,9 +41,7 @@ export default function AsciiToBase64Alt() {
           readOnly
           style={{ width: "100%", fontSize: 16 }}
         />
-        <button className={styles.actionButton} onClick={handleCopy} disabled={!base64}>
-          Copy
-        </button>
+        <button onClick={handleCopy} className={styles.actionButton} disabled={!base64}>Copy</button>
       </div>
     </div>
   );

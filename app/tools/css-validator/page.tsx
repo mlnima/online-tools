@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import styles from "../../styles/ToolPage.module.scss";
 
 const isValidCss = (css: string): boolean => {
   // Simple validation: check for balanced braces and at least one semicolon in each block
@@ -47,7 +48,7 @@ const CssValidator: React.FC = () => {
         placeholder="Paste your CSS here..."
       />
       <div style={{ marginTop: 16 }}>
-        <button onClick={handleValidate} style={{ padding: "8px 24px", fontSize: 16 }}>Validate</button>
+        <button onClick={handleValidate} className={styles.actionButton}>Validate</button>
       </div>
       {result && (
         <div style={{ marginTop: 24, color: result === "Valid CSS" ? "green" : "red" }}>{result}</div>

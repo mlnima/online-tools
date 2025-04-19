@@ -3,38 +3,37 @@ import './styles/global.scss';
 import { ThemeProvider } from './theme-provider';
 
 import styles from "./styles/Home.module.scss";
-import ThemeSwitcher from "./components/ThemeSwitcher";
-import Link from "next/link";
+import headerStyles from "./styles/Header.module.scss";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+import GoogleAnalytics from "./components/GoogleAnalytics";
 import { metadata as seoMetadata } from "./seo/metadata";
 import GoogleAdPlaceholder from "./ads/GoogleAdPlaceholder";
 
 export const metadata: Metadata = { ...seoMetadata };
 
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <head>
-        {/* Google Analytics */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZTFX076VKN"></script>
-        <script dangerouslySetInnerHTML={{__html: `
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-ZTFX076VKN');
-        `}} />
+        {/* Google Analytics: set NEXT_PUBLIC_GA_ID in .env.local */}
+        <GoogleAnalytics />
       </head>
       <body>
+        {/* Client-side burger menu for mobile */}
+        {/* MobileHeaderClient is a client component and will only render on the client */}
         <ThemeProvider>
-          <header className={styles.header}>
-            <span className={styles.logo} style={{ fontSize: '2.5rem', fontWeight: 700, margin: 0 }}>
-              <Link href="/" aria-label="Go to Home Page" title="Go to Home Page" style={{ color: 'inherit', textDecoration: 'none' }}>WebWizKit</Link>
-            </span>
-            <ThemeSwitcher />
-          </header>
+        <div className="page-root">
+          <Header />
           {/* Placeholder for Google Ads or other advertising - replace as needed */}
         <GoogleAdPlaceholder />
-          {children}
-        </ThemeProvider>
+          <main className="page-main">
+            {children}
+          </main>
+          <Footer />
+        </div>
+      </ThemeProvider>
       </body>
     </html>
   );

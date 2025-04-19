@@ -11,6 +11,8 @@
   --color-error: #ff4d4f;
   --color-btn-bg: #f90;
   --color-btn-text: #000;
+  --color-footer-bg: var(--color-bg-secondary);
+  --color-footer-text: #eaeaea;
   --font-main: 'Inter', Arial, sans-serif;
 }
 
@@ -25,6 +27,8 @@
   --color-error: #e53935;
   --color-btn-bg: #0056e0;
   --color-btn-text: #fff;
+  --color-footer-bg: #f4f7fb;
+  --color-footer-text: #23272f;
 }
 
 html, body {
@@ -34,9 +38,25 @@ html, body {
   margin: 0;
   padding: 0;
   min-height: 100vh;
+  height: 100%;
+  width: 100%;
   transition: background 0.3s, color 0.3s;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 
@@ -75,4 +95,44 @@ a {
 
 button {
   font-family: var(--font-main);
+}
+
+
+input,
+textarea {
+  background: var(--color-bg-secondary) !important;
+  color: var(--color-text) !important;
+  border: 1px solid var(--color-border);
+  border-radius: 0.4rem;
+  padding: 0.6rem 0.9rem;
+  font-size: 1rem;
+  transition: border-color 0.18s, background 0.18s, color 0.18s;
+  outline: none;
+  margin-bottom: 0.7rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+input:focus,
+textarea:focus {
+  border-color: var(--color-primary);
+  background: var(--color-card) !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--color-text) !important;
+  opacity: 0.6;
+}
+
+[data-theme="light"] input,
+[data-theme="light"] textarea {
+  background: #fff !important;
+  color: #23272f !important;
+}
+
+[data-theme="light"] input::placeholder,
+[data-theme="light"] textarea::placeholder {
+  color: #23272f !important;
+  opacity: 0.5;
 }

@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import styles from "../../styles/ToolPage.module.scss";
 
 export default function CSSToBase64() {
   const [css, setCss] = useState("");
@@ -30,7 +31,7 @@ export default function CSSToBase64() {
         onChange={e => setCss(e.target.value)}
       />
       <br />
-      <button onClick={handleConvert} style={{ margin: 8 }}>Convert</button>
+      <button onClick={handleConvert} className={styles.actionButton}>Convert</button>
       <div style={{ marginTop: 16, marginBottom: 8, textAlign: "left" }}>
         <label>Base64 Output:</label>
         <textarea

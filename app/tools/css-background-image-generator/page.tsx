@@ -1,5 +1,6 @@
 "use client"
 import React from "react";
+import styles from "../../styles/ToolPage.module.scss";
 
 import { useState } from "react";
 
@@ -52,7 +53,7 @@ export default function CssBackgroundImageGenerator() {
         </label>
       </div>
       <div style={{ marginTop: 16 }}>
-        <button onClick={generate} style={{ padding: "8px 24px", fontSize: 16 }}>Generate</button>
+        <button onClick={generate} className={styles.actionButton}>Generate</button>
       </div>
       {output && (
         <div style={{ marginTop: 24 }}>

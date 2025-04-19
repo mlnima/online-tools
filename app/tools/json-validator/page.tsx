@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import styles from "../../styles/ToolPage.module.scss";
 
 export default function JsonValidator() {
   const [input, setInput] = useState("");
@@ -28,7 +29,7 @@ export default function JsonValidator() {
         placeholder="Paste your JSON here..."
       />
       <div style={{ marginTop: 16 }}>
-        <button onClick={handleValidate} style={{ padding: "8px 24px", fontSize: 16 }}>Validate</button>
+        <button onClick={handleValidate} className={styles.actionButton}>Validate</button>
       </div>
       {result && (
         <div style={{ marginTop: 24, color: result === "Valid JSON" ? "green" : "red" }}>{result}</div>

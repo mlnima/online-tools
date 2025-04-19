@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import styles from "../../styles/ToolPage.module.scss";
 
 const minifyCss = (css: string): string => {
   try {
@@ -48,7 +49,7 @@ const CssMinify: React.FC = () => {
         placeholder="Paste your CSS here..."
       />
       <div style={{ marginTop: 16 }}>
-        <button onClick={handleMinify} style={{ padding: "8px 24px", fontSize: 16 }}>Minify</button>
+        <button onClick={handleMinify} className={styles.actionButton}>Minify</button>
       </div>
       {error && <div style={{ color: "red", marginTop: 16 }}>{error}</div>}
       {output && (
@@ -60,7 +61,7 @@ const CssMinify: React.FC = () => {
             rows={10}
             style={{ width: "100%", fontFamily: "monospace", fontSize: 16 }}
           />
-          <button onClick={handleCopy} style={{ marginTop: 8 }}>Copy</button>
+          <button onClick={handleCopy} className={styles.actionButton} style={{ marginTop: 8 }}>Copy</button>
         </div>
       )}
     </div>

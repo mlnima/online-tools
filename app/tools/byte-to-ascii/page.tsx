@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import styles from "../../styles/ToolPage.module.scss";
 
 function bytesToAscii(input: string): string {
   try {
@@ -34,7 +35,7 @@ export default function ByteToASCII() {
         onChange={e => setBytes(e.target.value)}
       />
       <br />
-      <button onClick={handleConvert} style={{ margin: 8 }}>Convert</button>
+      <button onClick={handleConvert} className={styles.actionButton}>Convert</button>
       <div style={{ marginTop: 16, marginBottom: 8, textAlign: "left" }}>
         <label>ASCII Output:</label>
         <textarea

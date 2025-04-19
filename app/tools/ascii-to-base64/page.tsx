@@ -29,11 +29,9 @@ export default function ASCIToBase64() {
           placeholder="Enter ASCII text..."
           value={ascii}
           onChange={e => setAscii(e.target.value)}
-          style={{ width: "100%", fontSize: 16 }}
+          className={styles.actionButton}
         />
-        <button className={styles.actionButton} onClick={handleConvert}>
-          Convert
-        </button>
+        <button onClick={handleConvert} className={styles.actionButton}>Convert</button>
       </div>
       <label>Base64 Output:</label>
       <div className={styles.formRow}>

@@ -1,8 +1,7 @@
 "use client";
-"use client";
-import { useState } from "react";
-import MonacoEditor from "@monaco-editor/react";
+import React, { useState } from "react";
 import styles from "../../styles/ToolPage.module.scss";
+import MonacoEditor from "@monaco-editor/react";
 
 export default function Base64EncodePage() {
   const [input, setInput] = useState("");
@@ -28,7 +27,7 @@ export default function Base64EncodePage() {
         theme="vs-dark"
         options={{ minimap: { enabled: false }, fontSize: 16 }}
       />
-      <button className={styles.actionButton} onClick={handleEncode}>Encode</button>
+      <button onClick={handleEncode} className={styles.actionButton}>Encode</button>
       <label>Output:</label>
       <MonacoEditor
         height="120px"

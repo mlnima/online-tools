@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useRef } from "react";
+import styles from "../../styles/ToolPage.module.scss";
 
 function binaryToBase64(bin: string): string {
   try {
@@ -39,8 +40,8 @@ export default function BinaryToBase64() {
         onChange={e => setBinary(e.target.value)}
       />
       <br />
-      <button onClick={handleConvert} style={{ margin: 8 }}>Convert</button>
-      <button onClick={handleCopy} style={{ margin: 8 }} disabled={!base64 || base64 === "Invalid binary input"}>Copy Base64</button>
+      <button onClick={handleConvert} className={styles.actionButton}>Convert</button>
+      <button onClick={handleCopy} className={styles.actionButton} disabled={!base64 || base64 === "Invalid binary input"}>Copy Base64</button>
       <div style={{ marginTop: 24 }}>
         <label>Base64 Output:</label>
         <textarea

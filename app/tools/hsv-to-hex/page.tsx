@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import styles from "../../styles/ToolPage.module.scss";
 
 function hsvToHex(h: number, s: number, v: number): string {
   s /= 100;
@@ -41,12 +42,12 @@ const HsvToHex: React.FC = () => {
         <label>S: <input type="number" min={0} max={100} value={s} onChange={e => setS(Number(e.target.value))} style={{ width: 60 }} /></label>
         <label>V: <input type="number" min={0} max={100} value={v} onChange={e => setV(Number(e.target.value))} style={{ width: 60 }} /></label>
       </div>
-      <button onClick={handleConvert} style={{ padding: "8px 24px", fontSize: 16 }}>Convert</button>
+      <button onClick={handleConvert} className={styles.actionButton}>Convert</button>
       {hex && (
         <div style={{ marginTop: 24 }}>
           <h3>HEX Output:</h3>
           <input value={hex} readOnly style={{ fontFamily: "monospace", fontSize: 16, width: 120, textAlign: "center" }} />
-          <button onClick={handleCopy} style={{ marginLeft: 12 }}>Copy</button>
+          <button onClick={handleCopy} className={styles.actionButton} style={{ marginLeft: 12 }}>Copy</button>
           <div style={{ width: 40, height: 40, background: hex, display: "inline-block", border: "1px solid #ccc", marginLeft: 16, verticalAlign: "middle" }} />
         </div>
       )}

@@ -1,7 +1,9 @@
 .tools {
-  max-width: 900px;
+  width: 100%;
+  max-width: 1100px;
   margin: 0 auto;
-  padding: 2.5rem 1.5rem 3rem 1.5rem;
+  padding: 2.5rem 2vw 3rem 2vw;
+  box-sizing: border-box;
 }
 
 .tools h1 {
@@ -15,8 +17,29 @@
   list-style: none;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.3rem;
+}
+
+@media (max-width: 900px) {
+  .tools {
+    max-width: 100%;
+    padding: 2rem 1vw 2.5rem 1vw;
+  }
+  .tools .toolList {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 0.9rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .tools {
+    padding: 1.1rem 0.3rem 1.3rem 0.3rem;
+  }
+  .tools .toolList {
+    grid-template-columns: 1fr;
+    gap: 0.7rem;
+  }
 }
 
 .toolList li {
@@ -40,4 +63,46 @@
     color: var(--color-primary);
     text-decoration: underline;
   }
+}
+
+.tools input,
+.tools textarea {
+  background: var(--color-bg-secondary);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  border-radius: 0.4rem;
+  padding: 0.6rem 0.9rem;
+  font-size: 1rem;
+  transition: border-color 0.18s, background 0.18s, color 0.18s;
+  outline: none;
+  margin-bottom: 0.7rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.tools input:focus,
+.tools textarea:focus {
+  border-color: var(--color-primary);
+  background: var(--color-card);
+}
+
+.tools input::placeholder,
+.tools textarea::placeholder {
+  color: var(--color-text);
+  opacity: 0.6;
+}
+
+.tools [data-theme="light"] input {
+  background: #fff;
+  color: #23272f;
+}
+.tools [data-theme="light"] textarea {
+  background: #fff !important;
+  color: #23272f;
+}
+
+.tools [data-theme="light"] input::placeholder,
+.tools [data-theme="light"] textarea::placeholder {
+  color: #23272f;
+  opacity: 0.5;
 }

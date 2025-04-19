@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import styles from "../../styles/ToolPage.module.scss";
 
 export default function Base64ToText() {
   const [base64, setBase64] = useState("");
@@ -33,8 +34,8 @@ export default function Base64ToText() {
         onChange={e => setBase64(e.target.value)}
       />
       <br />
-      <button onClick={handleConvert} style={{ margin: 8 }}>Convert</button>
-      <button onClick={handleCopy} style={{ margin: 8 }} disabled={!text}>Copy Text</button>
+      <button onClick={handleConvert} className={styles.actionButton}>Convert</button>
+      <button onClick={handleCopy} className={styles.actionButton} disabled={!text}>Copy Text</button>
       {error && <div style={{ color: "red", margin: 8 }}>{error}</div>}
       {text && (
         <div style={{ marginTop: 24 }}>

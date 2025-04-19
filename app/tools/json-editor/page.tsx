@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import styles from "../../styles/ToolPage.module.scss";
 
 const JsonEditor: React.FC = () => {
   const [input, setInput] = useState("");
@@ -38,7 +39,7 @@ const JsonEditor: React.FC = () => {
       <div style={{ margin: "12px 0" }}>
         <span style={{ color: isValid ? "green" : "red" }}>{isValid ? "Valid JSON" : "Invalid JSON"}</span>
       </div>
-      <button onClick={handleFormat} style={{ padding: "8px 24px", fontSize: 16 }} disabled={!isValid}>Pretty Print</button>
+      <button onClick={handleFormat} className={styles.actionButton} disabled={!isValid}>Pretty Print</button>
       {formatted && (
         <div style={{ marginTop: 24 }}>
           <h3>Formatted JSON:</h3>
@@ -48,7 +49,7 @@ const JsonEditor: React.FC = () => {
             rows={10}
             style={{ width: "100%", fontFamily: "monospace", fontSize: 16 }}
           />
-          <button onClick={handleCopy} style={{ marginTop: 8 }}>Copy</button>
+          <button onClick={handleCopy} className={styles.actionButton} style={{ marginTop: 8 }}>Copy</button>
         </div>
       )}
       {error && <div style={{ color: "red", marginTop: 16 }}>{error}</div>}
