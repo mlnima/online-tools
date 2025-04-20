@@ -1,5 +1,7 @@
 "use client";
 import React, { useState } from "react";
+import styles from '../../styles/Tools.module.scss';
+import ComingSoon from "../../components/ComingSoon";
 
 export default function XmlMinify() {
   const [input, setInput] = useState("");
@@ -20,7 +22,7 @@ export default function XmlMinify() {
   return (
     <div style={{ padding: 32, textAlign: "center" }}>
       <h1>XML Minify</h1>
-      <p>Coming Soon</p>
+      <ComingSoon />
     </div>
   );
 }

@@ -1,0 +1,29 @@
+.comingSoonBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2.2rem 1.5rem 2.5rem 1.5rem;
+  background: var(--color-bg-secondary);
+  border: 2px dashed var(--color-border);
+  border-radius: 1.1rem;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,0.07);
+  margin: 2.2rem auto 2.8rem auto;
+  max-width: 420px;
+}
+.icon {
+  font-size: 3.2rem;
+  margin-bottom: 0.6rem;
+}
+.title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+}
+.text {
+  color: var(--color-text);
+  font-size: 1.07rem;
+  text-align: center;
+  margin: 0;
+}

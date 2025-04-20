@@ -15,7 +15,7 @@ export default function MobileHeaderClient() {
       const navLinks = (
         <>
           <Link href="/">Home</Link>
-          <Link href="/tools">Tools</Link>
+          <Link href="/sitemap">Sitemap</Link>
           <Link href="/about">About</Link>
           <Link href="/contact">Contact</Link>
         </>

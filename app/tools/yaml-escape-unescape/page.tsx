@@ -1,10 +1,11 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
+import ComingSoon from "../../components/ComingSoon";
 
 export default function YamlEscapeUnescape() {
-  const [input, setInput] = useState("");
-  const [output, setOutput] = useState("");
-  const [error, setError] = useState("");
+  const [input, setInput] = React.useState("");
+  const [output, setOutput] = React.useState("");
+  const [error, setError] = React.useState("");
 
   function handleEscape() {
     setError("");
@@ -39,7 +40,7 @@ export default function YamlEscapeUnescape() {
   return (
     <div style={{ padding: 32, textAlign: "center" }}>
       <h1>YAML Escape/Unescape</h1>
-      <p>Coming Soon</p>
+      <ComingSoon />
     </div>
   );
 }

@@ -16,7 +16,7 @@ export default function HeaderClient() {
           </span>
           <nav className={styles.navLinks}>
             <Link href="/">Home</Link>
-            <Link href="/tools">Tools</Link>
+            <Link href="/sitemap">Sitemap</Link>
             <Link href="/about">About</Link>
             <Link href="/contact">Contact</Link>
           </nav>
@@ -25,7 +25,7 @@ export default function HeaderClient() {
               navLinks={
                 <>
                   <Link href="/">Home</Link>
-                  <Link href="/tools">Tools</Link>
+                  <Link href="/sitemap">Sitemap</Link>
                   <Link href="/about">About</Link>
                   <Link href="/contact">Contact</Link>
                 </>

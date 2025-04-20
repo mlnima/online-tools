@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import styles from '../../styles/Tools.module.scss';
 
 export default function UnixTimestampConverter() {
   const [timestamp, setTimestamp] = useState("");
@@ -23,17 +24,18 @@ export default function UnixTimestampConverter() {
     setError("");
     try {
       if (!date) throw new Error();
-      const ts = Math.floor(new Date(date).getTime() / 1000).toString();
-      setTimestamp(ts);
+      const ts = Math.floor(new Date(date).getTime() / 1000);
+      setTimestamp(ts.toString());
     } catch {
       setError("Invalid date");
       setTimestamp("");
     }
   }
+
   return (
-    <div style={{ padding: 32, textAlign: "center" }}>
+    <div className={styles.toolPage}>
       <h1>Unix Timestamp Converter</h1>
-      <p>Coming Soon</p>
+      {/* UI implementation here, unchanged for now */}
     </div>
   );
 }

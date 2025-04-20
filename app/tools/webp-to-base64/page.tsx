@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import styles from '../../styles/Tools.module.scss';
 
 export default function WebpToBase64() {
   const [output, setOutput] = useState("");

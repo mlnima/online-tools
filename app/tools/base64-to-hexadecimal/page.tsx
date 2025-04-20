@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import styles from "../../styles/ToolPage.module.scss";
+import toolsStyles from "../../styles/Tools.module.scss";
 
 function base64ToHex(base64: string): string {
   try {
@@ -26,27 +26,35 @@ export default function Base64ToHexadecimal() {
   }
 
   return (
-    <div style={{ padding: 32, textAlign: "center" }}>
+    <div className={toolsStyles.toolPage} style={{ width: '80vw', maxWidth: 1200, minWidth: 320, margin: '0 auto' }}>
       <h1>Base64 to Hexadecimal</h1>
       <p>Convert Base64 string to hexadecimal representation.</p>
-      <textarea
-        rows={4}
-        style={{ width: "100%", fontSize: 16 }}
-        placeholder="Paste Base64 string..."
-        value={base64}
-        onChange={e => setBase64(e.target.value)}
-      />
-      <br />
-      <button onClick={handleConvert} className={styles.actionButton}>Convert</button>
-      <div style={{ marginTop: 16, marginBottom: 8, textAlign: "left" }}>
-        <label>Hexadecimal Output:</label>
-        <textarea
-          rows={3}
-          style={{ width: "100%", fontSize: 16 }}
-          value={hex}
-          readOnly
-        />
-        <button onClick={handleCopy} disabled={!hex || hex === "Invalid Base64 input"} style={{ marginTop: 6 }}>Copy</button>
+      <div className={toolsStyles.formRow} style={{ display: 'flex', flexDirection: 'row', gap: 24, alignItems: 'flex-start', flexWrap: 'wrap' }}>
+        <div style={{ flex: 1, minWidth: 240, display: 'flex', flexDirection: 'column' }}>
+          <label htmlFor="base64-input" style={{ fontWeight: 600, marginBottom: 6 }}>Base64 Input</label>
+          <textarea
+            id="base64-input"
+            placeholder="Paste Base64 string..."
+            value={base64}
+            onChange={e => setBase64(e.target.value)}
+            className={toolsStyles.inputArea}
+            style={{ width: '100%', minHeight: 220, fontSize: 16, resize: 'vertical' }}
+          />
+        </div>
+        <div style={{ flex: 1, minWidth: 240, display: 'flex', flexDirection: 'column' }}>
+          <label htmlFor="hex-output" style={{ fontWeight: 600, marginBottom: 6 }}>Hexadecimal Output</label>
+          <textarea
+            id="hex-output"
+            value={hex}
+            readOnly
+            className={toolsStyles.outputArea}
+            style={{ width: '100%', minHeight: 220, fontSize: 16, resize: 'vertical' }}
+          />
+        </div>
+      </div>
+      <div style={{ display: 'flex', justifyContent: 'center', margin: '24px 0 0 0' }}>
+        <button onClick={handleConvert} className={toolsStyles.actionButton} style={{ minWidth: 140, fontSize: 17, marginRight: 16 }}>Convert</button>
+        <button onClick={handleCopy} className={toolsStyles.actionButton} style={{ minWidth: 100, fontSize: 16 }} disabled={!hex || hex === "Invalid Base64 input"}>Copy Output</button>
       </div>
     </div>
   );

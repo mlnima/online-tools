@@ -122,17 +122,18 @@ const tools = [
   { name: "YAML to Base64", slug: "yaml-to-base64" }
 ];
 
-export default function ToolsPage() {
+export default function Sitemap() {
   return (
-    <main className={styles.tools}>
-      <h1>All Tools</h1>
-      <ul className={styles.toolList}>
-        {tools.map((tool) => (
+    <div style={{width: '100%', padding: '32px 12px 0 12px'}}>
+      <h1>Sitemap</h1>
+      <p style={{margin: '0 0 24px 0', color: 'var(--color-text-secondary)'}}>Browse all tools and converters available on this site.</p>
+      <ul className={styles.sitemapGrid}>
+        {tools.map(tool => (
           <li key={tool.slug}>
-            <Link href={`/tools/${tool.slug}`}>{tool.name}</Link>
+            <Link href={`/${tool.slug}`}>{tool.name}</Link>
           </li>
         ))}
       </ul>
-    </main>
+    </div>
   );
 }

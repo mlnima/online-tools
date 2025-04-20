@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import styles from "../../styles/Tools.module.scss";
 
 function renderHtml(obj: any): JSX.Element {
   if (Array.isArray(obj)) {
@@ -45,26 +46,28 @@ export default function JsonToHtml() {
   };
 
   return (
-    <div style={{ maxWidth: 700, margin: "40px auto", padding: 32 }}>
-      <h1>JSON to HTML</h1>
+  <div>
+    <h1>JSON to HTML</h1>
+    <div className={styles.responsiveRow}>
       <textarea
         value={input}
         onChange={e => setInput(e.target.value)}
         rows={10}
-        style={{ width: "100%", fontFamily: "monospace", fontSize: 16 }}
+        className={styles.inputArea}
         placeholder="Paste your JSON here..."
       />
-      <div style={{ marginTop: 16 }}>
-        <button onClick={convert} style={{ padding: "8px 24px", fontSize: 16 }}>Convert</button>
-      </div>
-      {error && <div style={{ color: "red", marginTop: 16 }}>{error}</div>}
-      {output && (
-        <div style={{ marginTop: 24 }}>
-          <h3>HTML Output:</h3>
-          <div style={{ background: "#fafafa", padding: 16, borderRadius: 4, overflowX: "auto" }}>{renderHtml(output)}</div>
+      <div style={{flex: 1}}>
+        <h3>HTML Output:</h3>
+        <div style={{ background: "#fafafa", padding: 16, borderRadius: 4, overflowX: "auto", minHeight: 180 }}>
+          {output ? renderHtml(output) : <span style={{color: '#888'}}>HTML will appear here</span>}
         </div>
-      )}
+      </div>
     </div>
-  );
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '24px 0 0 0' }}>
+      <button onClick={convert} className={styles.actionButton} style={{ minWidth: 140, fontSize: 17 }}>Convert</button>
+    </div>
+    {error && <div className={styles.error} style={{ marginTop: 16, textAlign: 'center' }}>{error}</div>}
+  </div>
+);
 }
 

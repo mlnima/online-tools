@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import styles from '../../styles/Tools.module.scss';
 
 function utf8ToAscii(input: string): string {
   try {

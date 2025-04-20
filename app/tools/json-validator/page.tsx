@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import styles from "../../styles/ToolPage.module.scss";
+import styles from '../../styles/Tools.module.scss';
 
 export default function JsonValidator() {
   const [input, setInput] = useState("");
@@ -19,22 +19,29 @@ export default function JsonValidator() {
   }
 
   return (
-    <div style={{ maxWidth: 600, margin: "40px auto", padding: 32 }}>
-      <h1>JSON Validator</h1>
+  <div>
+    <h1>JSON Validator</h1>
+    <div className={styles.responsiveRow}>
       <textarea
         value={input}
         onChange={e => setInput(e.target.value)}
         rows={10}
-        style={{ width: "100%", fontFamily: "monospace", fontSize: 16 }}
+        className={styles.inputArea}
         placeholder="Paste your JSON here..."
       />
-      <div style={{ marginTop: 16 }}>
-        <button onClick={handleValidate} className={styles.actionButton}>Validate</button>
-      </div>
-      {result && (
-        <div style={{ marginTop: 24, color: result === "Valid JSON" ? "green" : "red" }}>{result}</div>
-      )}
+      <textarea
+        value={result ? result : error || ''}
+        readOnly
+        rows={10}
+        className={styles.outputArea}
+        placeholder="Validation result..."
+        style={{color: result === 'Valid JSON' ? 'green' : 'red'}}
+      />
     </div>
-  );
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '24px 0 0 0' }}>
+      <button onClick={handleValidate} className={styles.actionButton} style={{ minWidth: 140, fontSize: 17 }}>Validate</button>
+    </div>
+  </div>
+);
 }
 

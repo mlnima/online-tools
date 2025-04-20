@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import ComingSoon from "../../components/ComingSoon";
 
 export default function YamlFormatter() {
   const [input, setInput] = useState("");
@@ -24,7 +25,7 @@ export default function YamlFormatter() {
   return (
     <div style={{ padding: 32, textAlign: "center" }}>
       <h1>YAML Formatter</h1>
-      <p>Coming Soon</p>
+      <ComingSoon />
     </div>
   );
 }

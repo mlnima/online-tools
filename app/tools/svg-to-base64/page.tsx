@@ -1,9 +1,54 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
+import styles from "../../styles/Tools.module.scss";
+
 export default function SVGToBase64() {
+  const [input, setInput] = useState("");
+  const [output, setOutput] = useState("");
+  const [error, setError] = useState("");
+
+  function handleConvert() {
+    setError("");
+    setOutput("");
+    try {
+      // Remove XML declaration if present
+      let svg = input.trim().replace(/<\?xml.*?\?>/, "");
+      // Encode to base64
+      const base64 = btoa(unescape(encodeURIComponent(svg)));
+      setOutput(base64);
+    } catch (e) {
+      setError("Error encoding SVG to Base64.");
+    }
+  }
+
+  function handleCopy() {
+    navigator.clipboard.writeText(output);
+  }
+
   return (
     <div style={{ padding: 32, textAlign: "center" }}>
       <h1>SVG to Base64</h1>
-      <p>Coming Soon</p>
+      <textarea
+        value={input}
+        onChange={e => setInput(e.target.value)}
+        rows={8}
+        placeholder="Paste SVG markup here..."
+        className={styles.inputArea}
+        style={{ width: '100%', marginBottom: 16 }}
+      />
+      <button onClick={handleConvert} className={styles.actionButton} style={{ marginBottom: 16 }}>Convert</button>
+      {error && <div className={styles.error}>{error}</div>}
+      <textarea
+        value={output}
+        readOnly
+        rows={4}
+        placeholder="Base64 output..."
+        className={styles.outputArea}
+        style={{ width: '100%', marginTop: 12 }}
+      />
+      {output && (
+        <button onClick={handleCopy} className={styles.actionButton} style={{ marginTop: 8 }}>Copy</button>
+      )}
     </div>
   );
 }

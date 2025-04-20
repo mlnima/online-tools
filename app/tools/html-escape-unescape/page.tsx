@@ -1,11 +1,73 @@
 "use client";
 import React from "react";
 
+import toolsStyles from "../../styles/Tools.module.scss";
+
+function htmlEscape(input: string) {
+  const txt = document.createElement("textarea");
+  txt.textContent = input;
+  return txt.innerHTML;
+}
+function htmlUnescape(input: string) {
+  const txt = document.createElement("textarea");
+  txt.innerHTML = input;
+  return txt.value;
+}
+
 export default function HtmlEscapeUnescape() {
+  const [input, setInput] = React.useState("");
+  const [output, setOutput] = React.useState("");
+  const [error, setError] = React.useState("");
+
+  function handleEscape() {
+    setError("");
+    try {
+      setOutput(htmlEscape(input));
+    } catch (e) {
+      setError((e as Error).message || "Error");
+      setOutput("");
+    }
+  }
+  function handleUnescape() {
+    setError("");
+    try {
+      setOutput(htmlUnescape(input));
+    } catch (e) {
+      setError((e as Error).message || "Error");
+      setOutput("");
+    }
+  }
+  function handleCopy() {
+    if (output) navigator.clipboard.writeText(output);
+  }
+
   return (
-    <div style={{ padding: 32, textAlign: "center" }}>
+    <div className={toolsStyles.toolPage}>
       <h1>HTML Escape/Unescape</h1>
-      <p>Coming Soon</p>
+      <textarea
+        value={input}
+        onChange={e => setInput(e.target.value)}
+        className={toolsStyles.inputArea}
+        placeholder="<div>Hello &amp; welcome!</div>"
+        rows={3}
+        style={{ width: 320, marginBottom: 8, background: 'var(--color-bg-secondary)' }}
+      />
+      <div style={{ display: 'flex', gap: 8, marginBottom: 8, justifyContent: 'center' }}>
+        <button onClick={handleEscape} className={toolsStyles.actionButton}>Escape</button>
+        <button onClick={handleUnescape} className={toolsStyles.actionButton}>Unescape</button>
+      </div>
+      {error && <div className={toolsStyles.error}>{error}</div>}
+      <textarea
+        value={output}
+        readOnly
+        className={toolsStyles.outputArea}
+        rows={3}
+        style={{ width: 320, textAlign: 'left', fontFamily: 'monospace', fontSize: 16, background: 'var(--color-bg-secondary)' }}
+        placeholder="Output"
+      />
+      {output && (
+        <button onClick={handleCopy} className={toolsStyles.actionButton} style={{ marginTop: 8 }}>Copy</button>
+      )}
     </div>
   );
 }

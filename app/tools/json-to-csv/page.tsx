@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import toolsStyles from "../../styles/Tools.module.scss";
 
 export default function JsonToCsv() {
   const [input, setInput] = useState("");
@@ -26,7 +27,23 @@ export default function JsonToCsv() {
   return (
     <div style={{ padding: 32, textAlign: "center" }}>
       <h1>JSON to CSV</h1>
-      <p>Coming Soon</p>
+      <textarea
+        value={input}
+        onChange={e => setInput(e.target.value)}
+        rows={6}
+        placeholder="Enter JSON array of objects..."
+        className={toolsStyles.inputArea}
+      />
+      <button onClick={handleConvert} className={toolsStyles.actionButton}>Convert</button>
+      {error && <div className={toolsStyles.error}>{error}</div>}
+      <textarea
+        value={output}
+        readOnly
+        rows={6}
+        className={toolsStyles.outputArea}
+        style={{ marginTop: 12 }}
+        placeholder="CSV output..."
+      />
     </div>
   );
 }

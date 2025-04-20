@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import toolsStyles from "../../styles/Tools.module.scss";
 
 export default function JsonToCSharp() {
   const [input, setInput] = useState("");
@@ -34,9 +35,29 @@ export default function JsonToCSharp() {
     }
   }
   return (
-    <div style={{ padding: 32, textAlign: "center" }}>
+    <div className={toolsStyles.toolPage}>
       <h1>JSON to C#</h1>
-      <p>Coming Soon</p>
+      <textarea
+        value={input}
+        onChange={e => setInput(e.target.value)}
+        rows={3}
+        placeholder="Paste JSON object here..."
+        className={toolsStyles.inputArea}
+        style={{ width: '100%' }}
+      />
+      <button onClick={handleConvert} className={toolsStyles.actionButton}>Convert</button>
+      {error && <div className={toolsStyles.error}>{error}</div>}
+      <textarea
+        value={output}
+        readOnly
+        rows={8}
+        placeholder="C# class output..."
+        className={toolsStyles.outputArea}
+        style={{ width: '100%' }}
+      />
+      {output && (
+        <button onClick={() => navigator.clipboard.writeText(output)} className={toolsStyles.actionButton}>Copy</button>
+      )}
     </div>
   );
 }

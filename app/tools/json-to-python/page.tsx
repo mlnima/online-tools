@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import styles from '../../styles/Tools.module.scss';
 
 export default function JsonToPython() {
   const [input, setInput] = useState("");
@@ -35,7 +36,23 @@ export default function JsonToPython() {
   return (
     <div style={{ padding: 32, textAlign: "center" }}>
       <h1>JSON to Python</h1>
-      <p>Coming Soon</p>
+      <textarea
+        value={input}
+        onChange={e => setInput(e.target.value)}
+        rows={6}
+        placeholder="Enter JSON..."
+        className={styles.inputArea}
+      />
+      <button onClick={handleConvert} className={styles.actionButton}>Convert</button>
+      {error && <div className={styles.error}>{error}</div>}
+      <textarea
+        value={output}
+        readOnly
+        rows={6}
+        className={styles.outputArea}
+        style={{ marginTop: 12 }}
+        placeholder="Python output..."
+      />
     </div>
   );
 }

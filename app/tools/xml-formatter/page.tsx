@@ -1,5 +1,7 @@
 "use client";
+"use client";
 import React, { useState } from "react";
+import styles from "../../styles/Tools.module.scss";
 
 export default function XmlFormatter() {
   const [input, setInput] = useState("");
@@ -42,7 +44,24 @@ export default function XmlFormatter() {
   return (
     <div style={{ padding: 32, textAlign: "center" }}>
       <h1>XML Formatter</h1>
-      <p>Coming Soon</p>
+      <textarea
+        value={input}
+        onChange={e => setInput(e.target.value)}
+        rows={8}
+        placeholder="Paste XML here..."
+        className={styles.inputArea}
+        style={{ width: '100%', marginBottom: 16 }}
+      />
+      <button onClick={handleFormat} className={styles.actionButton} style={{ marginBottom: 16 }}>Format</button>
+      {error && <div className={styles.error}>{error}</div>}
+      <textarea
+        value={output}
+        readOnly
+        rows={8}
+        placeholder="Formatted XML output..."
+        className={styles.outputArea}
+        style={{ width: '100%', marginTop: 12 }}
+      />
     </div>
   );
 }

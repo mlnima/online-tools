@@ -32,31 +32,34 @@ const HtmlFormatter: React.FC = () => {
   };
 
   return (
-    <div style={{ maxWidth: 700, margin: "40px auto", padding: 32 }}>
-      <h1>HTML Formatter</h1>
+  <div>
+    <h1>HTML Formatter</h1>
       <p>Format and pretty-print your HTML code.</p>
+      <div className={styles.responsiveRow}>
       <textarea
         value={input}
         onChange={e => setInput(e.target.value)}
         rows={10}
-        style={{ width: "100%", fontFamily: "monospace", fontSize: 16 }}
-        placeholder="Paste your HTML here..."
+        className={styles.inputArea}
+        placeholder="Paste HTML here..."
       />
-      <div style={{ marginTop: 16 }}>
-        <button onClick={handleFormat} className={styles.actionButton}>Format</button>
-      </div>
       {output && (
-        <div style={{ marginTop: 24 }}>
+        <div>
           <h3>Formatted HTML:</h3>
           <textarea
             value={output}
             readOnly
             rows={10}
-            style={{ width: "100%", fontFamily: "monospace", fontSize: 16 }}
+            className={styles.outputArea}
+            placeholder="Formatted HTML will appear here..."
           />
           <button onClick={handleCopy} className={styles.actionButton} style={{ marginTop: 8 }}>Copy</button>
         </div>
       )}
+    </div>
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '24px 0 0 0' }}>
+      <button onClick={handleFormat} className={styles.actionButton} style={{ minWidth: 140, fontSize: 17 }}>Format</button>
+    </div>
       {error && <div style={{ color: "red", marginTop: 16 }}>{error}</div>}
     </div>
   );
