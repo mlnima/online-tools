@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import styles from "../../styles/ToolPage.module.scss";
+import styles from "../../styles/UnifiedToolPage.module.scss";
 
 function jsonToYaml(obj: any, indent = 0): string {
   if (typeof obj !== "object" || obj === null) return JSON.stringify(obj);

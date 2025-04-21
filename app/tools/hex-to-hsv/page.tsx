@@ -1,6 +1,7 @@
-"use client";import React from "react";
+"use client";
+import React from "react";
 
-import toolsStyles from "../../styles/Tools.module.scss";
+import styles from "../../styles/UnifiedToolPage.module.scss";
 
 function hexToRgb(hex: string) {
   hex = hex.replace(/^#/, "");
@@ -48,27 +49,27 @@ export default function HexToHsv() {
   }
 
   return (
-    <div className={toolsStyles.toolPage}>
+    <div className={styles.toolPage}>
       <h1>HEX to HSV</h1>
       <input
         type="text"
         value={hex}
         onChange={e => setHex(e.target.value)}
-        className={toolsStyles.inputArea}
+        className={styles.inputField}
         placeholder="#RRGGBB"
         style={{ width: 120, marginBottom: 8 }}
       />
-      <button onClick={handleConvert} className={toolsStyles.actionButton} style={{ marginBottom: 16 }}>Convert</button>
-      {error && <div className={toolsStyles.error}>{error}</div>}
+      <button onClick={handleConvert} className={styles.actionButton} style={{ marginBottom: 16 }}>Convert</button>
+      {error && <div className={styles.error}>{error}</div>}
       <input
         value={hsv ? `H: ${hsv[0]}, S: ${hsv[1]}%, V: ${hsv[2]}%` : ""}
         readOnly
-        className={toolsStyles.outputArea}
+        className={styles.outputField}
         style={{ width: 240, textAlign: 'center', fontFamily: 'monospace', fontSize: 16 }}
         placeholder="HSV output"
       />
       {hsv && (
-        <button onClick={handleCopy} className={toolsStyles.actionButton} style={{ marginTop: 8 }}>Copy</button>
+        <button onClick={handleCopy} className={styles.actionButton} style={{ marginTop: 8 }}>Copy</button>
       )}
     </div>
   );

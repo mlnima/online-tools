@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
-
-import toolsStyles from "../../styles/Tools.module.scss";
+import styles from "../../styles/UnifiedToolPage.module.scss";
 
 function htmlEncode(input: string) {
   const txt = document.createElement("textarea");
@@ -28,31 +27,31 @@ export default function HtmlEncode() {
   }
 
   return (
-    <div className={toolsStyles.toolPage}>
+    <div className={styles.toolPage}>
       <h1>HTML Encode</h1>
-      <div className={toolsStyles.responsiveRow}>
+      <div className={styles.responsiveRow}>
         <textarea
           value={input}
           onChange={e => setInput(e.target.value)}
           rows={4}
-          className={toolsStyles.inputArea}
+          className={styles.inputArea}
           placeholder="Paste HTML here..."
         />
         <textarea
           value={output}
           readOnly
-          className={toolsStyles.outputArea}
+          className={styles.outputArea}
           rows={4}
           placeholder="Encoded output"
         />
       </div>
       <div style={{ display: 'flex', justifyContent: 'center', margin: '24px 0 0 0' }}>
-        <button onClick={handleConvert} className={toolsStyles.actionButton} style={{ minWidth: 140, fontSize: 17 }}>Encode</button>
+        <button onClick={handleConvert} className={styles.actionButton} style={{ minWidth: 140, fontSize: 17 }}>Encode</button>
         {output && (
-          <button onClick={handleCopy} className={toolsStyles.actionButton} style={{ minWidth: 100, fontSize: 16, marginLeft: 16 }}>Copy Output</button>
+          <button onClick={handleCopy} className={styles.actionButton} style={{ minWidth: 100, fontSize: 16, marginLeft: 16 }}>Copy Output</button>
         )}
       </div>
-      {error && <div className={toolsStyles.error} style={{ marginTop: 16, textAlign: 'center' }}>{error}</div>}
+      {error && <div className={styles.error} style={{ marginTop: 16, textAlign: 'center' }}>{error}</div>}
     </div>
   );
 }

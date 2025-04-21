@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useRef } from "react";
-import styles from "../../styles/Tools.module.scss";
+import styles from "../../styles/UnifiedToolPage.module.scss";
 
 export default function PNGToBase64() {
   const [output, setOutput] = useState("");

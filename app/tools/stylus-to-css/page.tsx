@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import styles from "../../styles/Tools.module.scss";
+import styles from "../../styles/UnifiedToolPage.module.scss";
 
 function stylusToCss(stylus: string): string {
   // Naive conversion: indentation to braces, add semicolons

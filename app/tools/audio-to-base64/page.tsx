@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import styles from "../../styles/ToolPage.module.scss";
+import unifiedToolPageStyles from "../../styles/UnifiedToolPage.module.scss";
 
 export default function AudioToBase64() {
   const [file, setFile] = useState<File | null>(null);
@@ -26,22 +26,25 @@ export default function AudioToBase64() {
   }
 
   return (
-    <div className={styles.toolPage}>
+    <div className={unifiedToolPageStyles.toolPage}>
       <h1>Audio to Base64</h1>
       <p>Convert audio files (mp3, wav, etc.) to Base64 encoding.</p>
-      <div className={styles.formRow}>
-        <input type="file" accept="audio/*" onChange={handleFileChange} />
-        {file && <span style={{ marginLeft: 8 }}>{file.name}</span>}
+      <div className={unifiedToolPageStyles.formRow}>
+        <label htmlFor="audio-upload" className={unifiedToolPageStyles.label}>Audio File</label>
+        <input id="audio-upload" type="file" accept="audio/*" onChange={handleFileChange} />
+        {file && <span className={unifiedToolPageStyles.fileName}>{file.name}</span>}
       </div>
-      <label>Base64 Output:</label>
-      <div className={styles.formRow}>
+      <label className={unifiedToolPageStyles.label}>Base64 Output:</label>
+      <div className={unifiedToolPageStyles.formRow}>
         <textarea
           rows={5}
           value={base64}
           readOnly
-          style={{ width: "100%", fontSize: 16 }}
+          className={unifiedToolPageStyles.outputArea}
         />
-        <button className={styles.actionButton} onClick={handleCopy} disabled={!base64}>
+      </div>
+      <div className={unifiedToolPageStyles.buttonRow}>
+        <button className={unifiedToolPageStyles.actionButton} onClick={handleCopy} disabled={!base64}>
           Copy
         </button>
       </div>

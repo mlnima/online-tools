@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import styles from "../../styles/Tools.module.scss";
+import styles from "../../styles/UnifiedToolPage.module.scss";
 
 
 export default function JSONBeautifierPage() {

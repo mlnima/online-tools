@@ -1,6 +1,5 @@
 "use client";import React from "react";
-
-import toolsStyles from "../../styles/Tools.module.scss";
+import styles from "../../styles/UnifiedToolPage.module.scss";
 
 async function hmac(message: string, key: string, algorithm: string): Promise<string> {
   if (algorithm === "MD5") {
@@ -53,12 +52,12 @@ export default function HmacGenerator() {
   }
 
   return (
-    <div className={toolsStyles.toolPage}>
+    <div className={styles.toolPage}>
       <h1>HMAC Generator</h1>
       <textarea
         value={message}
         onChange={e => setMessage(e.target.value)}
-        className={toolsStyles.inputArea}
+        className={styles.inputArea}
         placeholder="Message"
         rows={2}
         style={{ width: 320, marginBottom: 8 }}
@@ -67,32 +66,32 @@ export default function HmacGenerator() {
         type="text"
         value={key}
         onChange={e => setKey(e.target.value)}
-        className={toolsStyles.inputArea}
+        className={styles.inputField}
         placeholder="Secret Key"
         style={{ width: 320, marginBottom: 8 }}
       />
       <select
         value={algorithm}
         onChange={e => setAlgorithm(e.target.value)}
-        className={toolsStyles.inputArea}
+        className={styles.inputArea}
         style={{ width: 160, marginBottom: 8 }}
       >
         <option value="SHA-256">SHA-256</option>
         <option value="SHA-1">SHA-1</option>
         <option value="MD5">MD5</option>
       </select>
-      <button onClick={handleConvert} className={toolsStyles.actionButton} style={{ marginBottom: 16 }} disabled={loading}>{loading ? "Generating..." : "Generate"}</button>
-      {error && <div className={toolsStyles.error}>{error}</div>}
+      <button onClick={handleConvert} className={styles.actionButton} style={{ marginBottom: 16 }} disabled={loading}>{loading ? "Generating..." : "Generate"}</button>
+      {error && <div className={styles.error}>{error}</div>}
       <textarea
         value={result}
         readOnly
-        className={toolsStyles.outputArea}
+        className={styles.outputArea}
         rows={3}
         style={{ width: 320, textAlign: 'left', fontFamily: 'monospace', fontSize: 16 }}
         placeholder="HMAC output"
       />
       {result && (
-        <button onClick={handleCopy} className={toolsStyles.actionButton} style={{ marginTop: 8 }}>Copy</button>
+        <button onClick={handleCopy} className={styles.actionButton} style={{ marginTop: 8 }}>Copy</button>
       )}
     </div>
   );

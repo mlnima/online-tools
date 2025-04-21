@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import unifiedToolPageStyles from "../../styles/UnifiedToolPage.module.scss";
 
 export default function TSVToBase64() {
   const [tsv, setTsv] = useState("");
@@ -19,29 +20,28 @@ export default function TSVToBase64() {
   }
 
   return (
-    <div style={{ padding: 32, textAlign: "center" }}>
+    <div className={unifiedToolPageStyles.toolPage}>
       <h1>TSV to Base64</h1>
       <p>Encode TSV text to Base64 (UTF-8 encoded).</p>
       <textarea
         rows={4}
-        style={{ width: "100%", fontSize: 16 }}
+        className={unifiedToolPageStyles.inputArea}
         placeholder="Paste TSV text..."
         value={tsv}
         onChange={e => setTsv(e.target.value)}
       />
       <br />
-      <button onClick={handleConvert} style={{ margin: 8 }}>Convert</button>
-      <div style={{ marginTop: 16, marginBottom: 8, textAlign: "left" }}>
+      <button onClick={handleConvert} className={unifiedToolPageStyles.actionButton}>Convert</button>
+      <div className={unifiedToolPageStyles.outputArea}>
         <label>Base64 Output:</label>
         <textarea
           rows={3}
-          style={{ width: "100%", fontSize: 16 }}
+          className={unifiedToolPageStyles.outputArea}
           value={base64}
           readOnly
         />
-        <button onClick={handleCopy} disabled={!base64} style={{ marginTop: 6 }}>Copy</button>
+        <button onClick={handleCopy} disabled={!base64} className={unifiedToolPageStyles.actionButton}>Copy</button>
       </div>
     </div>
   );
 }
-

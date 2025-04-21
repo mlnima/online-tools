@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import unifiedToolPageStyles from "../../styles/UnifiedToolPage.module.scss";
 
 function textToAscii(input: string): string {
   try {
@@ -22,27 +23,28 @@ export default function TextToASCII() {
   }
 
   return (
-    <div style={{ padding: 32, textAlign: "center" }}>
+    <div className={unifiedToolPageStyles.toolPage}>
       <h1>Text to ASCII</h1>
       <p>Convert text to ASCII codes (space separated).</p>
       <textarea
         rows={4}
-        style={{ width: "100%", fontSize: 16 }}
+        className={unifiedToolPageStyles.inputArea}
         placeholder="Paste text..."
         value={text}
         onChange={e => setText(e.target.value)}
       />
-      <br />
-      <button onClick={handleConvert} style={{ margin: 8 }}>Convert</button>
-      <div style={{ marginTop: 16, marginBottom: 8, textAlign: "left" }}>
+      <div className={unifiedToolPageStyles.buttonRow}>
+        <button className={unifiedToolPageStyles.actionButton} onClick={handleConvert}>Convert</button>
+      </div>
+      <div className={unifiedToolPageStyles.outputArea}>
         <label>ASCII Output:</label>
         <textarea
           rows={3}
-          style={{ width: "100%", fontSize: 16 }}
+          className={unifiedToolPageStyles.inputArea}
           value={ascii}
           readOnly
         />
-        <button onClick={handleCopy} disabled={!ascii || ascii === "Invalid text input"} style={{ marginTop: 6 }}>Copy</button>
+        <button onClick={handleCopy} disabled={!ascii || ascii === "Invalid text input"} className={unifiedToolPageStyles.marginTop6}>Copy</button>
       </div>
     </div>
   );

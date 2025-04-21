@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
-
-import toolsStyles from "../../styles/Tools.module.scss";
+import styles from "../../styles/UnifiedToolPage.module.scss";
 
 export default function ChecksumCalculator() {
   const [input, setInput] = React.useState("");
@@ -26,27 +25,26 @@ export default function ChecksumCalculator() {
   }
 
   return (
-    <div className={toolsStyles.toolPage}>
+    <div className={styles.toolPage}>
       <h1>Checksum Calculator</h1>
       <textarea
         value={input}
         onChange={e => setInput(e.target.value)}
         rows={4}
         placeholder="Enter text..."
-        className={toolsStyles.inputArea}
-        style={{ width: '100%' }}
+        className={styles.inputArea}
+        
       />
-      <button onClick={handleConvert} className={toolsStyles.actionButton} style={{ marginBottom: 16 }}>Calculate</button>
-      {error && <div className={toolsStyles.error}>{error}</div>}
+      <button onClick={handleConvert} className={styles.actionButton} >Calculate</button>
+      {error && <div className={styles.error}>{error}</div>}
       <input
         value={checksum}
         readOnly
-        className={toolsStyles.outputArea}
-        style={{ width: 180, marginTop: 12, textAlign: 'center', fontWeight: 'bold', fontFamily: 'monospace', fontSize: 20 }}
+        className={styles.outputField}
         placeholder="Checksum"
       />
       {checksum && (
-        <button onClick={handleCopy} className={toolsStyles.actionButton} style={{ marginTop: 8 }}>Copy</button>
+        <button onClick={handleCopy} className={styles.actionButton} >Copy</button>
       )}
     </div>
   );

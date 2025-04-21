@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import toolsStyles from "../../styles/Tools.module.scss";
+import styles from "../../styles/UnifiedToolPage.module.scss";
 
 function hsvToRgb(h: number, s: number, v: number) {
   s /= 100;
@@ -55,25 +55,25 @@ export default function HsvToCmyk() {
   }
 
   return (
-    <div className={toolsStyles.toolPage}>
+    <div className={styles.toolPage}>
       <h1>HSV to CMYK</h1>
       <div style={{ display: 'flex', gap: 8, justifyContent: 'center', marginBottom: 8 }}>
-        <input type="number" min={0} max={360} value={h} onChange={e => setH(Number(e.target.value))} className={toolsStyles.inputNumber} placeholder="H (0-360)" style={{ width: 70 }} />
-        <input type="number" min={0} max={100} value={s} onChange={e => setS(Number(e.target.value))} className={toolsStyles.inputNumber} placeholder="S (0-100)" style={{ width: 70 }} />
-        <input type="number" min={0} max={100} value={v} onChange={e => setV(Number(e.target.value))} className={toolsStyles.inputNumber} placeholder="V (0-100)" style={{ width: 70 }} />
+        <input type="number" min={0} max={360} value={h} onChange={e => setH(Number(e.target.value))} className={styles.inputNumber} placeholder="H (0-360)" style={{ width: 70 }} />
+        <input type="number" min={0} max={100} value={s} onChange={e => setS(Number(e.target.value))} className={styles.inputNumber} placeholder="S (0-100)" style={{ width: 70 }} />
+        <input type="number" min={0} max={100} value={v} onChange={e => setV(Number(e.target.value))} className={styles.inputNumber} placeholder="V (0-100)" style={{ width: 70 }} />
       </div>
-      <button onClick={handleConvert} className={toolsStyles.actionButton} style={{ marginBottom: 16 }}>Convert</button>
-      {error && <div className={toolsStyles.error}>{error}</div>}
+      <button onClick={handleConvert} className={styles.actionButton} style={{ marginBottom: 16 }}>Convert</button>
+      {error && <div className={styles.error}>{error}</div>}
       <textarea
         value={output}
         readOnly
-        className={toolsStyles.outputArea}
+        className={styles.outputArea}
         rows={2}
         style={{ width: 240, textAlign: 'center', fontFamily: 'monospace', fontSize: 16, background: 'var(--color-bg-secondary)' }}
         placeholder="C, M, Y, K"
       />
       {output && (
-        <button onClick={handleCopy} className={toolsStyles.actionButton} style={{ marginTop: 8 }}>Copy</button>
+        <button onClick={handleCopy} className={styles.actionButton} style={{ marginTop: 8 }}>Copy</button>
       )}
     </div>
   );

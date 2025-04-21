@@ -1,7 +1,7 @@
 "use client";
 "use client";
 import React, { useState } from "react";
-import styles from "../../styles/ToolPage.module.scss";
+import unifiedToolPageStyles from "../../styles/UnifiedToolPage.module.scss";
 
 export default function Base64ToJavascript() {
   const [base64, setBase64] = useState("");
@@ -21,29 +21,39 @@ export default function Base64ToJavascript() {
   }
 
   return (
-    <div style={{ padding: 32, textAlign: "center" }}>
+    <div className={unifiedToolPageStyles.toolPage}>
       <h1>Base64 to Javascript</h1>
       <p>Decode Base64 string to JavaScript code.</p>
-      <textarea
-        rows={4}
-        style={{ width: "100%", fontSize: 16 }}
-        placeholder="Paste Base64 string..."
-        value={base64}
-        onChange={e => setBase64(e.target.value)}
-      />
+      <div className={unifiedToolPageStyles.formRow}>
+        <div className={unifiedToolPageStyles.inputColumn}>
+          <label htmlFor="base64-input" className={unifiedToolPageStyles.label}>Base64 Input</label>
+          <textarea
+            id="base64-input"
+            rows={4}
+            className={unifiedToolPageStyles.inputArea}
+            placeholder="Paste Base64 string..."
+            value={base64}
+            onChange={e => setBase64(e.target.value)}
+          />
+        </div>
+      </div>
       <br />
-      <button onClick={handleConvert} className={styles.actionButton}>Convert</button>
-      <div style={{ marginTop: 16, marginBottom: 8, textAlign: "left" }}>
+      <div className={unifiedToolPageStyles.buttonRow}>
+        <button onClick={handleConvert} className={unifiedToolPageStyles.actionButton}>Convert</button>
+      </div>
+      <div className={unifiedToolPageStyles.formRow}>
         <label>JavaScript Output:</label>
         <textarea
+          id="js-output"
           rows={3}
-          style={{ width: "100%", fontSize: 16 }}
+          className={unifiedToolPageStyles.outputArea}
           value={js}
           readOnly
         />
-        <button onClick={handleCopy} disabled={!js} style={{ marginTop: 6 }}>Copy</button>
+        <div className={unifiedToolPageStyles.buttonRow}>
+          <button onClick={handleCopy} disabled={!js} className={unifiedToolPageStyles.actionButton}>Copy</button>
+        </div>
       </div>
     </div>
   );
 }
-

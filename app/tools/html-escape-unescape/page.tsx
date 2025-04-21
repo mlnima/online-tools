@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
-
-import toolsStyles from "../../styles/Tools.module.scss";
+import styles from "../../styles/UnifiedToolPage.module.scss";
 
 function htmlEscape(input: string) {
   const txt = document.createElement("textarea");
@@ -42,31 +41,31 @@ export default function HtmlEscapeUnescape() {
   }
 
   return (
-    <div className={toolsStyles.toolPage}>
+    <div className={styles.toolPage}>
       <h1>HTML Escape/Unescape</h1>
       <textarea
         value={input}
         onChange={e => setInput(e.target.value)}
-        className={toolsStyles.inputArea}
+        className={styles.inputField}
         placeholder="<div>Hello &amp; welcome!</div>"
         rows={3}
         style={{ width: 320, marginBottom: 8, background: 'var(--color-bg-secondary)' }}
       />
       <div style={{ display: 'flex', gap: 8, marginBottom: 8, justifyContent: 'center' }}>
-        <button onClick={handleEscape} className={toolsStyles.actionButton}>Escape</button>
-        <button onClick={handleUnescape} className={toolsStyles.actionButton}>Unescape</button>
+        <button onClick={handleEscape} className={styles.actionButton}>Escape</button>
+        <button onClick={handleUnescape} className={styles.actionButton}>Unescape</button>
       </div>
-      {error && <div className={toolsStyles.error}>{error}</div>}
+      {error && <div className={styles.error}>{error}</div>}
       <textarea
         value={output}
         readOnly
-        className={toolsStyles.outputArea}
+        className={styles.outputArea}
         rows={3}
         style={{ width: 320, textAlign: 'left', fontFamily: 'monospace', fontSize: 16, background: 'var(--color-bg-secondary)' }}
         placeholder="Output"
       />
       {output && (
-        <button onClick={handleCopy} className={toolsStyles.actionButton} style={{ marginTop: 8 }}>Copy</button>
+        <button onClick={handleCopy} className={styles.actionButton} style={{ marginTop: 8 }}>Copy</button>
       )}
     </div>
   );

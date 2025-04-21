@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import styles from "../../styles/Tools.module.scss";
+import styles from "../../styles/UnifiedToolPage.module.scss";
 
 function rgbToHsv(rgb: string): string | null {
   // Accepts "r,g,b" or "#rrggbb"

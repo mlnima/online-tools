@@ -1,0 +1,240 @@
+/* Unified styles for all tool pages, combining and deduplicating Tools.module.scss and ToolPage.module.scss */
+
+.toolPage {
+  width: 100%;
+  margin: 40px auto 0 auto;
+  padding: 2.2rem 2vw 3rem 2vw;
+  background: var(--color-card);
+  border-radius: 1.1rem;
+  box-shadow: 0 2px 18px 0 rgba(0,0,0,0.09);
+  border: 1px solid var(--color-border);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.toolPage h1 {
+  color: var(--color-primary);
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.toolPage p {
+  margin-bottom: 1.3rem;
+  color: var(--color-text);
+  opacity: 0.9;
+}
+
+.formRow {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 0.7rem;
+  margin-bottom: 1.2rem;
+}
+
+.inputColumn, .outputColumn {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+}
+
+.baseArea{
+  padding: 0.7rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-secondary);
+  color: var(--color-text);
+  font-size: 1rem;
+  font-family: inherit;
+  margin-bottom: 1rem;
+  resize: vertical;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.inputArea, .outputArea {
+  @extend .baseArea;
+  width: 100%;
+  min-width: 320px;
+  min-height: 300px;
+
+}
+
+.inputField, .outputField{
+  min-width: 60px;
+  min-height: 45px;
+  max-width: 300px;
+}
+.primarySelect{
+  @extend .baseArea;
+  min-width: 60px;
+  min-height: 45px;
+  max-width: 300px;
+}
+
+
+.radioField{
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 24px 0;
+  label{
+    display: flex;
+    align-items: center;
+    input,p{
+      margin: 0 .25rem 0 0;
+    }
+  }
+}
+
+
+.inputArea:focus, .outputArea:focus, .inputField, .outputField {
+  border-color: var(--color-primary);
+  background: var(--color-card);
+}
+
+
+.previewBox{
+  background: var(--color-bg-secondary);
+  color: var(--color-text);
+}
+.generatedCss{
+  @extend .baseArea;
+  width: 100%;
+  min-width: 320px;
+  min-height: 300px;
+
+}
+.buttonRow {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin: 24px 0 0 0;
+}
+
+.actionButton {
+  background: var(--color-btn-bg);
+  color: var(--color-btn-text);
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.55rem 1.1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.actionButton:hover {
+  background: var(--color-primary);
+  color: var(--color-bg);
+}
+
+.inputShort {
+  width: 120px;
+}
+
+//.hexOutput {
+//  width: 180px;
+//  margin-top: 12px;
+//  text-align: center;
+//  font-weight: bold;
+//  font-family: monospace;
+//  font-size: 20px;
+//}
+
+.hexSwatchWrapper {
+  margin-top: 16px;
+}
+
+.hexSwatch {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.error {
+  color: var(--color-error);
+  font-size: 0.98rem;
+  margin-bottom: 1rem;
+  margin-top: 0.2rem;
+  text-align: center;
+}
+
+.warning {
+  color: var(--color-warning);
+  font-size: 0.98rem;
+  margin-bottom: 0.7rem;
+  margin-top: 0.2rem;
+  text-align: center;
+}
+
+.result {
+  margin-top: 1.2rem;
+  font-size: 1.1rem;
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.colorSwatch {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  border-radius: 0.4rem;
+  border: 1px solid var(--color-border);
+}
+
+@media (min-width: 480px) {
+  .toolPage {
+    font-size: 15px;
+  }
+}
+
+
+@media (min-width: 768px) {
+  .toolPage {
+
+  }
+
+  .formRow {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .inputArea, .outputArea {
+    min-width: 320px;
+    min-height: 450px;
+  }
+
+}
+
+
+//@media (min-width: 992px) {
+//  .toolPage {
+//    font-size: 17px;
+//  }
+//}
+//
+//
+//@media (min-width: 1200px) {
+//  .toolPage {
+//    font-size: 18px;
+//  }
+//}
+//
+//
+//@media (min-width: 1400px) {
+//  .toolPage {
+//    font-size: 19px;
+//  }
+//}

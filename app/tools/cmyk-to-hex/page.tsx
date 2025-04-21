@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 
-import toolsStyles from "../../styles/Tools.module.scss";
+import unifiedToolPageStyles from "../../styles/UnifiedToolPage.module.scss";
 
 export default function CmykToHex() {
   const [c, setC] = React.useState(0);
@@ -39,29 +39,28 @@ export default function CmykToHex() {
   }
 
   return (
-    <div className={toolsStyles.toolPage}>
+    <div className={unifiedToolPageStyles.toolPage}>
       <h1>CMYK to HEX</h1>
-      <div style={{ display: 'flex', gap: 8, marginBottom: 16 }}>
-        <input type="number" min={0} max={100} value={c} onChange={e => setC(Number(e.target.value))} className={toolsStyles.inputArea} placeholder="C" style={{ width: 60 }} />
-        <input type="number" min={0} max={100} value={m} onChange={e => setM(Number(e.target.value))} className={toolsStyles.inputArea} placeholder="M" style={{ width: 60 }} />
-        <input type="number" min={0} max={100} value={y} onChange={e => setY(Number(e.target.value))} className={toolsStyles.inputArea} placeholder="Y" style={{ width: 60 }} />
-        <input type="number" min={0} max={100} value={k} onChange={e => setK(Number(e.target.value))} className={toolsStyles.inputArea} placeholder="K" style={{ width: 60 }} />
+      <div className={unifiedToolPageStyles.buttonRow}>
+        <input type="number" min={0} max={100} value={c} onChange={e => setC(Number(e.target.value))} className={unifiedToolPageStyles.inputField} placeholder="C" />
+        <input type="number" min={0} max={100} value={m} onChange={e => setM(Number(e.target.value))} className={unifiedToolPageStyles.inputField} placeholder="M" />
+        <input type="number" min={0} max={100} value={y} onChange={e => setY(Number(e.target.value))} className={unifiedToolPageStyles.inputField} placeholder="Y" />
+        <input type="number" min={0} max={100} value={k} onChange={e => setK(Number(e.target.value))} className={unifiedToolPageStyles.inputField} placeholder="K" />
       </div>
-      <button onClick={handleConvert} className={toolsStyles.actionButton} style={{ marginBottom: 16 }}>Convert</button>
-      {error && <div className={toolsStyles.error}>{error}</div>}
+      <button onClick={handleConvert} className={unifiedToolPageStyles.actionButton} >Convert</button>
+      {error && <div className={unifiedToolPageStyles.error}>{error}</div>}
       <input
         value={hex}
         readOnly
-        className={toolsStyles.outputArea}
-        style={{ width: 180, marginTop: 12, textAlign: 'center', fontWeight: 'bold', fontFamily: 'monospace', fontSize: 20 }}
+        className={unifiedToolPageStyles.outputField}
         placeholder="#RRGGBB"
       />
       {hex && (
-        <button onClick={handleCopy} className={toolsStyles.actionButton} style={{ marginTop: 8 }}>Copy</button>
+        <button onClick={handleCopy} className={unifiedToolPageStyles.actionButton} >Copy</button>
       )}
       {hex && (
-        <div style={{ marginTop: 16 }}>
-          <span style={{ display: 'inline-block', width: 40, height: 40, background: hex, border: '1px solid #ccc', borderRadius: 8 }} />
+        <div className={unifiedToolPageStyles.hexSwatchWrapper}>
+          <span className={unifiedToolPageStyles.hexSwatch} style={{background: hex}} />
         </div>
       )}
     </div>

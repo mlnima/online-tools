@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import styles from "../../styles/Tools.module.scss";
+import unifiedToolPageStyles from "../../styles/UnifiedToolPage.module.scss";
 
 function textToBinary(text: string): string {
   return text.split("").map(char => char.charCodeAt(0).toString(2).padStart(8, "0")).join(" ");
@@ -22,24 +22,23 @@ export default function TextToBinary() {
   }
 
   return (
-    <div className={styles.toolPage}>
+    <div className={unifiedToolPageStyles.toolPage}>
       <h1>Text to Binary</h1>
       <textarea
         value={input}
         onChange={e => setInput(e.target.value)}
         rows={4}
         placeholder="Enter text..."
-        className={styles.inputArea}
+        className={unifiedToolPageStyles.inputArea}
       />
-      <button onClick={handleConvert} className={styles.actionButton}>Convert</button>
-      {error && <div className={styles.error}>{error}</div>}
+      <button onClick={handleConvert} className={unifiedToolPageStyles.actionButton}>Convert</button>
+      {error && <div className={unifiedToolPageStyles.error}>{error}</div>}
       <textarea
         value={output}
         readOnly
         rows={4}
         placeholder="Binary output..."
-        className={styles.outputArea}
-        style={{ marginTop: 12 }}
+        className={`${unifiedToolPageStyles.outputArea} ${unifiedToolPageStyles.marginTop12}`}
       />
     </div>
   );

@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import styles from '../../styles/Tools.module.scss';
+import unifiedToolPageStyles from '../../styles/UnifiedToolPage.module.scss';
 
 export default function WebpToBase64() {
   const [output, setOutput] = useState("");
@@ -28,15 +28,15 @@ export default function WebpToBase64() {
   }
 
   return (
-    <div style={{ padding: 32, textAlign: "center" }}>
+    <div className={unifiedToolPageStyles.toolPage}>
       <h1>WebP to Base64</h1>
       <input type="file" onChange={handleFile} />
-      {error && <p style={{ color: "red" }}>{error}</p>}
+      {error && <p className={unifiedToolPageStyles.error}>{error}</p>}
       {output && (
         <div>
           <h2>Base64 Output:</h2>
           <textarea
-            style={{ width: "100%", height: 200, padding: 10 }}
+            className={unifiedToolPageStyles.inputArea}
             value={output}
             readOnly
           />

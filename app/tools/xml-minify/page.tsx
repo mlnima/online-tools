@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import styles from '../../styles/Tools.module.scss';
+import unifiedToolPageStyles from '../../styles/UnifiedToolPage.module.scss';
 import ComingSoon from "../../components/ComingSoon";
 
 export default function XmlMinify() {
@@ -20,7 +20,7 @@ export default function XmlMinify() {
     }
   }
   return (
-    <div style={{ padding: 32, textAlign: "center" }}>
+    <div className={unifiedToolPageStyles.toolPage}>
       <h1>XML Minify</h1>
       <ComingSoon />
     </div>

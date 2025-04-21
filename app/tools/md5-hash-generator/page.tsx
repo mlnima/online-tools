@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import styles from "../../styles/Tools.module.scss";
+import styles from "../../styles/UnifiedToolPage.module.scss";
 
 // Minimal MD5 implementation (https://github.com/blueimp/JavaScript-MD5/blob/master/js/md5.js, compacted)
 function md5(str: string): string {

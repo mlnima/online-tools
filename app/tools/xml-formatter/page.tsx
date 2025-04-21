@@ -1,7 +1,6 @@
 "use client";
-"use client";
 import React, { useState } from "react";
-import styles from "../../styles/Tools.module.scss";
+import unifiedToolPageStyles from "../../styles/UnifiedToolPage.module.scss";
 
 export default function XmlFormatter() {
   const [input, setInput] = useState("");
@@ -42,25 +41,23 @@ export default function XmlFormatter() {
     }
   }
   return (
-    <div style={{ padding: 32, textAlign: "center" }}>
+    <div className={unifiedToolPageStyles.toolPage}>
       <h1>XML Formatter</h1>
       <textarea
         value={input}
         onChange={e => setInput(e.target.value)}
         rows={8}
         placeholder="Paste XML here..."
-        className={styles.inputArea}
-        style={{ width: '100%', marginBottom: 16 }}
+        className={unifiedToolPageStyles.inputArea}
       />
-      <button onClick={handleFormat} className={styles.actionButton} style={{ marginBottom: 16 }}>Format</button>
-      {error && <div className={styles.error}>{error}</div>}
+      <button onClick={handleFormat} className={unifiedToolPageStyles.actionButton}>Format</button>
+      {error && <div className={unifiedToolPageStyles.error}>{error}</div>}
       <textarea
         value={output}
         readOnly
         rows={8}
         placeholder="Formatted XML output..."
-        className={styles.outputArea}
-        style={{ width: '100%', marginTop: 12 }}
+        className={unifiedToolPageStyles.outputArea}
       />
     </div>
   );

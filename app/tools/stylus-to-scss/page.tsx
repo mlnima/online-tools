@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import styles from "../../styles/Tools.module.scss";
+import unifiedToolPageStyles from "../../styles/UnifiedToolPage.module.scss";
 
 function stylusToScss(stylus: string): string {
   // Naive conversion: indentation to braces, add semicolons, colons, etc.
@@ -62,9 +62,9 @@ export default function StylusToScss() {
   }
 
   return (
-    <div style={{ padding: 32, textAlign: "center" }}>
+    <div className={unifiedToolPageStyles.centeredBox}>
       <h1>Stylus to SCSS</h1>
-      <div style={{ fontSize: 13, color: 'var(--color-warning)', marginBottom: 12 }}>
+      <div className={unifiedToolPageStyles.warningText}>
         Note: This is a naive converter. Only basic indentation and property syntax are handled.
       </div>
       <textarea
@@ -72,21 +72,19 @@ export default function StylusToScss() {
         onChange={e => setInput(e.target.value)}
         rows={8}
         placeholder="Paste Stylus code here..."
-        className={styles.inputArea}
-        style={{ width: '100%', marginBottom: 16 }}
+        className={unifiedToolPageStyles.inputArea}
       />
-      <button onClick={handleConvert} className={styles.actionButton} style={{ marginBottom: 16 }}>Convert</button>
-      {error && <div className={styles.error}>{error}</div>}
+      <button onClick={handleConvert} className={`${unifiedToolPageStyles.actionButton} ${unifiedToolPageStyles.marginBottom16}`}>Convert</button>
+      {error && <div className={unifiedToolPageStyles.error}>{error}</div>}
       <textarea
         value={output}
         readOnly
         rows={8}
         placeholder="SCSS output..."
-        className={styles.outputArea}
-        style={{ width: '100%', marginTop: 12 }}
+        className={`${unifiedToolPageStyles.outputArea} ${unifiedToolPageStyles.marginTop12}`}
       />
       {output && (
-        <button onClick={handleCopy} className={styles.actionButton} style={{ marginTop: 8 }}>Copy</button>
+        <button onClick={handleCopy} className={`${unifiedToolPageStyles.actionButton} ${unifiedToolPageStyles.marginTop8}`}>Copy</button>
       )}
     </div>
   );

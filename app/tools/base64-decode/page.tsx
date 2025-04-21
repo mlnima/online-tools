@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import styles from "../../styles/ToolPage.module.scss";
+import styles from "../../styles/UnifiedToolPage.module.scss";
 
 export default function Base64Decode() {
   const [input, setInput] = useState("");
@@ -18,18 +18,24 @@ export default function Base64Decode() {
     }
   }
   return (
-    <div style={{ padding: 32, textAlign: "center" }}>
+    <div className={styles.toolPage}>
       <h1>Base64 Decode</h1>
-      <div style={{ maxWidth: 500, margin: '32px auto', textAlign: 'left' }}>
-        <label htmlFor="base64input" style={{ fontWeight: 500 }}>Base64 Input</label>
-        <textarea id="base64input" style={{ width: '100%', minHeight: 80, margin: '8px 0', padding: 8, fontSize: 16 }} placeholder="Paste Base64 string here..." value={input} onChange={e => setInput(e.target.value)} />
-        <button onClick={handleDecode} className={styles.actionButton}>Decode</button>
-        <div style={{ marginTop: 16 }}>
-          <label style={{ fontWeight: 500 }}>Decoded Output</label>
-          <textarea style={{ width: '100%', minHeight: 80, margin: '8px 0', padding: 8, fontSize: 16 }} value={output} readOnly />
+      <div className={styles.formRow}>
+        <div className={styles.inputColumn}>
+          <label className={styles.label} htmlFor="base64input">Base64 Input</label>
+          <textarea id="base64input" className={styles.inputArea} placeholder="Paste Base64 string here..." value={input} onChange={e => setInput(e.target.value)} />
         </div>
-        {error && <div style={{ color: 'red', marginTop: 8 }}>{error}</div>}
       </div>
+      <div className={styles.buttonRow}>
+        <button onClick={handleDecode} className={styles.actionButton}>Decode</button>
+      </div>
+      <div className={styles.formRow}>
+        <div className={styles.inputColumn}>
+          <label className={styles.label}>Decoded Output</label>
+          <textarea className={styles.outputArea} value={output} readOnly />
+        </div>
+      </div>
+      {error && <div className={styles.error}>{error}</div>}
     </div>
   );
 }

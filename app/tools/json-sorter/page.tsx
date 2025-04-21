@@ -1,6 +1,6 @@
 "use client"
 import React from "react";
-import styles from "../../styles/ToolPage.module.scss";
+import styles from "../../styles/UnifiedToolPage.module.scss";
 
 import { useState } from "react";
 

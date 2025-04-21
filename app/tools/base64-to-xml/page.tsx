@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import styles from "../../styles/ToolPage.module.scss";
+import styles from "../../styles/UnifiedToolPage.module.scss";
 
 export default function Base64ToXML() {
   const [base64, setBase64] = useState("");
@@ -20,27 +20,38 @@ export default function Base64ToXML() {
   }
 
   return (
-    <div style={{ padding: 32, textAlign: "center" }}>
+    <div className={styles.toolPage}>
       <h1>Base64 to XML</h1>
       <p>Decode Base64 string to XML text.</p>
-      <textarea
-        rows={4}
-        style={{ width: "100%", fontSize: 16 }}
-        placeholder="Paste Base64 string..."
-        value={base64}
-        onChange={e => setBase64(e.target.value)}
-      />
+      <div className={styles.formRow}>
+        <div className={styles.inputColumn}>
+          <label htmlFor="base64-input" className={styles.label}>Base64 Input</label>
+          <textarea
+            id="base64-input"
+            rows={4}
+            className={styles.inputArea}
+            placeholder="Paste Base64 string..."
+            value={base64}
+            onChange={e => setBase64(e.target.value)}
+          />
+        </div>
+      </div>
       <br />
-      <button onClick={handleConvert} className={styles.actionButton}>Convert</button>
-      <div style={{ marginTop: 16, marginBottom: 8, textAlign: "left" }}>
+      <div className={styles.buttonRow}>
+        <button onClick={handleConvert} className={styles.actionButton}>Convert</button>
+      </div>
+      <div className={styles.formRow}>
         <label>XML Output:</label>
         <textarea
+          id="xml-output"
           rows={3}
-          style={{ width: "100%", fontSize: 16 }}
+          className={styles.outputArea}
           value={xml}
           readOnly
         />
-        <button onClick={handleCopy} disabled={!xml} style={{ marginTop: 6 }}>Copy</button>
+        <div className={styles.buttonRow}>
+          <button onClick={handleCopy} disabled={!xml} className={styles.actionButton}>Copy</button>
+        </div>
       </div>
     </div>
   );

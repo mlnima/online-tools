@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import styles from "../../styles/ToolPage.module.scss";
+import styles from "../../styles/UnifiedToolPage.module.scss";
 
 const CssBoxShadowGenerator: React.FC = () => {
   const [h, setH] = useState(8);

@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import styles from "../../styles/ToolPage.module.scss";
+import styles from "../../styles/UnifiedToolPage.module.scss";
 
 // Minimal JSONPath evaluator (dot and bracket notation only)
 function evalJsonPath(obj: any, path: string): any {

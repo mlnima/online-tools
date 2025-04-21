@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import styles from "../../styles/ToolPage.module.scss";
+import styles from "../../styles/UnifiedToolPage.module.scss";
 
 function bytesToAscii(input: string): string {
   try {
@@ -24,27 +24,38 @@ export default function ByteToASCII() {
   }
 
   return (
-    <div style={{ padding: 32, textAlign: "center" }}>
+    <div className={styles.toolPage}>
       <h1>Byte to ASCII</h1>
       <p>Convert bytes (0-255, space, comma, or line separated) to ASCII text.</p>
-      <textarea
-        rows={4}
-        style={{ width: "100%", fontSize: 16 }}
-        placeholder="Paste bytes (e.g. 72 101 108 108 111)..."
-        value={bytes}
-        onChange={e => setBytes(e.target.value)}
-      />
+      <div className={styles.formRow}>
+        <div className={styles.inputColumn}>
+          <label htmlFor="bytes-input" className={styles.label}>Bytes Input</label>
+          <textarea
+            id="bytes-input"
+            rows={4}
+            className={styles.inputArea}
+            placeholder="Paste bytes (e.g. 72 101 108 108 111)..."
+            value={bytes}
+            onChange={e => setBytes(e.target.value)}
+          />
+        </div>
+      </div>
       <br />
-      <button onClick={handleConvert} className={styles.actionButton}>Convert</button>
-      <div style={{ marginTop: 16, marginBottom: 8, textAlign: "left" }}>
+      <div className={styles.buttonRow}>
+        <button onClick={handleConvert} className={styles.actionButton}>Convert</button>
+      </div>
+      <div className={styles.formRow}>
         <label>ASCII Output:</label>
         <textarea
+          id="ascii-output"
           rows={3}
-          style={{ width: "100%", fontSize: 16 }}
+          className={styles.outputArea}
           value={ascii}
           readOnly
         />
-        <button onClick={handleCopy} disabled={!ascii || ascii === "Invalid byte input"} style={{ marginTop: 6 }}>Copy</button>
+        <div className={styles.buttonRow}>
+          <button onClick={handleCopy} disabled={!ascii || ascii === "Invalid byte input"} className={styles.actionButton}>Copy</button>
+        </div>
       </div>
     </div>
   );

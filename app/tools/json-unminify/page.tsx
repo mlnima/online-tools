@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
-import styles from "../../styles/ToolPage.module.scss";
-import toolsStyles from "../../styles/Tools.module.scss";
+import styles from "../../styles/UnifiedToolPage.module.scss";
+
 
 export default function JsonUnminify() {
   const [input, setInput] = useState("");
@@ -31,13 +31,13 @@ export default function JsonUnminify() {
         onChange={e => setInput(e.target.value)}
         rows={10}
         placeholder="Paste your minified JSON here..."
-        className={toolsStyles.inputArea}
+        className={styles.inputArea}
         style={{ width: '100%' }}
       />
       <div style={{ marginTop: 16 }}>
-        <button onClick={handleUnminify} className={toolsStyles.actionButton}>Unminify</button>
+        <button onClick={handleUnminify} className={styles.actionButton}>Unminify</button>
       </div>
-      {error && <div className={toolsStyles.error}>{error}</div>}
+      {error && <div className={styles.error}>{error}</div>}
       {output && (
         <div style={{ marginTop: 24 }}>
           <h3>Unminified JSON:</h3>
@@ -45,10 +45,10 @@ export default function JsonUnminify() {
             value={output}
             readOnly
             rows={10}
-            className={toolsStyles.outputArea}
+            className={styles.outputArea}
             style={{ width: '100%' }}
           />
-          <button onClick={handleCopy} className={toolsStyles.actionButton} style={{ marginTop: 8 }}>Copy</button>
+          <button onClick={handleCopy} className={styles.actionButton} style={{ marginTop: 8 }}>Copy</button>
         </div>
       )}
     </div>

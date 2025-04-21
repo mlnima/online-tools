@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import toolsStyles from "../../styles/Tools.module.scss";
+import styles from "../../styles/UnifiedToolPage.module.scss";
 
 export default function JsonToXml() {
   const [input, setInput] = useState("");
@@ -28,16 +28,16 @@ export default function JsonToXml() {
     }
   }
   return (
-    <div className={toolsStyles.toolPage} style={{ width: '100%', maxWidth: 'none', margin: '0 auto', padding: 0 }}>
+    <div className={styles.toolPage} style={{ width: '100%', maxWidth: 'none', margin: '0 auto', padding: 0 }}>
       <h1>JSON to XML</h1>
-      <div className={toolsStyles.formRow} style={{ display: 'flex', flexDirection: 'row', gap: 40, alignItems: 'flex-start', justifyContent: 'center', width: '100%', maxWidth: 1900, margin: '0 auto', flexWrap: 'wrap' }}>
+      <div className={styles.formRow} style={{ display: 'flex', flexDirection: 'row', gap: 40, alignItems: 'flex-start', justifyContent: 'center', width: '100%', maxWidth: 1900, margin: '0 auto', flexWrap: 'wrap' }}>
         <div style={{ flex: 1, minWidth: 380, maxWidth: 900, display: 'flex', flexDirection: 'column', alignItems: 'stretch' }}>
           <label htmlFor="json-input" style={{ fontWeight: 600, marginBottom: 6 }}>JSON Input</label>
           <textarea
             id="json-input"
             value={input}
             onChange={e => setInput(e.target.value)}
-            className={toolsStyles.inputArea}
+            className={styles.inputArea}
             style={{ width: '100%', minHeight: 380, fontSize: 18, resize: 'vertical' }}
             placeholder="Enter JSON..."
           />
@@ -48,17 +48,17 @@ export default function JsonToXml() {
             id="xml-output"
             value={output}
             readOnly
-            className={toolsStyles.outputArea}
+            className={styles.outputArea}
             style={{ width: '100%', minHeight: 380, fontSize: 18, resize: 'vertical' }}
             placeholder="XML output..."
           />
         </div>
       </div>
       <div style={{ display: 'flex', justifyContent: 'center', margin: '24px 0 0 0' }}>
-        <button onClick={handleConvert} className={toolsStyles.actionButton} style={{ minWidth: 140, fontSize: 17, marginRight: 16 }}>Convert</button>
-        <button onClick={() => navigator.clipboard.writeText(output)} className={toolsStyles.actionButton} style={{ minWidth: 100, fontSize: 16 }} disabled={!output}>Copy Output</button>
+        <button onClick={handleConvert} className={styles.actionButton} style={{ minWidth: 140, fontSize: 17, marginRight: 16 }}>Convert</button>
+        <button onClick={() => navigator.clipboard.writeText(output)} className={styles.actionButton} style={{ minWidth: 100, fontSize: 16 }} disabled={!output}>Copy Output</button>
       </div>
-      {error && <div className={toolsStyles.error} style={{ marginTop: 16, textAlign: 'center' }}>{error}</div>}
+      {error && <div className={styles.error} style={{ marginTop: 16, textAlign: 'center' }}>{error}</div>}
     </div>
   );
 }

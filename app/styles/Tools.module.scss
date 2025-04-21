@@ -18,6 +18,20 @@
   align-items: center;
 }
 
+.inputColumn, .outputColumn {
+  flex: 1;
+  min-width: 240px;
+  display: flex;
+  flex-direction: column;
+}
+
+.buttonRow {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin: 24px 0 0 0;
+}
+
 
 @media (max-width: 900px) {
   .toolPage {

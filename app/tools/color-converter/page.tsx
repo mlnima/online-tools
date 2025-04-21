@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import styles from "../../styles/ToolPage.module.scss";
+import styles from "../../styles/UnifiedToolPage.module.scss";
 
 function hexToRgb(hex: string) {
   let c = hex.replace('#', '');

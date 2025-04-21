@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
-
-import toolsStyles from "../../styles/Tools.module.scss";
+import styles from "../../styles/UnifiedToolPage.module.scss";
 
 function hexToRgb(hex: string): [number, number, number] | null {
   let h = hex.replace('#', '');
@@ -58,18 +57,18 @@ export default function InvertColors() {
   }
 
   return (
-    <div className={toolsStyles.toolPage}>
+    <div className={styles.toolPage}>
       <h1>Invert Colors</h1>
       <input
         type="text"
         value={input}
         onChange={e => setInput(e.target.value)}
-        className={toolsStyles.inputText}
+        className={styles.inputText}
         placeholder="#123456 or rgb(18,52,86)"
         style={{ width: 220, marginBottom: 8 }}
       />
-      <button onClick={handleConvert} className={toolsStyles.actionButton} style={{ marginBottom: 16 }}>Invert</button>
-      {error && <div className={toolsStyles.error}>{error}</div>}
+      <button onClick={handleConvert} className={styles.actionButton} style={{ marginBottom: 16 }}>Invert</button>
+      {error && <div className={styles.error}>{error}</div>}
       {outputHex && (
         <div style={{ margin: '0 auto', maxWidth: 320 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12, justifyContent: 'center', marginBottom: 8 }}>
@@ -80,8 +79,8 @@ export default function InvertColors() {
             </div>
           </div>
           <div style={{ display: 'flex', gap: 8, justifyContent: 'center' }}>
-            <button onClick={handleCopyHex} className={toolsStyles.actionButton}>Copy HEX</button>
-            <button onClick={handleCopyRgb} className={toolsStyles.actionButton}>Copy RGB</button>
+            <button onClick={handleCopyHex} className={styles.actionButton}>Copy HEX</button>
+            <button onClick={handleCopyRgb} className={styles.actionButton}>Copy RGB</button>
           </div>
         </div>
       )}

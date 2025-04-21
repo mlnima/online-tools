@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import toolsStyles from "../../styles/Tools.module.scss";
+import styles from "../../styles/UnifiedToolPage.module.scss";
 
 function crc16ccitt(str: string) {
   let crc = 0xFFFF;
@@ -39,27 +39,27 @@ export default function Crc16HashGenerator() {
   }
 
   return (
-    <div className={toolsStyles.toolPage}>
+    <div className={styles.toolPage}>
       <h1>CRC-16 Hash Generator</h1>
       <textarea
         value={input}
         onChange={e => setInput(e.target.value)}
         rows={4}
         placeholder="Enter text..."
-        className={toolsStyles.inputArea}
-        style={{ width: '100%' }}
+        className={styles.inputArea}
+        
       />
-      <button onClick={handleConvert} className={toolsStyles.actionButton} style={{ marginBottom: 16 }}>Generate</button>
-      {error && <div className={toolsStyles.error}>{error}</div>}
+      <button onClick={handleConvert} className={styles.actionButton} >Generate</button>
+      {error && <div className={styles.error}>{error}</div>}
       <input
         value={hash}
         readOnly
-        className={toolsStyles.outputArea}
-        style={{ width: 180, marginTop: 12, textAlign: 'center', fontWeight: 'bold', fontFamily: 'monospace', fontSize: 20 }}
+        className={styles.outputArea}
+        
         placeholder="CRC-16 Hash"
       />
       {hash && (
-        <button onClick={handleCopy} className={toolsStyles.actionButton} style={{ marginTop: 8 }}>Copy</button>
+        <button onClick={handleCopy} className={styles.actionButton} style={{ marginTop: 8 }}>Copy</button>
       )}
     </div>
   );

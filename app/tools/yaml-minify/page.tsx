@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import unifiedToolPageStyles from "../../styles/UnifiedUnifiedToolPage.module.scss";
 import ComingSoon from "../../components/ComingSoon";
 
 export default function YamlMinify() {
@@ -23,7 +24,7 @@ export default function YamlMinify() {
     }
   }
   return (
-    <div style={{ padding: 32, textAlign: "center" }}>
+    <div className={unifiedToolPageStyles.toolPage}>
       <h1>YAML Minify</h1>
       <ComingSoon />
     </div>

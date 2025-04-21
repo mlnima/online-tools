@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import styles from "../../styles/UnifiedToolPage.module.scss";
 
 export default function JsonMinify() {
   const [input, setInput] = React.useState("");
@@ -25,21 +26,21 @@ export default function JsonMinify() {
         onChange={e => setInput(e.target.value)}
         rows={3}
         placeholder="Paste JSON here..."
-        className={require('../../styles/Tools.module.scss').inputArea}
+        className={styles.inputArea}
         style={{ width: '100%', marginBottom: 16 }}
       />
-      <button onClick={handleMinify} className={require('../../styles/Tools.module.scss').actionButton} style={{ marginBottom: 16 }}>Minify</button>
-      {error && <div className={require('../../styles/Tools.module.scss').error}>{error}</div>}
+      <button onClick={handleMinify} className={styles.actionButton} style={{ marginBottom: 16 }}>Minify</button>
+      {error && <div className={styles.error}>{error}</div>}
       <textarea
         value={output}
         readOnly
         rows={6}
         placeholder="Minified JSON output..."
-        className={require('../../styles/Tools.module.scss').outputArea}
+        className={styles.outputArea}
         style={{ width: '100%', marginTop: 12, fontFamily: 'monospace' }}
       />
       {output && (
-        <button onClick={() => navigator.clipboard.writeText(output)} className={require('../../styles/Tools.module.scss').actionButton} style={{ marginTop: 8 }}>Copy</button>
+        <button onClick={() => navigator.clipboard.writeText(output)} className={styles.actionButton} style={{ marginTop: 8 }}>Copy</button>
       )}
     </div>
   );

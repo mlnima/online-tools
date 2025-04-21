@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import styles from "../../styles/Tools.module.scss";
+import unifiedToolPageStyles from "../../styles/UnifiedToolPage.module.scss";
 
 function generateTintsAndShades(hex: string) {
   // Validate hex
@@ -52,39 +52,38 @@ export default function TintAndShadesGenerator() {
   }
 
   return (
-    <div style={{ padding: 32, textAlign: "center" }}>
+    <div className={unifiedToolPageStyles.centeredBox}>
       <h1>Tint and Shades Generator</h1>
       <input
         value={input}
         onChange={e => setInput(e.target.value)}
         placeholder="#3498db"
-        className={styles.inputArea}
-        style={{ width: 160, marginBottom: 16, textAlign: 'center' }}
+        className={`${unifiedToolPageStyles.inputArea} ${unifiedToolPageStyles.swatchInput}`}
         maxLength={7}
       />
-      <button onClick={handleGenerate} className={styles.actionButton} style={{ marginLeft: 8 }}>Generate</button>
-      {error && <div className={styles.error}>{error}</div>}
+      <button onClick={handleGenerate} className={`${unifiedToolPageStyles.actionButton} ${unifiedToolPageStyles.marginLeft8}`}>Generate</button>
+      {error && <div className={unifiedToolPageStyles.error}>{error}</div>}
       {tints.length > 0 && (
-        <div style={{ marginTop: 24 }}>
-          <h2 style={{ fontSize: 18 }}>Tints</h2>
-          <div style={{ display: 'flex', gap: 12, justifyContent: 'center', marginBottom: 16 }}>
+        <div className={unifiedToolPageStyles.marginTop24}>
+          <h2 className={unifiedToolPageStyles.heading18}>Tints</h2>
+          <div className={unifiedToolPageStyles.flexRowGap}>
             {tints.map(hex => (
-              <div key={hex} style={{ textAlign: 'center' }}>
-                <div style={{ width: 48, height: 48, background: hex, borderRadius: 8, border: '1px solid #ccc', marginBottom: 4 }} />
-                <div style={{ fontSize: 13 }}>{hex}</div>
+              <div key={hex} className={unifiedToolPageStyles.textCenter}>
+                <div className={unifiedToolPageStyles.colorSwatch} style={{ background: hex }} />
+                <div className={unifiedToolPageStyles.font13}>{hex}</div>
               </div>
             ))}
           </div>
         </div>
       )}
       {shades.length > 0 && (
-        <div style={{ marginTop: 24 }}>
-          <h2 style={{ fontSize: 18 }}>Shades</h2>
+        <div className={unifiedToolPageStyles.marginTop24}>
+          <h2 className={unifiedToolPageStyles.heading18}>Shades</h2>
           <div style={{ display: 'flex', gap: 12, justifyContent: 'center' }}>
             {shades.map(hex => (
-              <div key={hex} style={{ textAlign: 'center' }}>
-                <div style={{ width: 48, height: 48, background: hex, borderRadius: 8, border: '1px solid #ccc', marginBottom: 4 }} />
-                <div style={{ fontSize: 13 }}>{hex}</div>
+              <div key={hex} className={unifiedToolPageStyles.textCenter}>
+                <div className={unifiedToolPageStyles.colorSwatch} style={{ background: hex }} />
+                <div className={unifiedToolPageStyles.font13}>{hex}</div>
               </div>
             ))}
           </div>

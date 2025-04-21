@@ -1,6 +1,5 @@
 "use client";import React from "react";
-
-import toolsStyles from "../../styles/Tools.module.scss";
+import styles from "../../styles/UnifiedToolPage.module.scss";
 
 function hexToRgb(hex: string) {
   hex = hex.replace(/^#/, "");
@@ -34,14 +33,14 @@ export default function HexToRgba() {
   }
 
   return (
-    <div className={toolsStyles.toolPage}>
+    <div className={styles.toolPage}>
       <h1>HEX to RGBA</h1>
       <div style={{ display: 'flex', gap: 8, justifyContent: 'center', marginBottom: 8 }}>
         <input
           type="text"
           value={hex}
           onChange={e => setHex(e.target.value)}
-          className={toolsStyles.inputArea}
+          className={styles.inputField}
           placeholder="#RRGGBB"
           style={{ width: 120 }}
         />
@@ -49,7 +48,7 @@ export default function HexToRgba() {
           type="number"
           value={alpha}
           onChange={e => setAlpha(e.target.value)}
-          className={toolsStyles.inputArea}
+          className={styles.inputField}
           placeholder="Alpha (0-1)"
           min="0"
           max="1"
@@ -57,17 +56,17 @@ export default function HexToRgba() {
           style={{ width: 80 }}
         />
       </div>
-      <button onClick={handleConvert} className={toolsStyles.actionButton} style={{ marginBottom: 16 }}>Convert</button>
-      {error && <div className={toolsStyles.error}>{error}</div>}
+      <button onClick={handleConvert} className={styles.actionButton} style={{ marginBottom: 16 }}>Convert</button>
+      {error && <div className={styles.error}>{error}</div>}
       <input
         value={rgba}
         readOnly
-        className={toolsStyles.outputArea}
+        className={styles.outputField}
         style={{ width: 260, textAlign: 'center', fontFamily: 'monospace', fontSize: 16 }}
         placeholder="RGBA output"
       />
       {rgba && (
-        <button onClick={handleCopy} className={toolsStyles.actionButton} style={{ marginTop: 8 }}>Copy</button>
+        <button onClick={handleCopy} className={styles.actionButton} style={{ marginTop: 8 }}>Copy</button>
       )}
     </div>
   );

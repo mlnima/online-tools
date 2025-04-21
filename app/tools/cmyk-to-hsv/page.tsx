@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
-
-import toolsStyles from "../../styles/Tools.module.scss";
+import styles from "../../styles/UnifiedToolPage.module.scss";
 
 export default function CmykToHsv() {
   const [c, setC] = React.useState(0);
@@ -58,25 +57,25 @@ export default function CmykToHsv() {
   }
 
   return (
-    <div className={toolsStyles.toolPage}>
+    <div className={styles.toolPage}>
       <h1>CMYK to HSV</h1>
       <div style={{ display: 'flex', gap: 8, marginBottom: 16 }}>
-        <input type="number" min={0} max={100} value={c} onChange={e => setC(Number(e.target.value))} className={toolsStyles.inputArea} placeholder="C" style={{ width: 60 }} />
-        <input type="number" min={0} max={100} value={m} onChange={e => setM(Number(e.target.value))} className={toolsStyles.inputArea} placeholder="M" style={{ width: 60 }} />
-        <input type="number" min={0} max={100} value={y} onChange={e => setY(Number(e.target.value))} className={toolsStyles.inputArea} placeholder="Y" style={{ width: 60 }} />
-        <input type="number" min={0} max={100} value={k} onChange={e => setK(Number(e.target.value))} className={toolsStyles.inputArea} placeholder="K" style={{ width: 60 }} />
+        <input type="number" min={0} max={100} value={c} onChange={e => setC(Number(e.target.value))} className={styles.inputField} placeholder="C" style={{ width: 60 }} />
+        <input type="number" min={0} max={100} value={m} onChange={e => setM(Number(e.target.value))} className={styles.inputField} placeholder="M" style={{ width: 60 }} />
+        <input type="number" min={0} max={100} value={y} onChange={e => setY(Number(e.target.value))} className={styles.inputField} placeholder="Y" style={{ width: 60 }} />
+        <input type="number" min={0} max={100} value={k} onChange={e => setK(Number(e.target.value))} className={styles.inputField} placeholder="K" style={{ width: 60 }} />
       </div>
-      <button onClick={handleConvert} className={toolsStyles.actionButton} style={{ marginBottom: 16 }}>Convert</button>
-      {error && <div className={toolsStyles.error}>{error}</div>}
+      <button onClick={handleConvert} className={styles.actionButton} style={{ marginBottom: 16 }}>Convert</button>
+      {error && <div className={styles.error}>{error}</div>}
       <input
         value={hsv ? `${hsv.h}, ${hsv.s}, ${hsv.v}` : ""}
         readOnly
-        className={toolsStyles.outputArea}
+        className={styles.outputField}
         style={{ width: 180, marginTop: 12, textAlign: 'center', fontWeight: 'bold', fontFamily: 'monospace', fontSize: 20 }}
         placeholder="H, S, V"
       />
       {hsv && (
-        <button onClick={handleCopy} className={toolsStyles.actionButton} style={{ marginTop: 8 }}>Copy</button>
+        <button onClick={handleCopy} className={styles.actionButton} style={{ marginTop: 8 }}>Copy</button>
       )}
     </div>
   );

@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import unifiedToolPageStyles from "../../styles/UnifiedToolPage.module.scss";
 import ComingSoon from "../../components/ComingSoon";
 
 export default function YamlEscapeUnescape() {
@@ -38,7 +39,7 @@ export default function YamlEscapeUnescape() {
     }
   }
   return (
-    <div style={{ padding: 32, textAlign: "center" }}>
+    <div className={unifiedToolPageStyles.toolPage}>
       <h1>YAML Escape/Unescape</h1>
       <ComingSoon />
     </div>

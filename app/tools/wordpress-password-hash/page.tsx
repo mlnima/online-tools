@@ -1,7 +1,7 @@
 "use client";
 "use client";
 import React, { useState } from "react";
-import styles from "../../styles/Tools.module.scss";
+import unifiedToolPageStyles from "../../styles/UnifiedToolPage.module.scss";
 
 export default function WordpressPasswordHash() {
   const [input, setInput] = useState("");
@@ -29,28 +29,28 @@ export default function WordpressPasswordHash() {
     }
   }
   return (
-    <div style={{ padding: 32, textAlign: "center" }}>
+    <div className={unifiedToolPageStyles.toolPage}>
       <h1>Wordpress Password Hash</h1>
       <textarea
         value={input}
         onChange={e => setInput(e.target.value)}
         rows={2}
         placeholder="Enter password..."
-        className={styles.inputArea}
-        style={{ width: '100%', marginBottom: 16 }}
+        className={unifiedToolPageStyles.inputArea}
+
       />
-      <button onClick={handleHash} className={styles.actionButton} style={{ marginBottom: 16 }}>Hash</button>
-      <div style={{ fontSize: 13, color: 'var(--color-warning)', marginBottom: 12 }}>
+      <button onClick={handleHash} className={unifiedToolPageStyles.actionButton}>Hash</button>
+      <div className={unifiedToolPageStyles.warning}>
         This uses SHA-256 for demo only. Wordpress uses PHPass, which is more secure.
       </div>
-      {error && <div className={styles.error}>{error}</div>}
+      {error && <div className={unifiedToolPageStyles.error}>{error}</div>}
       <textarea
         value={output}
         readOnly
         rows={2}
         placeholder="Password hash output..."
-        className={styles.outputArea}
-        style={{ width: '100%', marginTop: 12 }}
+        className={unifiedToolPageStyles.outputArea}
+
       />
     </div>
   );

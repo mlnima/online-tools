@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import toolsStyles from "../../styles/Tools.module.scss";
+import styles from "../../styles/UnifiedToolPage.module.scss";
 
 function minifyHTML(input: string): string {
   // Remove comments
@@ -35,29 +35,29 @@ export default function HtmlMinify() {
   return (
     <div>
       <h1>HTML Minify</h1>
-      <div className={toolsStyles.responsiveRow}>
+      <div className={styles.responsiveRow}>
         <textarea
           value={input}
           onChange={e => setInput(e.target.value)}
-          className={toolsStyles.inputArea}
+          className={styles.inputArea}
           rows={5}
           placeholder="Paste HTML here..."
         />
         <textarea
           value={output}
           readOnly
-          className={toolsStyles.outputArea}
+          className={styles.outputArea}
           rows={5}
           placeholder="Minified output"
         />
       </div>
       <div style={{ display: 'flex', justifyContent: 'center', margin: '24px 0 0 0' }}>
-        <button onClick={handleMinify} className={toolsStyles.actionButton} style={{ minWidth: 140, fontSize: 17 }}>Minify</button>
+        <button onClick={handleMinify} className={styles.actionButton} style={{ minWidth: 140, fontSize: 17 }}>Minify</button>
         {output && (
-          <button onClick={handleCopy} className={toolsStyles.actionButton} style={{ minWidth: 100, fontSize: 16, marginLeft: 16 }}>Copy Output</button>
+          <button onClick={handleCopy} className={styles.actionButton} style={{ minWidth: 100, fontSize: 16, marginLeft: 16 }}>Copy Output</button>
         )}
       </div>
-      {error && <div className={toolsStyles.error} style={{ marginTop: 16, textAlign: 'center' }}>{error}</div>}
+      {error && <div className={styles.error} style={{ marginTop: 16, textAlign: 'center' }}>{error}</div>}
     </div>
   );
 }

@@ -1,7 +1,7 @@
 
 "use client";
 import React, { useState } from "react";
-import styles from "../../styles/ToolPage.module.scss";
+import styles from "../../styles/UnifiedToolPage.module.scss";
 
 const borderStyles = [
   "solid",
@@ -28,11 +28,11 @@ const CssBorderGenerator: React.FC = () => {
   };
 
   return (
-    <div style={{ maxWidth: 700, margin: "40px auto", padding: 32 }}>
+    <div className={styles.toolPage}>
       <h1>CSS Border Generator</h1>
       <p>Customize border width, style, color, and radius. Preview and copy the CSS!</p>
-      <div style={{ display: "flex", flexWrap: "wrap", gap: 24, justifyContent: "center", margin: "32px 0" }}>
-        <div>
+      <div className={styles.formRow}>
+        <div className={styles.inputColumn}>
           <label>Border Width (px):</label>
           <input
             type="number"
@@ -40,27 +40,28 @@ const CssBorderGenerator: React.FC = () => {
             max={32}
             value={width}
             onChange={e => setWidth(Number(e.target.value))}
-            style={{ width: 60, marginLeft: 8 }}
+            className={styles.inputField}
           />
         </div>
-        <div>
+        <div className={styles.inputColumn}>
           <label>Style:</label>
-          <select value={style} onChange={e => setStyle(e.target.value)} style={{ marginLeft: 8 }}>
+          <select value={style} onChange={e => setStyle(e.target.value)} className={styles.primarySelect}>
             {borderStyles.map(s => (
               <option key={s} value={s}>{s}</option>
             ))}
           </select>
         </div>
-        <div>
+        <div className={styles.inputColumn}>
           <label>Color:</label>
           <input
             type="color"
             value={color}
             onChange={e => setColor(e.target.value)}
-            style={{ marginLeft: 8 }}
+            className={styles.inputField}
+            
           />
         </div>
-        <div>
+        <div className={styles.inputColumn}>
           <label>Radius (px):</label>
           <input
             type="number"
@@ -68,31 +69,34 @@ const CssBorderGenerator: React.FC = () => {
             max={100}
             value={radius}
             onChange={e => setRadius(Number(e.target.value))}
-            style={{ width: 60, marginLeft: 8 }}
+            className={styles.inputField}
           />
         </div>
       </div>
-      <div style={{ margin: "32px auto", padding: 32, background: "#fafafa", border: "1px solid #eee", borderRadius: 12, width: 320, height: 120, display: "flex", alignItems: "center", justifyContent: "center" }}>
+      <div className={styles.previewArea}>
         <div
+          className={styles.previewBox}
           style={{
-            width: 180,
-            height: 60,
+            width: 300,
+            height: 250,
             border: `${width}px ${style} ${color}`,
             borderRadius: radius,
-            background: "#fff",
+            // background: "#fff",
             transition: "all 0.2s",
           }}
         />
       </div>
-      <div style={{ marginTop: 24 }}>
+      <div>
         <h3>Generated CSS:</h3>
         <textarea
           value={css}
           readOnly
           rows={3}
-          style={{ width: "100%", fontFamily: "monospace", fontSize: 16 }}
+          className={styles.outputArea}
         />
-        <button onClick={handleCopy} className={styles.actionButton}>Copy</button>
+        </div>
+      <div className={styles.buttonRow}>
+        <button onClick={handleCopy} className={styles.actionButton}>Copy CSS</button>
       </div>
     </div>
   );

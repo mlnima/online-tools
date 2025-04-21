@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import styles from "../../styles/Tools.module.scss";
+import unifiedToolPageStyles from "../../styles/UnifiedToolPage.module.scss";
 
 export default function SVGToBase64() {
   const [input, setInput] = useState("");
@@ -26,28 +26,26 @@ export default function SVGToBase64() {
   }
 
   return (
-    <div style={{ padding: 32, textAlign: "center" }}>
+    <div className={unifiedToolPageStyles.centeredBox}>
       <h1>SVG to Base64</h1>
       <textarea
         value={input}
         onChange={e => setInput(e.target.value)}
         rows={8}
         placeholder="Paste SVG markup here..."
-        className={styles.inputArea}
-        style={{ width: '100%', marginBottom: 16 }}
+        className={unifiedToolPageStyles.inputArea}
       />
-      <button onClick={handleConvert} className={styles.actionButton} style={{ marginBottom: 16 }}>Convert</button>
-      {error && <div className={styles.error}>{error}</div>}
+      <button onClick={handleConvert} className={`${unifiedToolPageStyles.actionButton} ${unifiedToolPageStyles.marginBottom16}`}>Convert</button>
+      {error && <div className={unifiedToolPageStyles.error}>{error}</div>}
       <textarea
         value={output}
         readOnly
         rows={4}
         placeholder="Base64 output..."
-        className={styles.outputArea}
-        style={{ width: '100%', marginTop: 12 }}
+        className={`${unifiedToolPageStyles.outputArea} ${unifiedToolPageStyles.marginTop12}`}
       />
       {output && (
-        <button onClick={handleCopy} className={styles.actionButton} style={{ marginTop: 8 }}>Copy</button>
+        <button onClick={handleCopy} className={`${unifiedToolPageStyles.actionButton} ${unifiedToolPageStyles.marginTop8}`}>Copy</button>
       )}
     </div>
   );

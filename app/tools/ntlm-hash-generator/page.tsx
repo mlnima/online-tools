@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import styles from "../../styles/Tools.module.scss";
+import styles from "../../styles/UnifiedToolPage.module.scss";
 
 // NTLM hash = MD4(UTF-16LE(PASSWORD))
 function ntlmHash(password: string): string {

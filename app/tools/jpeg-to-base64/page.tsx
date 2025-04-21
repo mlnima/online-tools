@@ -1,7 +1,7 @@
 'use client';
 
 import React from "react";
-import toolsStyles from "../../styles/Tools.module.scss";
+import styles from "../../styles/UnifiedToolPage.module.scss";
 
 export default function JpegToBase64() {
   const [base64, setBase64] = React.useState("");
@@ -44,13 +44,13 @@ export default function JpegToBase64() {
   }
 
   return (
-    <div className={toolsStyles.toolPage}>
+    <div className={styles.toolPage}>
       <h1>JPEG to Base64</h1>
       <input
         type="file"
         accept="image/jpeg,image/jpg"
         onChange={handleFile}
-        className={toolsStyles.inputFile}
+        className={styles.inputFile}
         style={{ marginBottom: 12 }}
       />
       <label style={{ display: 'block', marginBottom: 8 }}>
@@ -63,17 +63,17 @@ export default function JpegToBase64() {
           <div style={{ fontSize: 13, color: '#888', marginTop: 4 }}>{fileName}</div>
         </div>
       )}
-      {error && <div className={toolsStyles.error}>{error}</div>}
+      {error && <div className={styles.error}>{error}</div>}
       <textarea
         value={base64}
         readOnly
-        className={toolsStyles.outputArea}
+        className={styles.outputArea}
         rows={6}
         style={{ width: 340, fontFamily: 'monospace', fontSize: 13, background: 'var(--color-bg-secondary)' }}
         placeholder="Base64 output will appear here"
       />
       {base64 && (
-        <button onClick={handleCopy} className={toolsStyles.actionButton} style={{ marginTop: 8 }}>Copy</button>
+        <button onClick={handleCopy} className={styles.actionButton} style={{ marginTop: 8 }}>Copy</button>
       )}
     </div>
   );

@@ -1,5 +1,7 @@
 "use client";
 import React, { useState } from "react";
+import styles from "../../styles/UnifiedToolPage.module.scss";
+
 
 async function aesEncrypt(text: string, password: string): Promise<string> {
   if (!window.crypto?.subtle) throw new Error("Web Crypto API not available");
@@ -133,12 +135,15 @@ const EncryptionDecryption: React.FC = () => {
     <div style={{ maxWidth: 700, margin: "40px auto", padding: 32 }}>
       <h1>Encryption Decryption</h1>
       <p>Encrypt or decrypt text using a password. (AES-GCM if available, fallback XOR)</p>
-      <div style={{ margin: "24px 0" }}>
+      <div className={styles.radioField}>
         <label>
-          <input type="radio" checked={mode === 'encrypt'} onChange={() => setMode('encrypt')} /> Encrypt
+          <input type="radio" checked={mode === 'encrypt'} onChange={() => setMode('encrypt')} />
+          <p>Encrypt</p>
+
         </label>
-        <label style={{ marginLeft: 24 }}>
-          <input type="radio" checked={mode === 'decrypt'} onChange={() => setMode('decrypt')} /> Decrypt
+        <label >
+          <input type="radio" checked={mode === 'decrypt'} onChange={() => setMode('decrypt')} />
+          <p>Decrypt</p>
         </label>
       </div>
       <textarea
@@ -157,12 +162,12 @@ const EncryptionDecryption: React.FC = () => {
           placeholder="Password"
         />
       </div>
-      <button onClick={handleGo} style={{ padding: "8px 24px", fontSize: 16 }} disabled={loading}>
+      <button onClick={handleGo}  className={styles.actionButton} disabled={loading}>
         {loading ? (mode === 'encrypt' ? 'Encrypting...' : 'Decrypting...') : (mode === 'encrypt' ? 'Encrypt' : 'Decrypt')}
       </button>
       {error && <div style={{ color: "red", marginTop: 16 }}>{error}</div>}
       {output && (
-        <div style={{ marginTop: 24 }}>
+        <div >
           <h3>{mode === 'encrypt' ? 'Encrypted Output:' : 'Decrypted Output:'}</h3>
           <textarea
             value={output}
@@ -170,7 +175,7 @@ const EncryptionDecryption: React.FC = () => {
             rows={6}
             style={{ width: "100%", fontFamily: "monospace", fontSize: 16 }}
           />
-          <button onClick={handleCopy} style={{ marginTop: 8 }}>Copy</button>
+          <button onClick={handleCopy} className={styles.actionButton}>Copy</button>
         </div>
       )}
     </div>

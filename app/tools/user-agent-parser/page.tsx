@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import styles from "../../styles/Tools.module.scss";
+import unifiedToolPageStyles from "../../styles/UnifiedToolPage.module.scss";
 
 export default function UserAgentParser() {
   const [input, setInput] = useState("");
@@ -33,19 +33,19 @@ export default function UserAgentParser() {
   }
 
   return (
-    <div className={styles.toolPage}>
+    <div className={unifiedToolPageStyles.toolPage}>
       <h1>User Agent Parser</h1>
       <textarea
         value={input}
         onChange={e => setInput(e.target.value)}
         rows={3}
         placeholder="Paste user agent string here..."
-        className={styles.inputArea}
+        className={unifiedToolPageStyles.inputArea}
       />
-      <button onClick={handleParse} className={styles.actionButton}>Parse</button>
-      {error && <div className={styles.error}>{error}</div>}
+      <button onClick={handleParse} className={unifiedToolPageStyles.actionButton}>Parse</button>
+      {error && <div className={unifiedToolPageStyles.error}>{error}</div>}
       {output && (
-        <div className={styles.resultArea} style={{ marginTop: 16 }}>
+        <div className={unifiedToolPageStyles.result}>
           <div><strong>Browser:</strong> {output.browser}</div>
           <div><strong>OS:</strong> {output.os}</div>
           <div><strong>Device:</strong> {output.device}</div>

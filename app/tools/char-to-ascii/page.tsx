@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import styles from "../../styles/UnifiedToolPage.module.scss";
 
 function charsToAscii(input: string): string {
   try {
@@ -22,27 +23,38 @@ export default function CharToASCII() {
   }
 
   return (
-    <div style={{ padding: 32, textAlign: "center" }}>
+    <div className={styles.toolPage}>
       <h1>Char to ASCII</h1>
       <p>Convert characters to ASCII codes (space separated).</p>
-      <textarea
-        rows={4}
-        style={{ width: "100%", fontSize: 16 }}
-        placeholder="Paste characters..."
-        value={chars}
-        onChange={e => setChars(e.target.value)}
-      />
+      <div className={styles.formRow}>
+        <div className={styles.inputColumn}>
+          <label htmlFor="chars-input" className={styles.label}>Characters Input</label>
+          <textarea
+            id="chars-input"
+            rows={4}
+            className={styles.inputArea}
+            placeholder="Paste characters..."
+            value={chars}
+            onChange={e => setChars(e.target.value)}
+          />
+        </div>
+      </div>
       <br />
-      <button onClick={handleConvert} style={{ margin: 8 }}>Convert</button>
-      <div style={{ marginTop: 16, marginBottom: 8, textAlign: "left" }}>
+      <div className={styles.buttonRow}>
+        <button onClick={handleConvert} className={styles.actionButton}>Convert</button>
+      </div>
+      <div className={styles.formRow}>
         <label>ASCII Output:</label>
         <textarea
+          id="ascii-output"
           rows={3}
-          style={{ width: "100%", fontSize: 16 }}
+          className={styles.outputArea}
           value={ascii}
           readOnly
         />
-        <button onClick={handleCopy} disabled={!ascii || ascii === "Invalid character input"} style={{ marginTop: 6 }}>Copy</button>
+        <div className={styles.buttonRow}>
+          <button onClick={handleCopy} disabled={!ascii || ascii === "Invalid character input"} className={styles.actionButton}>Copy</button>
+        </div>
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import toolsStyles from "../../styles/Tools.module.scss";
+import unifiedToolPageStyles from "../../styles/UnifiedToolPage.module.scss";
 
 export default function Base64ToJavascriptAlt() {
   const [input, setInput] = React.useState("");
@@ -23,28 +23,42 @@ export default function Base64ToJavascriptAlt() {
   }
 
   return (
-    <div className={toolsStyles.toolPage}>
+    <div className={unifiedToolPageStyles.toolPage}>
       <h1>Base64 to Javascript (Alt)</h1>
-      <textarea
-        value={input}
-        onChange={e => setInput(e.target.value)}
-        rows={4}
-        placeholder="Enter Base64 string..."
-        className={toolsStyles.inputArea}
-        style={{ width: '100%' }}
-      />
-      <button onClick={handleConvert} className={toolsStyles.actionButton} style={{ marginBottom: 16 }}>Convert</button>
-      {error && <div className={toolsStyles.error}>{error}</div>}
-      <textarea
-        value={output}
-        readOnly
-        rows={8}
-        placeholder="Decoded Javascript code..."
-        className={toolsStyles.outputArea}
-        style={{ width: '100%', marginTop: 12, fontFamily: 'monospace' }}
-      />
+      <div className={unifiedToolPageStyles.formRow}>
+        <div className={unifiedToolPageStyles.inputColumn}>
+          <label htmlFor="base64-input" className={unifiedToolPageStyles.label}>Base64 Input</label>
+          <textarea
+            id="base64-input"
+            value={input}
+            onChange={e => setInput(e.target.value)}
+            rows={4}
+            placeholder="Enter Base64 string..."
+            className={unifiedToolPageStyles.inputArea}
+          />
+        </div>
+      </div>
+      <div className={unifiedToolPageStyles.buttonRow}>
+        <button onClick={handleConvert} className={unifiedToolPageStyles.actionButton}>Convert</button>
+      </div>
+      {error && <div className={unifiedToolPageStyles.error}>{error}</div>}
+      <div className={unifiedToolPageStyles.formRow}>
+        <div className={unifiedToolPageStyles.inputColumn}>
+          <label htmlFor="js-output" className={unifiedToolPageStyles.label}>Decoded Javascript</label>
+          <textarea
+            id="js-output"
+            value={output}
+            readOnly
+            rows={8}
+            placeholder="Decoded Javascript code..."
+            className={unifiedToolPageStyles.outputArea}
+          />
+        </div>
+      </div>
       {output && (
-        <button onClick={handleCopy} className={toolsStyles.actionButton} style={{ marginTop: 8 }}>Copy</button>
+        <div className={unifiedToolPageStyles.buttonRow}>
+          <button onClick={handleCopy} className={unifiedToolPageStyles.actionButton}>Copy</button>
+        </div>
       )}
     </div>
   );

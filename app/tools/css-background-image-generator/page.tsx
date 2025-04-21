@@ -1,6 +1,6 @@
 "use client"
 import React from "react";
-import styles from "../../styles/ToolPage.module.scss";
+import unifiedToolPageStyles from "../../styles/UnifiedToolPage.module.scss";
 
 import { useState } from "react";
 
@@ -17,7 +17,7 @@ export default function CssBackgroundImageGenerator() {
   };
 
   return (
-    <div style={{ maxWidth: 600, margin: "40px auto", padding: 32 }}>
+    <div className={unifiedToolPageStyles.toolPage}>
       <h1>CSS Background Image Generator</h1>
       <input
         type="text"
@@ -52,13 +52,13 @@ export default function CssBackgroundImageGenerator() {
           </select>
         </label>
       </div>
-      <div style={{ marginTop: 16 }}>
-        <button onClick={generate} className={styles.actionButton}>Generate</button>
+      <div className={unifiedToolPageStyles.marginTop16}>
+        <button onClick={generate} className={unifiedToolPageStyles.actionButton}>Generate</button>
       </div>
       {output && (
-        <div style={{ marginTop: 24 }}>
+        <div className={unifiedToolPageStyles.marginTop24}>
           <h3>CSS Output:</h3>
-          <textarea value={output} readOnly rows={4} style={{ width: "100%", fontFamily: "monospace", fontSize: 16 }} />
+          <textarea value={output} readOnly rows={4} className={unifiedToolPageStyles.outputArea} />
         </div>
       )}
     </div>

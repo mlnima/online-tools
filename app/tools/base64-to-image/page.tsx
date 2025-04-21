@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import styles from "../../styles/ToolPage.module.scss";
+import unifiedToolPageStyles from "../../styles/UnifiedToolPage.module.scss";
 
 export default function Base64ToImage() {
   const [base64, setBase64] = useState("");
@@ -28,23 +28,33 @@ export default function Base64ToImage() {
   }
 
   return (
-    <div style={{ padding: 32, textAlign: "center" }}>
+    <div className={unifiedToolPageStyles.toolPage}>
       <h1>Base64 to Image</h1>
       <p>Paste a Base64 string to see the image.</p>
-      <textarea
-        rows={4}
-        style={{ width: "100%", fontSize: 16 }}
-        placeholder="Paste Base64 image string..."
-        value={base64}
-        onChange={e => setBase64(e.target.value)}
-      />
+      <div className={unifiedToolPageStyles.formRow}>
+        <div className={unifiedToolPageStyles.inputColumn}>
+          <label htmlFor="base64-input" className={unifiedToolPageStyles.label}>Base64 Input</label>
+          <textarea
+            id="base64-input"
+            rows={4}
+            className={unifiedToolPageStyles.inputArea}
+            placeholder="Paste Base64 image string..."
+            value={base64}
+            onChange={e => setBase64(e.target.value)}
+          />
+        </div>
+      </div>
       <br />
-      <button onClick={handleConvert} className={styles.actionButton}>Convert</button>
-      <button onClick={handleCopy} className={styles.actionButton} disabled={!base64}>Copy Base64</button>
-      {error && <div style={{ color: "red", margin: 8 }}>{error}</div>}
+      <div className={unifiedToolPageStyles.buttonRow}>
+        <button onClick={handleConvert} className={unifiedToolPageStyles.actionButton}>Convert</button>
+        <button onClick={handleCopy} className={unifiedToolPageStyles.actionButton} disabled={!base64}>Copy Base64</button>
+      </div>
+      {error && <div className={unifiedToolPageStyles.error}>{error}</div>}
       {imgSrc && (
-        <div style={{ marginTop: 24 }}>
-          <img src={imgSrc} alt="Decoded" style={{ maxWidth: "100%", maxHeight: 320 }} />
+        <div className={unifiedToolPageStyles.formRow}>
+          <div className={unifiedToolPageStyles.inputColumn}>
+            <img src={imgSrc} alt="Decoded" className={unifiedToolPageStyles.imagePreview} />
+          </div>
         </div>
       )}
     </div>

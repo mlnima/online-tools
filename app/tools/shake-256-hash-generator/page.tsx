@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import styles from "../../styles/Tools.module.scss";
+import unifiedToolPageStyles from "../../styles/UnifiedToolPage.module.scss";
 
 export default function Shake256HashGenerator() {
   const [input, setInput] = useState("");
@@ -18,9 +18,9 @@ export default function Shake256HashGenerator() {
   }
 
   return (
-    <div style={{ padding: 32, textAlign: "center" }}>
+    <div className={unifiedToolPageStyles.toolPage}>
       <h1>Shake-256 Hash Generator</h1>
-      <div style={{ fontSize: 13, color: 'var(--color-warning)', marginBottom: 12 }}>
+      <div className={unifiedToolPageStyles.warning}>
         SHAKE-256 is not natively supported in browser JavaScript. This is a placeholder.
       </div>
       <textarea
@@ -28,21 +28,21 @@ export default function Shake256HashGenerator() {
         onChange={e => setInput(e.target.value)}
         rows={4}
         placeholder="Enter text to hash..."
-        className={styles.inputArea}
-        style={{ width: '100%', marginBottom: 16 }}
+        className={unifiedToolPageStyles.inputArea}
+        
       />
-      <button onClick={handleHash} className={styles.actionButton} style={{ marginBottom: 16 }}>Generate Hash</button>
-      {error && <div className={styles.error}>{error}</div>}
+      <button onClick={handleHash} className={unifiedToolPageStyles.actionButton} >Generate Hash</button>
+      {error && <div className={unifiedToolPageStyles.error}>{error}</div>}
       <textarea
         value={output}
         readOnly
         rows={4}
         placeholder="SHAKE-256 hash output..."
-        className={styles.outputArea}
-        style={{ width: '100%', marginTop: 12 }}
+        className={unifiedToolPageStyles.outputArea}
+        
       />
       {output && (
-        <button onClick={handleCopy} className={styles.actionButton} style={{ marginTop: 8 }}>Copy</button>
+        <button onClick={handleCopy} className={unifiedToolPageStyles.actionButton} >Copy</button>
       )}
     </div>
   );

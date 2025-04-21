@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import styles from "../../styles/ToolPage.module.scss";
+import styles from "../../styles/UnifiedToolPage.module.scss";
 
 export default function Base64ToText() {
   const [base64, setBase64] = useState("");
@@ -23,29 +23,40 @@ export default function Base64ToText() {
   }
 
   return (
-    <div style={{ padding: 32, textAlign: "center" }}>
+    <div className={styles.toolPage}>
       <h1>Base64 to Text</h1>
       <p>Paste a Base64 string to decode to text.</p>
-      <textarea
-        rows={4}
-        style={{ width: "100%", fontSize: 16 }}
-        placeholder="Paste Base64 string..."
-        value={base64}
-        onChange={e => setBase64(e.target.value)}
-      />
-      <br />
-      <button onClick={handleConvert} className={styles.actionButton}>Convert</button>
-      <button onClick={handleCopy} className={styles.actionButton} disabled={!text}>Copy Text</button>
-      {error && <div style={{ color: "red", margin: 8 }}>{error}</div>}
-      {text && (
-        <div style={{ marginTop: 24 }}>
-          <label>Decoded Text:</label>
+      <div className={styles.formRow}>
+        <div className={styles.inputColumn}>
+          <label htmlFor="base64-input" className={styles.label}>Base64 Input</label>
           <textarea
+            id="base64-input"
             rows={4}
-            style={{ width: "100%", fontSize: 16 }}
-            value={text}
-            readOnly
+            className={styles.inputArea}
+            placeholder="Paste Base64 string..."
+            value={base64}
+            onChange={e => setBase64(e.target.value)}
           />
+        </div>
+      </div>
+      <br />
+      <div className={styles.buttonRow}>
+        <button onClick={handleConvert} className={styles.actionButton}>Convert</button>
+        <button onClick={handleCopy} className={styles.actionButton} disabled={!text}>Copy Text</button>
+      </div>
+      {error && <div className={styles.error}>{error}</div>}
+      {text && (
+        <div className={styles.formRow}>
+          <div className={styles.inputColumn}>
+            <label htmlFor="decoded-text" className={styles.label}>Decoded Text:</label>
+            <textarea
+              id="decoded-text"
+              rows={4}
+              className={styles.outputArea}
+              value={text}
+              readOnly
+            />
+          </div>
         </div>
       )}
     </div>

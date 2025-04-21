@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import styles from "./ZlibDecompressOnline.module.scss";
 
 export default function ZlibDecompressOnline() {
   const [input, setInput] = useState("");
@@ -22,17 +23,17 @@ export default function ZlibDecompressOnline() {
     }
   }
   return (
-    <div style={{ padding: 32, textAlign: "center" }}>
+    <div className={styles.zlibPage}>
       <h1>zLib Decompress Online</h1>
-      <div style={{ maxWidth: 500, margin: '32px auto', textAlign: 'left' }}>
-        <label htmlFor="zlibinput" style={{ fontWeight: 500 }}>Compressed (Base64) Input</label>
-        <textarea id="zlibinput" style={{ width: '100%', minHeight: 80, margin: '8px 0', padding: 8, fontSize: 16 }} placeholder="Paste zlib-compressed Base64 string here..." value={input} onChange={e => setInput(e.target.value)} />
-        <button style={{ margin: '8px 0', padding: '8px 16px', fontSize: 16 }} onClick={handleDecompress}>Decompress</button>
-        <div style={{ marginTop: 16 }}>
-          <label style={{ fontWeight: 500 }}>Decompressed Output</label>
-          <textarea style={{ width: '100%', minHeight: 80, margin: '8px 0', padding: 8, fontSize: 16 }} value={output} readOnly />
+      <div className={styles.zlibPanel}>
+        <label htmlFor="zlibinput" className={styles.label}>Compressed (Base64) Input</label>
+        <textarea id="zlibinput" className={styles.inputArea} placeholder="Paste zlib-compressed Base64 string here..." value={input} onChange={e => setInput(e.target.value)} />
+        <button className={styles.button} onClick={handleDecompress}>Decompress</button>
+        <div className={styles.outputPanel}>
+          <label className={styles.label}>Decompressed Output</label>
+          <textarea className={styles.inputArea} value={output} readOnly />
         </div>
-        {error && <div style={{ color: 'red', marginTop: 8 }}>{error}</div>}
+        {error && <div className={styles.error}>{error}</div>}
       </div>
     </div>
   );

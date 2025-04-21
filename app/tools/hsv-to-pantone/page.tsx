@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
-
-import toolsStyles from "../../styles/Tools.module.scss";
+import styles from "../../styles/UnifiedToolPage.module.scss";
 
 const pantoneTable = [
   { name: "Pantone Yellow", code: "PMS 107", hex: "#FEDD00" },
@@ -87,15 +86,15 @@ export default function HsvToPantone() {
   }
 
   return (
-    <div className={toolsStyles.toolPage}>
+    <div className={styles.toolPage}>
       <h1>HSV to Pantone</h1>
       <div style={{ display: 'flex', gap: 8, justifyContent: 'center', marginBottom: 8 }}>
-        <input type="number" min={0} max={360} value={h} onChange={e => setH(Number(e.target.value))} className={toolsStyles.inputNumber} placeholder="H (0-360)" style={{ width: 70 }} />
-        <input type="number" min={0} max={100} value={s} onChange={e => setS(Number(e.target.value))} className={toolsStyles.inputNumber} placeholder="S (0-100)" style={{ width: 70 }} />
-        <input type="number" min={0} max={100} value={v} onChange={e => setV(Number(e.target.value))} className={toolsStyles.inputNumber} placeholder="V (0-100)" style={{ width: 70 }} />
+        <input type="number" min={0} max={360} value={h} onChange={e => setH(Number(e.target.value))} className={styles.inputNumber} placeholder="H (0-360)" style={{ width: 70 }} />
+        <input type="number" min={0} max={100} value={s} onChange={e => setS(Number(e.target.value))} className={styles.inputNumber} placeholder="S (0-100)" style={{ width: 70 }} />
+        <input type="number" min={0} max={100} value={v} onChange={e => setV(Number(e.target.value))} className={styles.inputNumber} placeholder="V (0-100)" style={{ width: 70 }} />
       </div>
-      <button onClick={handleConvert} className={toolsStyles.actionButton} style={{ marginBottom: 16 }}>Convert</button>
-      {error && <div className={toolsStyles.error}>{error}</div>}
+      <button onClick={handleConvert} className={styles.actionButton} style={{ marginBottom: 16 }}>Convert</button>
+      {error && <div className={styles.error}>{error}</div>}
       {pantone && (
         <div style={{ margin: '0 auto', maxWidth: 320 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12, justifyContent: 'center', marginBottom: 8 }}>
@@ -106,7 +105,7 @@ export default function HsvToPantone() {
               <div style={{ fontFamily: 'monospace', fontSize: 14 }}>{pantone.hex}</div>
             </div>
           </div>
-          <button onClick={handleCopy} className={toolsStyles.actionButton}>Copy</button>
+          <button onClick={handleCopy} className={styles.actionButton}>Copy</button>
         </div>
       )}
     </div>

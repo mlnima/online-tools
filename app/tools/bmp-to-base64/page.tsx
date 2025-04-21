@@ -1,6 +1,6 @@
 "use client";
-"use client";
 import React, { useState, useRef } from "react";
+import styles from "../../styles/UnifiedToolPage.module.scss";
 
 export default function BMPToBase64() {
   const [base64, setBase64] = useState("");
@@ -37,7 +37,7 @@ export default function BMPToBase64() {
   }
 
   return (
-    <div style={{ padding: 32, textAlign: "center" }}>
+    <div className={styles.toolPage}>
       <h1>BMP to Base64</h1>
       <p>Upload a BMP image to convert to Base64.</p>
       <input
@@ -45,17 +45,17 @@ export default function BMPToBase64() {
         accept="image/bmp"
         ref={inputRef}
         onChange={handleFileChange}
-        style={{ marginBottom: 8 }}
+        
       />
-      {fileName && <div style={{ margin: 8 }}>File: {fileName}</div>}
-      <button onClick={handleReset} style={{ margin: 8 }}>Reset</button>
-      {error && <div style={{ color: "red", margin: 8 }}>{error}</div>}
+      {fileName && <div >File: {fileName}</div>}
+      <button onClick={handleReset} >Reset</button>
+      {error && <div >{error}</div>}
       {base64 && (
-        <div style={{ marginTop: 24 }}>
+        <div >
           <label>Base64 Output:</label>
           <textarea
             rows={5}
-            style={{ width: "100%", fontSize: 16 }}
+            className={styles.outputArea}
             value={base64}
             readOnly
           />

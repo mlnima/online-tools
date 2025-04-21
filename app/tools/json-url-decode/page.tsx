@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import unifiedToolPageStyles from "../../styles/UnifiedToolPage.module.scss";
 
 export default function JsonUrlDecode() {
   const [input, setInput] = useState("");
@@ -18,28 +19,28 @@ export default function JsonUrlDecode() {
     }
   }
   return (
-    <div style={{ padding: 32, textAlign: "center" }}>
+    <div className={unifiedToolPageStyles.toolPage}>
       <h1>JSON URL Decode</h1>
       <textarea
         value={input}
         onChange={e => setInput(e.target.value)}
         rows={3}
         placeholder="Paste URL-encoded JSON here..."
-        className={require('../../styles/Tools.module.scss').inputArea}
+        className={unifiedToolPageStyles.inputArea}
         style={{ width: '100%', marginBottom: 16 }}
       />
-      <button onClick={handleDecode} className={require('../../styles/Tools.module.scss').actionButton} style={{ marginBottom: 16 }}>Decode</button>
-      {error && <div className={require('../../styles/Tools.module.scss').error}>{error}</div>}
+      <button onClick={handleDecode} className={unifiedToolPageStyles.actionButton} style={{ marginBottom: 16 }}>Decode</button>
+      {error && <div className={unifiedToolPageStyles.error}>{error}</div>}
       <textarea
         value={output}
         readOnly
         rows={6}
         placeholder="Decoded JSON output..."
-        className={require('../../styles/Tools.module.scss').outputArea}
-        style={{ width: '100%', marginTop: 12, fontFamily: 'monospace' }}
+        className={unifiedToolPageStyles.outputArea}
+        
       />
       {output && (
-        <button onClick={() => navigator.clipboard.writeText(output)} className={require('../../styles/Tools.module.scss').actionButton} style={{ marginTop: 8 }}>Copy</button>
+        <button onClick={() => navigator.clipboard.writeText(output)} className={unifiedToolPageStyles.actionButton} >Copy</button>
       )}
     </div>
   );

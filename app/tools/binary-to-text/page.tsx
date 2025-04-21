@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
-
-import toolsStyles from "../../styles/Tools.module.scss";
+import styles from "../../styles/UnifiedToolPage.module.scss";
 
 export default function BinaryToText() {
   const [input, setInput] = React.useState("");
@@ -28,28 +27,42 @@ export default function BinaryToText() {
   }
 
   return (
-    <div className={toolsStyles.toolPage}>
+    <div className={styles.toolPage}>
       <h1>Binary to Text</h1>
-      <textarea
-        value={input}
-        onChange={e => setInput(e.target.value)}
-        rows={4}
-        placeholder="Enter binary string (e.g. 01001000 01100101)..."
-        className={toolsStyles.inputArea}
-        style={{ width: '100%' }}
-      />
-      <button onClick={handleConvert} className={toolsStyles.actionButton} style={{ marginBottom: 16 }}>Convert</button>
-      {error && <div className={toolsStyles.error}>{error}</div>}
-      <textarea
-        value={output}
-        readOnly
-        rows={4}
-        placeholder="Text output..."
-        className={toolsStyles.outputArea}
-        style={{ width: '100%', marginTop: 12 }}
-      />
+      <div className={styles.formRow}>
+        <div className={styles.inputColumn}>
+          <label htmlFor="binary-input" className={styles.label}>Binary Input</label>
+          <textarea
+            id="binary-input"
+            value={input}
+            onChange={e => setInput(e.target.value)}
+            rows={4}
+            placeholder="Enter binary string (e.g. 01001000 01100101)..."
+            className={styles.inputArea}
+          />
+        </div>
+      </div>
+      <div className={styles.buttonRow}>
+        <button onClick={handleConvert} className={styles.actionButton}>Convert</button>
+      </div>
+      {error && <div className={styles.error}>{error}</div>}
+      <div className={styles.formRow}>
+        <div className={styles.inputColumn}>
+          <label htmlFor="text-output" className={styles.label}>Text Output</label>
+          <textarea
+            id="text-output"
+            value={output}
+            readOnly
+            rows={4}
+            placeholder="Text output..."
+            className={styles.outputArea}
+          />
+        </div>
+      </div>
       {output && (
-        <button onClick={handleCopy} className={toolsStyles.actionButton} style={{ marginTop: 8 }}>Copy</button>
+        <div className={styles.buttonRow}>
+          <button onClick={handleCopy} className={styles.actionButton}>Copy</button>
+        </div>
       )}
     </div>
   );

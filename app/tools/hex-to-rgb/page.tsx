@@ -1,6 +1,5 @@
 "use client";import React from "react";
-
-import toolsStyles from "../../styles/Tools.module.scss";
+import styles from "../../styles/UnifiedToolPage.module.scss";
 
 function hexToRgb(hex: string): [number, number, number] {
   hex = hex.replace(/^#/, "");
@@ -30,27 +29,27 @@ export default function HexToRgb() {
   }
 
   return (
-    <div className={toolsStyles.toolPage}>
+    <div className={styles.toolPage}>
       <h1>HEX to RGB</h1>
       <input
         type="text"
         value={hex}
         onChange={e => setHex(e.target.value)}
-        className={toolsStyles.inputArea}
+        className={styles.inputField}
         placeholder="#RRGGBB"
         style={{ width: 120, marginBottom: 8 }}
       />
-      <button onClick={handleConvert} className={toolsStyles.actionButton} style={{ marginBottom: 16 }}>Convert</button>
-      {error && <div className={toolsStyles.error}>{error}</div>}
+      <button onClick={handleConvert} className={styles.actionButton} style={{ marginBottom: 16 }}>Convert</button>
+      {error && <div className={styles.error}>{error}</div>}
       <input
         value={rgb ? `rgb(${rgb[0]}, ${rgb[1]}, ${rgb[2]})` : ""}
         readOnly
-        className={toolsStyles.outputArea}
+        className={styles.outputField}
         style={{ width: 240, textAlign: 'center', fontFamily: 'monospace', fontSize: 16 }}
         placeholder="RGB output"
       />
       {rgb && (
-        <button onClick={handleCopy} className={toolsStyles.actionButton} style={{ marginTop: 8 }}>Copy</button>
+        <button onClick={handleCopy} className={styles.actionButton} style={{ marginTop: 8 }}>Copy</button>
       )}
     </div>
   );

@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
-import toolsStyles from "../../styles/Tools.module.scss";
+import styles from "../../styles/UnifiedToolPage.module.scss";
+
 import * as pako from "pako";
 
 function base64ToUint8Array(base64: string): Uint8Array {
@@ -54,32 +55,32 @@ export default function GzipDecompressOnline() {
   }
 
   return (
-    <div className={toolsStyles.toolPage}>
+    <div className={styles.toolPage}>
       <h1>GZip Decompress Online</h1>
       <textarea
         value={input}
         onChange={e => setInput(e.target.value)}
         rows={4}
         placeholder="Paste Base64-encoded GZip string or upload a .gz file"
-        className={toolsStyles.inputArea}
+        className={styles.inputArea}
         style={{ width: '100%' }}
       />
       <div style={{ margin: '12px 0' }}>
-        <input type="file" accept=".gz" onChange={handleFile} className={toolsStyles.inputArea} />
+        <input type="file" accept=".gz" onChange={handleFile} className={styles.inputArea} />
         {filename && <div style={{ fontSize: 13, marginTop: 4 }}>File: {filename}</div>}
       </div>
-      <button onClick={handleConvert} className={toolsStyles.actionButton} style={{ marginBottom: 16 }}>Decompress</button>
-      {error && <div className={toolsStyles.error}>{error}</div>}
+      <button onClick={handleConvert} className={styles.actionButton} style={{ marginBottom: 16 }}>Decompress</button>
+      {error && <div className={styles.error}>{error}</div>}
       <textarea
         value={output}
         readOnly
         rows={6}
-        className={toolsStyles.outputArea}
+        className={styles.outputArea}
         style={{ width: '100%', marginTop: 12, fontFamily: 'monospace' }}
         placeholder="Decompressed output"
       />
       {output && (
-        <button onClick={handleCopy} className={toolsStyles.actionButton} style={{ marginTop: 8 }}>Copy</button>
+        <button onClick={handleCopy} className={styles.actionButton} style={{ marginTop: 8 }}>Copy</button>
       )}
     </div>
   );

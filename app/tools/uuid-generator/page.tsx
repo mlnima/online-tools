@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import styles from "../../styles/Tools.module.scss";
+import unifiedToolPageStyles from "../../styles/UnifiedToolPage.module.scss";
 
 function generateUUIDv4() {
   // RFC4122 version 4 compliant
@@ -18,15 +18,14 @@ export default function UUIDGenerator() {
   }
 
   return (
-    <div className={styles.toolPage}>
+    <div className={unifiedToolPageStyles.toolPage}>
       <h1>UUID Generator</h1>
-      <button onClick={handleGenerate} className={styles.actionButton}>Generate UUID</button>
+      <button onClick={handleGenerate} className={unifiedToolPageStyles.actionButton}>Generate UUID</button>
       <input
         type="text"
         value={uuid}
         readOnly
-        className={styles.outputArea}
-        style={{ marginTop: 16, width: "100%", fontSize: 18 }}
+        className={unifiedToolPageStyles.outputField}
         placeholder="UUID will appear here..."
       />
     </div>

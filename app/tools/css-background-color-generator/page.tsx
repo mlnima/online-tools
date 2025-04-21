@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import toolsStyles from "../../styles/Tools.module.scss";
+import unifiedToolPageStyles from "../../styles/UnifiedToolPage.module.scss";
 
 function isValidHex(hex: string) {
   return /^#([0-9A-Fa-f]{3}){1,2}$/.test(hex);
@@ -37,36 +37,34 @@ export default function CssBackgroundColorGenerator() {
   }
 
   return (
-    <div className={toolsStyles.toolPage}>
+    <div className={unifiedToolPageStyles.toolPage}>
       <h1>CSS Background Color Generator</h1>
-      <div style={{ display: 'flex', gap: 8, alignItems: 'center', marginBottom: 16 }}>
+      <div className={unifiedToolPageStyles.buttonRow}>
         <input
           type="text"
           value={input}
           onChange={handleInputChange}
-          className={toolsStyles.inputArea}
+          className={unifiedToolPageStyles.inputArea}
           placeholder="#RRGGBB or rgb(0,0,0)"
-          style={{ width: 160 }}
         />
         <input
           type="color"
           value={isValidHex(input) ? input : color}
           onChange={handleColorPicker}
-          style={{ width: 40, height: 40, border: 'none', background: 'none', padding: 0 }}
+          className={unifiedToolPageStyles.colorPicker}
         />
       </div>
-      {error && <div className={toolsStyles.error}>{error}</div>}
-      <div style={{ margin: '16px 0' }}>
-        <div style={{ width: 80, height: 40, background: color, border: '1px solid #ccc', borderRadius: 8, margin: '0 auto' }} />
+      {error && <div className={unifiedToolPageStyles.error}>{error}</div>}
+      <div className={unifiedToolPageStyles.colorPreviewContainer}>
+        <div className={unifiedToolPageStyles.colorPreview} style={{ background: color }} />
       </div>
       <input
         value={css}
         readOnly
-        className={toolsStyles.outputArea}
-        style={{ width: 240, textAlign: 'center', fontFamily: 'monospace', fontSize: 16 }}
+        className={unifiedToolPageStyles.outputArea}
         placeholder="background-color: ..."
       />
-      <button onClick={handleCopy} className={toolsStyles.actionButton} style={{ marginTop: 12 }}>Copy</button>
+      <button onClick={handleCopy} className={unifiedToolPageStyles.actionButton}>Copy</button>
     </div>
   );
 }

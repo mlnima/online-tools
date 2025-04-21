@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useRef } from "react";
-import styles from "../../styles/ToolPage.module.scss";
+import styles from "../../styles/UnifiedToolPage.module.scss";
 
 function binaryToBase64(bin: string): string {
   try {
@@ -29,27 +29,38 @@ export default function BinaryToBase64() {
   }
 
   return (
-    <div style={{ padding: 32, textAlign: "center" }}>
+    <div className={styles.toolPage}>
       <h1>Binary to Base64</h1>
       <p>Convert binary (8-bit, space separated) to Base64.</p>
-      <textarea
-        rows={4}
-        style={{ width: "100%", fontSize: 16 }}
-        placeholder="Paste binary string (e.g. 01001000 01101001)..."
-        value={binary}
-        onChange={e => setBinary(e.target.value)}
-      />
+      <div className={styles.formRow}>
+        <div className={styles.inputColumn}>
+          <label htmlFor="binary-input" className={styles.label}>Binary Input</label>
+          <textarea
+            id="binary-input"
+            rows={4}
+            className={styles.inputArea}
+            placeholder="Paste binary string (e.g. 01001000 01101001)..."
+            value={binary}
+            onChange={e => setBinary(e.target.value)}
+          />
+        </div>
+      </div>
       <br />
-      <button onClick={handleConvert} className={styles.actionButton}>Convert</button>
-      <button onClick={handleCopy} className={styles.actionButton} disabled={!base64 || base64 === "Invalid binary input"}>Copy Base64</button>
-      <div style={{ marginTop: 24 }}>
-        <label>Base64 Output:</label>
-        <textarea
-          rows={3}
-          style={{ width: "100%", fontSize: 16 }}
-          value={base64}
-          readOnly
-        />
+      <div className={styles.buttonRow}>
+        <button onClick={handleConvert} className={styles.actionButton}>Convert</button>
+        <button onClick={handleCopy} className={styles.actionButton} disabled={!base64 || base64 === "Invalid binary input"}>Copy Base64</button>
+      </div>
+      <div className={styles.formRow}>
+        <div className={styles.inputColumn}>
+          <label htmlFor="base64-output" className={styles.label}>Base64 Output</label>
+          <textarea
+            id="base64-output"
+            rows={3}
+            className={styles.outputArea}
+            value={base64}
+            readOnly
+          />
+        </div>
       </div>
     </div>
   );

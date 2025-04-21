@@ -12,22 +12,22 @@ export default function UrlEncode() {
   };
 
   return (
-    <div style={{ maxWidth: 600, margin: "40px auto", padding: 32 }}>
+    <div className={unifiedToolPageStyles.toolPage}>
       <h1>URL Encode</h1>
       <textarea
         value={input}
         onChange={e => setInput(e.target.value)}
         rows={4}
-        style={{ width: "100%", fontFamily: "monospace", fontSize: 16 }}
+        className={unifiedToolPageStyles.inputArea}
         placeholder="Enter text to encode..."
       />
-      <div style={{ marginTop: 16 }}>
-        <button onClick={handleEncode} style={{ padding: "8px 24px", fontSize: 16 }}>Encode</button>
+      <div className={unifiedToolPageStyles.flexRow}>
+        <button onClick={handleEncode} className={unifiedToolPageStyles.actionButton}>Encode</button>
       </div>
       {output && (
-        <div style={{ marginTop: 24 }}>
+        <div className={unifiedToolPageStyles.outputArea}>
           <h3>Encoded Result:</h3>
-          <textarea value={output} readOnly rows={2} style={{ width: "100%", fontFamily: "monospace", fontSize: 16 }} />
+          <textarea value={output} readOnly rows={2} className={unifiedToolPageStyles.outputArea} />
         </div>
       )}
     </div>

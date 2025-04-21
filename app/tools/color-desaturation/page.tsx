@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import toolsStyles from "../../styles/Tools.module.scss";
+import styles from "../../styles/UnifiedToolPage.module.scss";
 
 function hexToRgb(hex: string) {
   hex = hex.replace(/^#/, "");
@@ -47,23 +47,23 @@ export default function ColorDesaturation() {
   }
 
   return (
-    <div className={toolsStyles.toolPage}>
+    <div className={styles.toolPage}>
       <h1>Color Desaturation</h1>
-      <div style={{ display: 'flex', gap: 8, marginBottom: 16 }}>
-        <input type="text" value={hex} onChange={e => setHex(e.target.value)} className={toolsStyles.inputArea} placeholder="#RRGGBB" style={{ width: 120 }} />
-        <input type="number" min={0} max={100} value={percent} onChange={e => setPercent(Number(e.target.value))} className={toolsStyles.inputArea} placeholder="%" style={{ width: 60 }} />
+      <div className={styles.formRow}>
+        <input type="text" value={hex} onChange={e => setHex(e.target.value)} className={styles.inputField} placeholder="#RRGGBB"  />
+        <input type="number" min={0} max={100} value={percent} onChange={e => setPercent(Number(e.target.value))} className={styles.inputField} placeholder="%"  />
       </div>
-      <button onClick={handleConvert} className={toolsStyles.actionButton} style={{ marginBottom: 16 }}>Desaturate</button>
-      {error && <div className={toolsStyles.error}>{error}</div>}
+      <button onClick={handleConvert} className={styles.actionButton} >Desaturate</button>
+      {error && <div className={styles.error}>{error}</div>}
       <input
         value={result}
         readOnly
-        className={toolsStyles.outputArea}
+        className={styles.outputField}
         style={{ width: 120, marginTop: 12, textAlign: 'center', fontWeight: 'bold', fontFamily: 'monospace', fontSize: 18 }}
         placeholder="Desaturated HEX"
       />
       {result && (
-        <button onClick={handleCopy} className={toolsStyles.actionButton} style={{ marginTop: 8 }}>Copy</button>
+        <button onClick={handleCopy} className={styles.actionButton} style={{ marginTop: 8 }}>Copy</button>
       )}
       {result && (
         <div style={{ marginTop: 16 }}>
