@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import unifiedToolPageStyles from "../../unifiedToolPageStyles/UnifiedToolPage.module.scss";
+import styles from "../../styles/UnifiedToolPage.module.scss";
 
 
 export default function UrlParser() {
@@ -28,19 +28,19 @@ export default function UrlParser() {
   }
 
   return (
-    <div className={unifiedToolPageStyles.toolPage}>
+    <div className={styles.toolPage}>
       <h1>URL Parser</h1>
       <input
         type="text"
         value={input}
         onChange={e => setInput(e.target.value)}
         placeholder="Enter a URL..."
-        className={unifiedToolPageStyles.inputField}
+        className={styles.inputField}
       />
-      <button onClick={handleParse} className={unifiedToolPageStyles.actionButton}>Parse</button>
-      {error && <div className={unifiedToolPageStyles.error}>{error}</div>}
+      <button onClick={handleParse} className={styles.actionButton}>Parse</button>
+      {error && <div className={styles.error}>{error}</div>}
       {output && (
-        <div className={unifiedToolPageStyles.result}>
+        <div className={styles.result}>
           <div><strong>Protocol:</strong> {output.protocol}</div>
           <div><strong>Hostname:</strong> {output.hostname}</div>
           <div><strong>Port:</strong> {output.port || "(default)"}</div>
