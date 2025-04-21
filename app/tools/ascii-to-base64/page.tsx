@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import unifiedToolPageStyles from "../../styles/UnifiedToolPage.module.scss";
+import styles from "../../styles/UnifiedToolPage.module.scss";
 
 export default function ASCIToBase64() {
   const [ascii, setAscii] = useState("");
@@ -20,33 +20,33 @@ export default function ASCIToBase64() {
   }
 
   return (
-    <div className={unifiedToolPageStyles.toolPage}>
+    <div className={styles.toolPage}>
       <h1>ASCII to Base64</h1>
       <p>Convert ASCII text to Base64 encoding.</p>
-      <div className={unifiedToolPageStyles.formRow}>
-        <div className={unifiedToolPageStyles.inputColumn}>
-          <label htmlFor="ascii-input" className={unifiedToolPageStyles.label}>ASCII Input</label>
+      <div className={styles.formRow}>
+        <div className={styles.inputColumn}>
+          <label htmlFor="ascii-input" className={styles.label}>ASCII Input</label>
           <textarea
             id="ascii-input"
             placeholder="Enter ASCII text..."
             value={ascii}
             onChange={e => setAscii(e.target.value)}
-            className={unifiedToolPageStyles.inputArea}
+            className={styles.inputArea}
           />
         </div>
-        <div className={unifiedToolPageStyles.inputColumn}>
-          <label htmlFor="base64-output" className={unifiedToolPageStyles.label}>Base64 Output</label>
+        <div className={styles.inputColumn}>
+          <label htmlFor="base64-output" className={styles.label}>Base64 Output</label>
           <textarea
             id="base64-output"
             value={base64}
             readOnly
-            className={unifiedToolPageStyles.outputArea}
+            className={styles.outputArea}
           />
         </div>
       </div>
-      <div className={unifiedToolPageStyles.buttonRow}>
-        <button onClick={handleConvert} className={unifiedToolPageStyles.actionButton}>Convert</button>
-        <button onClick={handleCopy} className={unifiedToolPageStyles.actionButton} disabled={!base64}>Copy Output</button>
+      <div className={styles.buttonRow}>
+        <button onClick={handleConvert} className={styles.actionButton}>Convert</button>
+        <button onClick={handleCopy} className={styles.actionButton} disabled={!base64}>Copy Output</button>
       </div>
     </div>
   );
