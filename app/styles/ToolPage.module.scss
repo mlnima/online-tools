@@ -1,60 +1,60 @@
-.toolPage {
-  width: 100%;
-  padding: 2.2rem 2vw 3rem 2vw;
-  background: var(--color-card);
-  border-radius: 1.1rem;
-  box-shadow: 0 2px 18px 0 rgba(0,0,0,0.09);
-  border: 1px solid var(--color-border);
-}
+//.toolPage {
+//  width: 100%;
+//  padding: 2.2rem 2vw 3rem 2vw;
+//  background: var(--color-card);
+//  border-radius: 1.1rem;
+//  box-shadow: 0 2px 18px 0 rgba(0,0,0,0.09);
+//  border: 1px solid var(--color-border);
+//}
 
-.toolPage h1 {
-  color: var(--color-primary);
-  font-size: 2rem;
-  margin-bottom: 1.3rem;
-}
+//.toolPage h1 {
+//  color: var(--color-primary);
+//  font-size: 2rem;
+//  margin-bottom: 1.3rem;
+//}
+//
+//.toolPage p {
+//  margin-bottom: 1.3rem;
+//  color: var(--color-text);
+//  opacity: 0.9;
+//}
+//
+//.formRow {
+//  display: flex;
+//  align-items: center;
+//  gap: 0.7rem;
+//  margin-bottom: 1.2rem;
+//}
 
-.toolPage p {
-  margin-bottom: 1.3rem;
-  color: var(--color-text);
-  opacity: 0.9;
-}
+//.actionButton {
+//  background: var(--color-btn-bg);
+//  color: var(--color-btn-text);
+//  border: none;
+//  border-radius: 0.5rem;
+//  padding: 0.55rem 1.1rem;
+//  font-size: 1rem;
+//  font-weight: 600;
+//  cursor: pointer;
+//  transition: background 0.2s, color 0.2s;
+//  &:hover {
+//    background: var(--color-primary);
+//    color: var(--color-bg);
+//  }
+//}
 
-.formRow {
-  display: flex;
-  align-items: center;
-  gap: 0.7rem;
-  margin-bottom: 1.2rem;
-}
-
-.actionButton {
-  background: var(--color-btn-bg);
-  color: var(--color-btn-text);
-  border: none;
-  border-radius: 0.5rem;
-  padding: 0.55rem 1.1rem;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.2s, color 0.2s;
-  &:hover {
-    background: var(--color-primary);
-    color: var(--color-bg);
-  }
-}
-
-.result {
-  margin-top: 1.2rem;
-  font-size: 1.1rem;
-  color: var(--color-primary);
-  display: flex;
-  align-items: center;
-  gap: 0.7rem;
-}
-
-.colorSwatch {
-  display: inline-block;
-  width: 24px;
-  height: 24px;
-  border-radius: 0.4rem;
-  border: 1px solid var(--color-border);
-}
+//.result {
+//  margin-top: 1.2rem;
+//  font-size: 1.1rem;
+//  color: var(--color-primary);
+//  display: flex;
+//  align-items: center;
+//  gap: 0.7rem;
+//}
+//
+//.colorSwatch {
+//  display: inline-block;
+//  width: 24px;
+//  height: 24px;
+//  border-radius: 0.4rem;
+//  border: 1px solid var(--color-border);
+//}

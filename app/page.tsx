@@ -1,7 +1,6 @@
 import Link from "next/link";
-import ThemeSwitcher from "./components/ThemeSwitcher";
 import styles from "./styles/Home.module.scss";
-import { tools } from "./toolsList";
+import tools from "./toolsList.json";
 
 export default function HomePage() {
   return (

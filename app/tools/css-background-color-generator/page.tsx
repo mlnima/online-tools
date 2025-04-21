@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import unifiedToolPageStyles from "../../styles/UnifiedToolPage.module.scss";
+import styles from "../../styles/UnifiedToolPage.module.scss";
 
 function isValidHex(hex: string) {
   return /^#([0-9A-Fa-f]{3}){1,2}$/.test(hex);
@@ -37,34 +37,34 @@ export default function CssBackgroundColorGenerator() {
   }
 
   return (
-    <div className={unifiedToolPageStyles.toolPage}>
+    <div className={styles.toolPage}>
       <h1>CSS Background Color Generator</h1>
-      <div className={unifiedToolPageStyles.buttonRow}>
+      <div className={styles.buttonRow}>
         <input
           type="text"
           value={input}
           onChange={handleInputChange}
-          className={unifiedToolPageStyles.inputArea}
+          className={styles.inputField}
           placeholder="#RRGGBB or rgb(0,0,0)"
         />
         <input
           type="color"
           value={isValidHex(input) ? input : color}
           onChange={handleColorPicker}
-          className={unifiedToolPageStyles.colorPicker}
+          className={styles.inputColor}
         />
       </div>
-      {error && <div className={unifiedToolPageStyles.error}>{error}</div>}
-      <div className={unifiedToolPageStyles.colorPreviewContainer}>
-        <div className={unifiedToolPageStyles.colorPreview} style={{ background: color }} />
+      {error && <div className={styles.error}>{error}</div>}
+      <div className={styles.colorPreviewContainer}>
+        <div className={styles.colorPreview} style={{ background: color }} />
       </div>
       <input
         value={css}
         readOnly
-        className={unifiedToolPageStyles.outputArea}
+        className={styles.outputField}
         placeholder="background-color: ..."
       />
-      <button onClick={handleCopy} className={unifiedToolPageStyles.actionButton}>Copy</button>
+      <button onClick={handleCopy} className={styles.actionButton}>Copy</button>
     </div>
   );
 }

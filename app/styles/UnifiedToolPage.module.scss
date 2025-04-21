@@ -69,6 +69,12 @@
   min-height: 45px;
   max-width: 300px;
 }
+.inputColor{
+  min-width: 60px;
+  min-height: 45px;
+  max-width: 300px;
+  padding: 0;
+}
 .primarySelect{
   @extend .baseArea;
   min-width: 60px;
