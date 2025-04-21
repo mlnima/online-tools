@@ -12,7 +12,7 @@ export default function Footer() {
           </span>
           <nav className={styles.navLinks}>
             <Link href="/about">About</Link>
-            <Link href="/tools">Tools</Link>
+            <Link href="/sitemap">Sitemap</Link>
             <Link href="/contact">Contact</Link>
           </nav>
         </div>
