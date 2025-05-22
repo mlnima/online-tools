@@ -59,7 +59,7 @@ export default function HexToHsv() {
         placeholder="#RRGGBB"
         style={{ width: 120, marginBottom: 8 }}
       />
-      <button onClick={handleConvert} className={styles.actionButton} style={{ marginBottom: 16 }}>Convert</button>
+      <button onClick={handleConvert} className={styles.actionButton} >Convert</button>
       {error && <div className={styles.error}>{error}</div>}
       <input
         value={hsv ? `H: ${hsv[0]}, S: ${hsv[1]}%, V: ${hsv[2]}%` : ""}
@@ -69,7 +69,7 @@ export default function HexToHsv() {
         placeholder="HSV output"
       />
       {hsv && (
-        <button onClick={handleCopy} className={styles.actionButton} style={{ marginTop: 8 }}>Copy</button>
+        <button onClick={handleCopy} className={styles.actionButton}  >Copy</button>
       )}
     </div>
   );

@@ -61,7 +61,7 @@ export default function PNGToBase64() {
       <div style={{ marginTop: 8 }}>
         {output && (
           <>
-            <button onClick={handleCopy} className={styles.actionButton} style={{ marginRight: 8 }}>Copy</button>
+            <button onClick={handleCopy} className={styles.actionButton}  >Copy</button>
             <button onClick={handleClear} className={styles.actionButton}>Clear</button>
           </>
         )}

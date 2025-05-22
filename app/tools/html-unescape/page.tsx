@@ -31,12 +31,12 @@ export default function HtmlUnescape() {
         placeholder="Enter HTML to unescape..."
       />
       <div style={{ marginTop: 16 }}>
-        <button onClick={handleUnescape} style={{ padding: "8px 24px", fontSize: 16 }}>Unescape</button>
+        <button onClick={handleUnescape}  >Unescape</button>
       </div>
       {output && (
         <div style={{ marginTop: 24 }}>
           <h3>Unescaped Result:</h3>
-          <textarea value={output} readOnly rows={2} style={{ width: "100%", fontFamily: "monospace", fontSize: 16 }} />
+          <textarea value={output} readOnly rows={2}   />
         </div>
       )}
     </div>

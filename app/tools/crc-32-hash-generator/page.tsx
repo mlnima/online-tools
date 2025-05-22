@@ -41,25 +41,32 @@ export default function Crc32HashGenerator() {
   return (
     <div className={styles.toolPage}>
       <h1>CRC-32 Hash Generator</h1>
-      <textarea
-        value={input}
-        onChange={e => setInput(e.target.value)}
-        rows={4}
-        placeholder="Enter text..."
-        className={styles.inputArea}
-        
-      />
-      <button onClick={handleConvert} className={styles.actionButton} >Generate</button>
+      <div className={styles.formRow}>
+        <div className={styles.inputColumn}>
+                <textarea
+                    value={input}
+                    onChange={e => setInput(e.target.value)}
+                    rows={4}
+                    placeholder="Enter text..."
+                    className={styles.inputArea}
+
+                />
+        </div>
+        <button onClick={handleConvert} className={styles.actionButton} >Generate</button>
+        <div className={styles.inputColumn}>
+          <input
+              value={hash}
+              readOnly
+              className={styles.outputField}
+              placeholder="CRC-32 Hash"
+          />
+        </div>
+
+      </div>
       {error && <div className={styles.error}>{error}</div>}
-      <input
-        value={hash}
-        readOnly
-        className={styles.outputArea}
-        
-        placeholder="CRC-32 Hash"
-      />
+
       {hash && (
-        <button onClick={handleCopy} className={styles.actionButton} style={{ marginTop: 8 }}>Copy</button>
+        <button onClick={handleCopy} className={styles.actionButton} >Copy</button>
       )}
     </div>
   );

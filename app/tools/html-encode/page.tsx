@@ -46,9 +46,9 @@ export default function HtmlEncode() {
         />
       </div>
       <div style={{ display: 'flex', justifyContent: 'center', margin: '24px 0 0 0' }}>
-        <button onClick={handleConvert} className={styles.actionButton} style={{ minWidth: 140, fontSize: 17 }}>Encode</button>
+        <button onClick={handleConvert} className={styles.actionButton}  >Encode</button>
         {output && (
-          <button onClick={handleCopy} className={styles.actionButton} style={{ minWidth: 100, fontSize: 16, marginLeft: 16 }}>Copy Output</button>
+          <button onClick={handleCopy} className={styles.actionButton} >Copy Output</button>
         )}
       </div>
       {error && <div className={styles.error} style={{ marginTop: 16, textAlign: 'center' }}>{error}</div>}

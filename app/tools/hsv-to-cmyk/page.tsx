@@ -62,7 +62,7 @@ export default function HsvToCmyk() {
         <input type="number" min={0} max={100} value={s} onChange={e => setS(Number(e.target.value))} className={styles.inputNumber} placeholder="S (0-100)" style={{ width: 70 }} />
         <input type="number" min={0} max={100} value={v} onChange={e => setV(Number(e.target.value))} className={styles.inputNumber} placeholder="V (0-100)" style={{ width: 70 }} />
       </div>
-      <button onClick={handleConvert} className={styles.actionButton} style={{ marginBottom: 16 }}>Convert</button>
+      <button onClick={handleConvert} className={styles.actionButton} >Convert</button>
       {error && <div className={styles.error}>{error}</div>}
       <textarea
         value={output}
@@ -73,7 +73,7 @@ export default function HsvToCmyk() {
         placeholder="C, M, Y, K"
       />
       {output && (
-        <button onClick={handleCopy} className={styles.actionButton} style={{ marginTop: 8 }}>Copy</button>
+        <button onClick={handleCopy} className={styles.actionButton}  >Copy</button>
       )}
     </div>
   );

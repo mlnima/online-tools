@@ -37,7 +37,7 @@ export default function StringToHex() {
         className={styles.inputArea}
         style={{ width: '100%', marginBottom: 16 }}
       />
-      <button onClick={handleConvert} className={styles.actionButton} style={{ marginBottom: 16 }}>Convert</button>
+      <button onClick={handleConvert} className={styles.actionButton}  >Convert</button>
       {error && <div className={styles.error}>{error}</div>}
       <textarea
         value={output}
@@ -48,7 +48,7 @@ export default function StringToHex() {
         style={{ width: '100%', marginTop: 12 }}
       />
       {output && (
-        <button onClick={handleCopy} className={styles.actionButton} style={{ marginTop: 8 }}>Copy</button>
+        <button onClick={handleCopy} className={styles.actionButton}  >Copy</button>
       )}
     </div>
   );

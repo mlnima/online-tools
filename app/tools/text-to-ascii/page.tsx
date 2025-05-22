@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import unifiedToolPageStyles from "../../styles/UnifiedToolPage.module.scss";
+import styles from "../../styles/UnifiedToolPage.module.scss";
 
 function textToAscii(input: string): string {
   try {
@@ -44,7 +45,7 @@ export default function TextToASCII() {
           value={ascii}
           readOnly
         />
-        <button onClick={handleCopy} disabled={!ascii || ascii === "Invalid text input"} className={unifiedToolPageStyles.marginTop6}>Copy</button>
+        <button onClick={handleCopy} disabled={!ascii || ascii === "Invalid text input"} className={styles.actionButton}>Copy</button>
       </div>
     </div>
   );

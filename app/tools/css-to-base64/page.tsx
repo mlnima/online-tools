@@ -40,7 +40,7 @@ export default function CSSToBase64() {
           value={base64}
           readOnly
         />
-        <button onClick={handleCopy} disabled={!base64} style={{ marginTop: 6 }}>Copy</button>
+        <button onClick={handleCopy} disabled={!base64} className={styles.actionButton}>Copy</button>
       </div>
     </div>
   );

@@ -26,7 +26,7 @@ export default function HtmlEscape() {
         placeholder="Enter text to escape..."
       />
       <div style={{ marginTop: 16 }}>
-        <button onClick={handleEscape} style={{ padding: "8px 24px", fontSize: 16 }}>Escape</button>
+        <button onClick={handleEscape}  >Escape</button>
       </div>
       {output && (
         <div style={{ marginTop: 24 }}>

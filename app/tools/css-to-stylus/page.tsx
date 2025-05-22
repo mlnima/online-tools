@@ -37,7 +37,7 @@ const CssToStylus: React.FC = () => {
             rows={10}
             style={{ width: "100%", fontFamily: "monospace", fontSize: 16 }}
           />
-          <button onClick={handleCopy} className={styles.actionButton} style={{ marginTop: 8 }}>Copy</button>
+          <button onClick={handleCopy} className={styles.actionButton}  >Copy</button>
         </div>
       )}
     </div>

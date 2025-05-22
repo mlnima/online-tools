@@ -65,7 +65,7 @@ export default function CmykToHsv() {
         <input type="number" min={0} max={100} value={y} onChange={e => setY(Number(e.target.value))} className={styles.inputField} placeholder="Y" style={{ width: 60 }} />
         <input type="number" min={0} max={100} value={k} onChange={e => setK(Number(e.target.value))} className={styles.inputField} placeholder="K" style={{ width: 60 }} />
       </div>
-      <button onClick={handleConvert} className={styles.actionButton} style={{ marginBottom: 16 }}>Convert</button>
+      <button onClick={handleConvert} className={styles.actionButton} >Convert</button>
       {error && <div className={styles.error}>{error}</div>}
       <input
         value={hsv ? `${hsv.h}, ${hsv.s}, ${hsv.v}` : ""}
@@ -75,7 +75,7 @@ export default function CmykToHsv() {
         placeholder="H, S, V"
       />
       {hsv && (
-        <button onClick={handleCopy} className={styles.actionButton} style={{ marginTop: 8 }}>Copy</button>
+        <button onClick={handleCopy} className={styles.actionButton}  >Copy</button>
       )}
     </div>
   );

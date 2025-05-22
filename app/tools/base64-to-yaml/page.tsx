@@ -1,5 +1,4 @@
 "use client";
-"use client";
 import React, { useState } from "react";
 import styles from "../../styles/UnifiedToolPage.module.scss";
 
@@ -25,7 +24,7 @@ export default function Base64ToYAML() {
       <h1>Base64 to YAML</h1>
       <p>Decode Base64 string to YAML text.</p>
       <div className={styles.formRow}>
-        <div className={styles.inputColumn}>
+          <div className={styles.inputColumn}>
           <label htmlFor="base64-input" className={styles.label}>Base64 Input</label>
           <textarea
             id="base64-input"
@@ -36,24 +35,25 @@ export default function Base64ToYAML() {
             onChange={e => setBase64(e.target.value)}
           />
         </div>
+          <div className={styles.buttonRow}>
+              <button onClick={handleConvert} className={styles.actionButton}>Convert</button>
+          </div>
+          <div className={styles.inputColumn}>
+              <label>YAML Output:</label>
+              <textarea
+                  id="yaml-output"
+                  rows={3}
+                  className={styles.outputArea}
+                  value={yaml}
+                  readOnly
+              />
+          </div>
+
       </div>
-      <br />
-      <div className={styles.buttonRow}>
-        <button onClick={handleConvert} className={styles.actionButton}>Convert</button>
-      </div>
-      <div className={styles.formRow}>
-        <label>YAML Output:</label>
-        <textarea
-          id="yaml-output"
-          rows={3}
-          className={styles.outputArea}
-          value={yaml}
-          readOnly
-        />
+
         <div className={styles.buttonRow}>
-          <button onClick={handleCopy} disabled={!yaml} className={styles.actionButton}>Copy</button>
+            <button onClick={handleCopy} disabled={!yaml} className={styles.actionButton}>Copy</button>
         </div>
-      </div>
     </div>
   );
 }

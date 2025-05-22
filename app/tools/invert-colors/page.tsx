@@ -67,7 +67,7 @@ export default function InvertColors() {
         placeholder="#123456 or rgb(18,52,86)"
         style={{ width: 220, marginBottom: 8 }}
       />
-      <button onClick={handleConvert} className={styles.actionButton} style={{ marginBottom: 16 }}>Invert</button>
+      <button onClick={handleConvert} className={styles.actionButton} >Invert</button>
       {error && <div className={styles.error}>{error}</div>}
       {outputHex && (
         <div style={{ margin: '0 auto', maxWidth: 320 }}>

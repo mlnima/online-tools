@@ -3,6 +3,7 @@
 :root {
   --color-bg: #000;
   --color-bg-secondary: #0e0e0e;
+  --color-bg-tertiary: #252525;
   --color-text: #f3f6fa;
   --color-primary: #f90;
   --color-accent: #f90;
@@ -19,6 +20,7 @@
 [data-theme="light"] {
   --color-bg: #f7f8fa;
   --color-bg-secondary: #fff;
+  --color-bg-tertiary: #fff;
   --color-text: #23272f;
   --color-primary: #0056e0;
   --color-accent: #f90;
@@ -100,8 +102,8 @@ button {
 
 input,
 textarea {
-  background: var(--color-bg-secondary) !important;
-  color: var(--color-text) !important;
+  background: var(--color-bg-tertiary);
+  color: var(--color-text);
   border: 1px solid var(--color-border);
   border-radius: 0.4rem;
   padding: 0.6rem 0.9rem;
@@ -110,13 +112,19 @@ textarea {
   outline: none;
   margin-bottom: 0.7rem;
   width: 100%;
+  max-width: 300px;
   box-sizing: border-box;
+}
+input[type="color"]{
+  width: 100px;
+  height: 40px;
+  padding: 0;
 }
 
 input:focus,
 textarea:focus {
   border-color: var(--color-primary);
-  background: var(--color-card) !important;
+ // background: var(--color-card) !important;
 }
 
 input::placeholder,

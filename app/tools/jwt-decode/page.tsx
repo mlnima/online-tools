@@ -51,7 +51,7 @@ export default function JwtDecode() {
         className={styles.inputArea}
         style={{ width: '100%', marginBottom: 16 }}
       />
-      <button onClick={handleDecode} className={styles.actionButton} style={{ marginBottom: 16 }}>Decode</button>
+      <button onClick={handleDecode} className={styles.actionButton} >Decode</button>
       {error && <div className={styles.error}>{error}</div>}
       <textarea
         value={output}
@@ -62,7 +62,7 @@ export default function JwtDecode() {
         style={{ width: '100%', marginTop: 12, fontFamily: 'monospace' }}
       />
       {output && (
-        <button onClick={handleCopy} className={styles.actionButton} style={{ marginTop: 8 }}>Copy</button>
+        <button onClick={handleCopy} className={styles.actionButton}  >Copy</button>
       )}
       <div style={{ fontSize: 13, color: 'var(--color-warning)', marginTop: 16 }}>
         Note: This tool does not verify the JWT signature, it only decodes the payload.

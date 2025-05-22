@@ -64,7 +64,7 @@ export default function JsonToHtml() {
       </div>
     </div>
     <div style={{ display: 'flex', justifyContent: 'center', margin: '24px 0 0 0' }}>
-      <button onClick={convert} className={styles.actionButton} style={{ minWidth: 140, fontSize: 17 }}>Convert</button>
+      <button onClick={convert} className={styles.actionButton} >Convert</button>
     </div>
     {error && <div className={styles.error} style={{ marginTop: 16, textAlign: 'center' }}>{error}</div>}
   </div>

@@ -35,7 +35,7 @@ export default function SVGToBase64() {
         placeholder="Paste SVG markup here..."
         className={styles.inputArea}
       />
-      <button onClick={handleConvert} className={`${styles.actionButton} ${styles.marginBottom16}`}>Convert</button>
+      <button onClick={handleConvert} className={styles.actionButton}>Convert</button>
       {error && <div className={styles.error}>{error}</div>}
       <textarea
         value={output}
@@ -45,7 +45,7 @@ export default function SVGToBase64() {
         className={`${styles.outputArea} ${styles.marginTop12}`}
       />
       {output && (
-        <button onClick={handleCopy} className={`${styles.actionButton} ${styles.marginTop8}`}>Copy</button>
+        <button onClick={handleCopy} className={styles.actionButton}>Copy</button>
       )}
     </div>
   );

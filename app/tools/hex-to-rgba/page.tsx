@@ -56,7 +56,7 @@ export default function HexToRgba() {
           style={{ width: 80 }}
         />
       </div>
-      <button onClick={handleConvert} className={styles.actionButton} style={{ marginBottom: 16 }}>Convert</button>
+      <button onClick={handleConvert} className={styles.actionButton} >Convert</button>
       {error && <div className={styles.error}>{error}</div>}
       <input
         value={rgba}
@@ -66,7 +66,7 @@ export default function HexToRgba() {
         placeholder="RGBA output"
       />
       {rgba && (
-        <button onClick={handleCopy} className={styles.actionButton} style={{ marginTop: 8 }}>Copy</button>
+        <button onClick={handleCopy} className={styles.actionButton}  >Copy</button>
       )}
     </div>
   );

@@ -48,7 +48,7 @@ export default function BMPToBase64() {
         
       />
       {fileName && <div >File: {fileName}</div>}
-      <button onClick={handleReset} >Reset</button>
+      <button onClick={handleReset} className={styles.actionButton} >Reset</button>
       {error && <div >{error}</div>}
       {base64 && (
         <div >
@@ -59,7 +59,7 @@ export default function BMPToBase64() {
             value={base64}
             readOnly
           />
-          <button onClick={handleCopy} style={{ marginTop: 8 }}>Copy</button>
+          <button onClick={handleCopy} className={styles.actionButton}>Copy</button>
         </div>
       )}
     </div>

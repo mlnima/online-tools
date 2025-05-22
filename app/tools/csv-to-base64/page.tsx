@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import styles from "../../styles/UnifiedToolPage.module.scss";
 
 export default function CSVToBase64() {
   const [csv, setCsv] = useState("");
@@ -30,7 +31,7 @@ export default function CSVToBase64() {
         onChange={e => setCsv(e.target.value)}
       />
       <br />
-      <button onClick={handleConvert} style={{ margin: 8 }}>Convert</button>
+      <button onClick={handleConvert} className={styles.actionButton}>Convert</button>
       <div style={{ marginTop: 16, marginBottom: 8, textAlign: "left" }}>
         <label>Base64 Output:</label>
         <textarea
@@ -39,7 +40,7 @@ export default function CSVToBase64() {
           value={base64}
           readOnly
         />
-        <button onClick={handleCopy} disabled={!base64} style={{ marginTop: 6 }}>Copy</button>
+        <button onClick={handleCopy} disabled={!base64} className={styles.actionButton}>Copy</button>
       </div>
     </div>
   );

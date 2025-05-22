@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import styles from "../../styles/UnifiedToolPage.module.scss";
 
 export default function JsonMinifier() {
   const [input, setInput] = useState("");
@@ -28,7 +29,7 @@ export default function JsonMinifier() {
         placeholder="Paste your JSON here..."
       />
       <div style={{ marginTop: 16 }}>
-        <button onClick={minifyJson} style={{ padding: "8px 24px", fontSize: 16 }}>Minify</button>
+        <button onClick={minifyJson} className={styles.actionButton}>Minify</button>
       </div>
       {error && <div style={{ color: "red", marginTop: 16 }}>{error}</div>}
       {output && (

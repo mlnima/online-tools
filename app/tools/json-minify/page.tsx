@@ -29,7 +29,7 @@ export default function JsonMinify() {
         className={styles.inputArea}
         style={{ width: '100%', marginBottom: 16 }}
       />
-      <button onClick={handleMinify} className={styles.actionButton} style={{ marginBottom: 16 }}>Minify</button>
+      <button onClick={handleMinify} className={styles.actionButton}  >Minify</button>
       {error && <div className={styles.error}>{error}</div>}
       <textarea
         value={output}
@@ -40,7 +40,7 @@ export default function JsonMinify() {
         style={{ width: '100%', marginTop: 12, fontFamily: 'monospace' }}
       />
       {output && (
-        <button onClick={() => navigator.clipboard.writeText(output)} className={styles.actionButton} style={{ marginTop: 8 }}>Copy</button>
+        <button onClick={() => navigator.clipboard.writeText(output)} className={styles.actionButton} >Copy</button>
       )}
     </div>
   );

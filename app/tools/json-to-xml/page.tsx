@@ -55,8 +55,8 @@ export default function JsonToXml() {
         </div>
       </div>
       <div style={{ display: 'flex', justifyContent: 'center', margin: '24px 0 0 0' }}>
-        <button onClick={handleConvert} className={styles.actionButton} style={{ minWidth: 140, fontSize: 17, marginRight: 16 }}>Convert</button>
-        <button onClick={() => navigator.clipboard.writeText(output)} className={styles.actionButton} style={{ minWidth: 100, fontSize: 16 }} disabled={!output}>Copy Output</button>
+        <button onClick={handleConvert} className={styles.actionButton}  >Convert</button>
+        <button onClick={() => navigator.clipboard.writeText(output)} className={styles.actionButton}   disabled={!output}>Copy Output</button>
       </div>
       {error && <div className={styles.error} style={{ marginTop: 16, textAlign: 'center' }}>{error}</div>}
     </div>

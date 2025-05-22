@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useRef } from "react";
+import styles from "../../styles/UnifiedToolPage.module.scss";
 
 export default function GIFToBase64() {
   const [base64, setBase64] = useState("");
@@ -47,7 +48,7 @@ export default function GIFToBase64() {
         style={{ marginBottom: 8 }}
       />
       {fileName && <div style={{ margin: 8 }}>File: {fileName}</div>}
-      <button onClick={handleReset} style={{ margin: 8 }}>Reset</button>
+      <button onClick={handleReset} className={styles.actionButton}>Reset</button>
       {error && <div style={{ color: "red", margin: 8 }}>{error}</div>}
       {base64 && (
         <div style={{ marginTop: 24 }}>
@@ -58,7 +59,7 @@ export default function GIFToBase64() {
             value={base64}
             readOnly
           />
-          <button onClick={handleCopy} style={{ marginTop: 8 }}>Copy</button>
+          <button onClick={handleCopy} className={styles.actionButton}>Copy</button>
         </div>
       )}
     </div>

@@ -48,7 +48,7 @@ export default function JsonUnminify() {
             className={styles.outputArea}
             style={{ width: '100%' }}
           />
-          <button onClick={handleCopy} className={styles.actionButton} style={{ marginTop: 8 }}>Copy</button>
+          <button onClick={handleCopy} className={styles.actionButton}  >Copy</button>
         </div>
       )}
     </div>

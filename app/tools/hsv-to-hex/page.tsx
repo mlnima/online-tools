@@ -47,7 +47,7 @@ const HsvToHex: React.FC = () => {
         <div style={{ marginTop: 24 }}>
           <h3>HEX Output:</h3>
           <input value={hex} readOnly style={{ fontFamily: "monospace", fontSize: 16, width: 120, textAlign: "center" }} />
-          <button onClick={handleCopy} className={styles.actionButton} style={{ marginLeft: 12 }}>Copy</button>
+          <button onClick={handleCopy} className={styles.actionButton}  >Copy</button>
           <div style={{ width: 40, height: 40, background: hex, display: "inline-block", border: "1px solid #ccc", marginLeft: 16, verticalAlign: "middle" }} />
         </div>
       )}

@@ -71,7 +71,7 @@ export default function JsonViewer() {
         placeholder="Paste your JSON here..."
       />
       <div style={{ marginTop: 16 }}>
-        <button onClick={handleParse} style={{ padding: "8px 24px", fontSize: 16 }}>View</button>
+        <button onClick={handleParse}  >View</button>
       </div>
       {error && <div style={{ color: "red", marginTop: 16 }}>{error}</div>}
       {parsed && (

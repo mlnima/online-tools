@@ -53,7 +53,7 @@ export default function HexToCmyk() {
         placeholder="#RRGGBB"
         style={{ width: 120, marginBottom: 8 }}
       />
-      <button onClick={handleConvert} className={styles.actionButton} style={{ marginBottom: 16 }}>Convert</button>
+      <button onClick={handleConvert} className={styles.actionButton}  >Convert</button>
       {error && <div className={styles.error}>{error}</div>}
       <input
         value={cmyk ? `C: ${cmyk[0]}%, M: ${cmyk[1]}%, Y: ${cmyk[2]}%, K: ${cmyk[3]}%` : ""}
