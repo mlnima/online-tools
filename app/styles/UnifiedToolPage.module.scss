@@ -197,6 +197,24 @@
   border: 1px solid var(--color-border);
 }
 
+.label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: var(--color-text);
+  text-align: left;
+  width: 100%;
+}
+
+.imagePreview {
+  max-width: 100%;
+  height: auto;
+  margin-top: 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: 0.5rem;
+  display: block;
+}
+
 @media (min-width: 480px) {
   .toolPage {
     font-size: 15px;
