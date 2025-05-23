@@ -1,7 +1,6 @@
 "use client";
-import React from "react";
-
-import { useState } from "react";
+import React, { useState } from "react"; // Consolidated useState import
+import styles from "../../styles/UnifiedToolPage.module.scss"; // Added styles import
 
 function unescapeHtml(str: string) {
   return str
@@ -21,24 +20,39 @@ export default function HtmlUnescape() {
   };
 
   return (
-    <div style={{ maxWidth: 600, margin: "40px auto", padding: 32 }}>
+    <div className={styles.toolPage}>
       <h1>HTML Unescape</h1>
-      <textarea
-        value={input}
-        onChange={e => setInput(e.target.value)}
-        rows={4}
-        style={{ width: "100%", fontFamily: "monospace", fontSize: 16 }}
-        placeholder="Enter HTML to unescape..."
-      />
-      <div style={{ marginTop: 16 }}>
-        <button onClick={handleUnescape}  >Unescape</button>
-      </div>
-      {output && (
-        <div style={{ marginTop: 24 }}>
-          <h3>Unescaped Result:</h3>
-          <textarea value={output} readOnly rows={2}   />
+      <div className={styles.formRow}>
+        <div className={styles.inputColumn}>
+          <label htmlFor="html-unescape-input" className={styles.label}>Input Text</label>
+          <textarea
+            id="html-unescape-input"
+            value={input}
+            onChange={e => setInput(e.target.value)}
+            rows={4}
+            className={styles.inputArea}
+            placeholder="Enter HTML to unescape..."
+          />
         </div>
-      )}
+        <div className={styles.outputColumn}>
+          {output && (
+            <>
+              <label htmlFor="html-unescape-output" className={styles.label}>Unescaped Result:</label>
+              <textarea 
+                id="html-unescape-output"
+                value={output} 
+                readOnly 
+                rows={4} /* Matched input rows */
+                className={styles.outputArea}
+              />
+            </>
+          )}
+        </div>
+      </div>
+      <div className={styles.buttonRow}>
+        <button onClick={handleUnescape} className={styles.actionButton}>Unescape</button>
+        {/* Optional: Add a copy button if needed */}
+      </div>
     </div>
   );
 }

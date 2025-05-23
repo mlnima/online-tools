@@ -132,52 +132,68 @@ const EncryptionDecryption: React.FC = () => {
   };
 
   return (
-    <div style={{ maxWidth: 700, margin: "40px auto", padding: 32 }}>
+    <div className={styles.toolPage}>
       <h1>Encryption Decryption</h1>
       <p>Encrypt or decrypt text using a password. (AES-GCM if available, fallback XOR)</p>
       <div className={styles.radioField}>
         <label>
-          <input type="radio" checked={mode === 'encrypt'} onChange={() => setMode('encrypt')} />
+          <input type="radio" name="enc-dec-mode" checked={mode === 'encrypt'} onChange={() => setMode('encrypt')} />
           <p>Encrypt</p>
-
         </label>
         <label >
-          <input type="radio" checked={mode === 'decrypt'} onChange={() => setMode('decrypt')} />
+          <input type="radio" name="enc-dec-mode" checked={mode === 'decrypt'} onChange={() => setMode('decrypt')} />
           <p>Decrypt</p>
         </label>
       </div>
-      <textarea
-        value={input}
-        onChange={e => setInput(e.target.value)}
-        rows={6}
-        style={{ width: "100%", fontFamily: "monospace", fontSize: 16 }}
-        placeholder={mode === 'encrypt' ? "Enter text to encrypt..." : "Enter text to decrypt..."}
-      />
-      <div style={{ margin: "16px 0" }}>
-        <input
-          type="password"
-          value={password}
-          onChange={e => setPassword(e.target.value)}
-          style={{ fontSize: 16, width: 300 }}
-          placeholder="Password"
-        />
-      </div>
-      <button onClick={handleGo}  className={styles.actionButton} disabled={loading}>
-        {loading ? (mode === 'encrypt' ? 'Encrypting...' : 'Decrypting...') : (mode === 'encrypt' ? 'Encrypt' : 'Decrypt')}
-      </button>
-      {error && <div style={{ color: "red", marginTop: 16 }}>{error}</div>}
-      {output && (
-        <div >
-          <h3>{mode === 'encrypt' ? 'Encrypted Output:' : 'Decrypted Output:'}</h3>
+      <div className={styles.formRow}>
+        <div className={styles.inputColumn}>
+          <label htmlFor="input-text" className={styles.label}>
+            {mode === 'encrypt' ? "Text to Encrypt" : "Text to Decrypt"}
+          </label>
           <textarea
-            value={output}
-            readOnly
+            id="input-text"
+            value={input}
+            onChange={e => setInput(e.target.value)}
             rows={6}
-            style={{ width: "100%", fontFamily: "monospace", fontSize: 16 }}
+            className={styles.inputArea}
+            placeholder={mode === 'encrypt' ? "Enter text to encrypt..." : "Enter text to decrypt..."}
           />
-          <button onClick={handleCopy} className={styles.actionButton}>Copy</button>
+          <label htmlFor="password-input" className={styles.label}>Password</label>
+          <input
+            type="password"
+            id="password-input"
+            value={password}
+            onChange={e => setPassword(e.target.value)}
+            className={styles.inputField}
+            placeholder="Password"
+          />
         </div>
-      )}
+        <div className={styles.outputColumn}>
+          {output && (
+            <>
+              <label htmlFor="output-text" className={styles.label}>
+                {mode === 'encrypt' ? 'Encrypted Output:' : 'Decrypted Output:'}
+              </label>
+              <textarea
+                id="output-text"
+                value={output}
+                readOnly
+                rows={6}
+                className={styles.outputArea}
+              />
+            </>
+          )}
+        </div>
+      </div>
+      <div className={styles.buttonRow}>
+        <button onClick={handleGo}  className={styles.actionButton} disabled={loading}>
+          {loading ? (mode === 'encrypt' ? 'Encrypting...' : 'Decrypting...') : (mode === 'encrypt' ? 'Encrypt' : 'Decrypt')}
+        </button>
+        {output && (
+          <button onClick={handleCopy} className={styles.actionButton}>Copy</button>
+        )}
+      </div>
+      {error && <div className={styles.error}>{error}</div>}
     </div>
   );
 };

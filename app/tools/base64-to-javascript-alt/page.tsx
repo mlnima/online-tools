@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import unifiedToolPageStyles from "../../styles/UnifiedToolPage.module.scss";
+import styles from "../../styles/UnifiedToolPage.module.scss";
 
 export default function Base64ToJavascriptAlt() {
   const [input, setInput] = React.useState("");
@@ -23,43 +23,39 @@ export default function Base64ToJavascriptAlt() {
   }
 
   return (
-    <div className={unifiedToolPageStyles.toolPage}>
+    <div className={styles.toolPage}>
       <h1>Base64 to Javascript (Alt)</h1>
-      <div className={unifiedToolPageStyles.formRow}>
-        <div className={unifiedToolPageStyles.inputColumn}>
-          <label htmlFor="base64-input" className={unifiedToolPageStyles.label}>Base64 Input</label>
+      <div className={styles.formRow}>
+        <div className={styles.inputColumn}>
+          <label htmlFor="base64-input" className={styles.label}>Base64 Input</label>
           <textarea
             id="base64-input"
             value={input}
             onChange={e => setInput(e.target.value)}
             rows={4}
             placeholder="Enter Base64 string..."
-            className={unifiedToolPageStyles.inputArea}
+            className={styles.inputArea}
           />
         </div>
-      </div>
-      <div className={unifiedToolPageStyles.buttonRow}>
-        <button onClick={handleConvert} className={unifiedToolPageStyles.actionButton}>Convert</button>
-      </div>
-      {error && <div className={unifiedToolPageStyles.error}>{error}</div>}
-      <div className={unifiedToolPageStyles.formRow}>
-        <div className={unifiedToolPageStyles.inputColumn}>
-          <label htmlFor="js-output" className={unifiedToolPageStyles.label}>Decoded Javascript</label>
+        <div className={styles.outputColumn}>
+          <label htmlFor="js-output" className={styles.label}>Decoded Javascript</label>
           <textarea
             id="js-output"
             value={output}
             readOnly
             rows={8}
             placeholder="Decoded Javascript code..."
-            className={unifiedToolPageStyles.outputArea}
+            className={styles.outputArea}
           />
         </div>
       </div>
-      {output && (
-        <div className={unifiedToolPageStyles.buttonRow}>
-          <button onClick={handleCopy} className={unifiedToolPageStyles.actionButton}>Copy</button>
-        </div>
-      )}
+      <div className={styles.buttonRow}>
+        <button onClick={handleConvert} className={styles.actionButton}>Convert</button>
+        {output && (
+          <button onClick={handleCopy} className={styles.actionButton}>Copy</button>
+        )}
+      </div>
+      {error && <div className={styles.error}>{error}</div>}
     </div>
   );
 }

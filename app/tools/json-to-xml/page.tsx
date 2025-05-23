@@ -28,37 +28,37 @@ export default function JsonToXml() {
     }
   }
   return (
-    <div className={styles.toolPage} style={{ width: '100%', maxWidth: 'none', margin: '0 auto', padding: 0 }}>
+    <div className={styles.toolPage}>
       <h1>JSON to XML</h1>
-      <div className={styles.formRow} style={{ display: 'flex', flexDirection: 'row', gap: 40, alignItems: 'flex-start', justifyContent: 'center', width: '100%', maxWidth: 1900, margin: '0 auto', flexWrap: 'wrap' }}>
-        <div style={{ flex: 1, minWidth: 380, maxWidth: 900, display: 'flex', flexDirection: 'column', alignItems: 'stretch' }}>
-          <label htmlFor="json-input" style={{ fontWeight: 600, marginBottom: 6 }}>JSON Input</label>
+      <div className={styles.formRow}>
+        <div className={styles.inputColumn}>
+          <label htmlFor="json-input" className={styles.label}>JSON Input</label>
           <textarea
             id="json-input"
             value={input}
             onChange={e => setInput(e.target.value)}
             className={styles.inputArea}
-            style={{ width: '100%', minHeight: 380, fontSize: 18, resize: 'vertical' }}
+            rows={10} // Default rows
             placeholder="Enter JSON..."
           />
         </div>
-        <div style={{ flex: 1, minWidth: 380, maxWidth: 900, display: 'flex', flexDirection: 'column', alignItems: 'stretch' }}>
-          <label htmlFor="xml-output" style={{ fontWeight: 600, marginBottom: 6 }}>XML Output</label>
+        <div className={styles.outputColumn}>
+          <label htmlFor="xml-output" className={styles.label}>XML Output</label>
           <textarea
             id="xml-output"
             value={output}
             readOnly
             className={styles.outputArea}
-            style={{ width: '100%', minHeight: 380, fontSize: 18, resize: 'vertical' }}
+            rows={10} // Default rows
             placeholder="XML output..."
           />
         </div>
       </div>
-      <div style={{ display: 'flex', justifyContent: 'center', margin: '24px 0 0 0' }}>
-        <button onClick={handleConvert} className={styles.actionButton}  >Convert</button>
-        <button onClick={() => navigator.clipboard.writeText(output)} className={styles.actionButton}   disabled={!output}>Copy Output</button>
+      <div className={styles.buttonRow}>
+        <button onClick={handleConvert} className={styles.actionButton}>Convert</button>
+        <button onClick={() => navigator.clipboard.writeText(output)} className={styles.actionButton} disabled={!output}>Copy Output</button>
       </div>
-      {error && <div className={styles.error} style={{ marginTop: 16, textAlign: 'center' }}>{error}</div>}
+      {error && <div className={styles.error}>{error}</div>}
     </div>
   );
 }

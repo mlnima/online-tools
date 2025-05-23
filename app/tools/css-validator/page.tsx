@@ -37,22 +37,33 @@ const CssValidator: React.FC = () => {
   };
 
   return (
-    <div style={{ maxWidth: 700, margin: "40px auto", padding: 32 }}>
+    <div className={styles.toolPage}>
       <h1>CSS Validator</h1>
       <p>Check if your CSS is valid (basic validation).</p>
-      <textarea
-        value={input}
-        onChange={e => setInput(e.target.value)}
-        rows={10}
-        style={{ width: "100%", fontFamily: "monospace", fontSize: 16 }}
-        placeholder="Paste your CSS here..."
-      />
-      <div style={{ marginTop: 16 }}>
+      <div className={styles.formRow}>
+        <div className={styles.inputColumn}>
+          <label htmlFor="css-input" className={styles.label}>CSS Input</label>
+          <textarea
+            id="css-input"
+            value={input}
+            onChange={e => setInput(e.target.value)}
+            rows={10}
+            className={styles.inputArea}
+            placeholder="Paste your CSS here..."
+          />
+        </div>
+        <div className={styles.outputColumn}>
+          {result && (
+            <>
+              <label className={styles.label}>Validation Result:</label>
+              <p className={result === "Valid CSS" ? styles.successText : styles.error}>{result}</p>
+            </>
+          )}
+        </div>
+      </div>
+      <div className={styles.buttonRow}>
         <button onClick={handleValidate} className={styles.actionButton}>Validate</button>
       </div>
-      {result && (
-        <div style={{ marginTop: 24, color: result === "Valid CSS" ? "green" : "red" }}>{result}</div>
-      )}
     </div>
   );
 };

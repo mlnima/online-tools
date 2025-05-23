@@ -34,23 +34,36 @@ const HsvToHex: React.FC = () => {
   };
 
   return (
-    <div style={{ maxWidth: 500, margin: "40px auto", padding: 32 }}>
+    <div className={styles.toolPage}>
       <h1>HSV to HEX</h1>
       <p>Convert HSV color values to HEX format.</p>
-      <div style={{ display: "flex", gap: 16, marginBottom: 16 }}>
-        <label>H: <input type="number" min={0} max={360} value={h} onChange={e => setH(Number(e.target.value))} style={{ width: 60 }} /></label>
-        <label>S: <input type="number" min={0} max={100} value={s} onChange={e => setS(Number(e.target.value))} style={{ width: 60 }} /></label>
-        <label>V: <input type="number" min={0} max={100} value={v} onChange={e => setV(Number(e.target.value))} style={{ width: 60 }} /></label>
-      </div>
-      <button onClick={handleConvert} className={styles.actionButton}>Convert</button>
-      {hex && (
-        <div style={{ marginTop: 24 }}>
-          <h3>HEX Output:</h3>
-          <input value={hex} readOnly style={{ fontFamily: "monospace", fontSize: 16, width: 120, textAlign: "center" }} />
-          <button onClick={handleCopy} className={styles.actionButton}  >Copy</button>
-          <div style={{ width: 40, height: 40, background: hex, display: "inline-block", border: "1px solid #ccc", marginLeft: 16, verticalAlign: "middle" }} />
+      <div className={styles.formRow}>
+        <div className={styles.inputColumn}>
+          <label htmlFor="hsv-h-input" className={styles.label}>H (0-360):</label>
+          <input type="number" id="hsv-h-input" min={0} max={360} value={h} onChange={e => setH(Number(e.target.value))} className={styles.inputField} />
+          
+          <label htmlFor="hsv-s-input" className={styles.label}>S (0-100%):</label>
+          <input type="number" id="hsv-s-input" min={0} max={100} value={s} onChange={e => setS(Number(e.target.value))} className={styles.inputField} />
+          
+          <label htmlFor="hsv-v-input" className={styles.label}>V (0-100%):</label>
+          <input type="number" id="hsv-v-input" min={0} max={100} value={v} onChange={e => setV(Number(e.target.value))} className={styles.inputField} />
         </div>
-      )}
+        <div className={styles.outputColumn}>
+          {hex && (
+            <>
+              <label htmlFor="hex-output" className={styles.label}>HEX Output:</label>
+              <input id="hex-output" value={hex} readOnly className={styles.inputField} />
+              <div className={styles.colorSwatch} style={{ background: hex }} />
+            </>
+          )}
+        </div>
+      </div>
+      <div className={styles.buttonRow}>
+        <button onClick={handleConvert} className={styles.actionButton}>Convert</button>
+        {hex && (
+          <button onClick={handleCopy} className={styles.actionButton}>Copy</button>
+        )}
+      </div>
     </div>
   );
 };
