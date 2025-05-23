@@ -125,6 +125,15 @@
   word-break: break-all; // To break long unbroken strings
 }
 
+.borderRadiusPreview {
+  width: 100%;
+  height: 150px; // Or a suitable default height
+  background: var(--color-bg-tertiary); // As per original inline style
+  border: 1px dashed var(--color-border); // Optional: to make it more visible if bg is similar to card
+  margin-top: 0.5rem; // Spacing from label
+  margin-bottom: 1rem; // Spacing to next element
+}
+
 .generatedCss{
   @extend .baseArea;
   width: 100%;

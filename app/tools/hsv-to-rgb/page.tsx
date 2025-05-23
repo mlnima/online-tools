@@ -1,3 +1,11 @@
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'HSV to RGB Converter | WebWizKit',
+  description: 'Convert HSV (Hue, Saturation, Value) color values to RGB (Red, Green, Blue) format. An online color conversion tool by WebWizKit.',
+  keywords: ['HSV to RGB', 'Color Converter', 'HSV', 'RGB', 'Color Model', 'Online Tool', 'WebWizKit', 'CSS Colors']
+};
+
 "use client";
 import React from "react";
 import styles from "../../styles/UnifiedToolPage.module.scss";
@@ -27,9 +35,15 @@ export default function HsvToRgb() {
 
   function handleConvert() {
     setError("");
+    setOutput(""); // Clear previous output
+
+    if (isNaN(h) || isNaN(s) || isNaN(v)) {
+      setError("Please enter valid numbers for H, S, and V.");
+      return;
+    }
+
     if (h < 0 || h > 360 || s < 0 || s > 100 || v < 0 || v > 100) {
-      setError("H: 0-360, S/V: 0-100");
-      setOutput("");
+      setError("Invalid range. H: 0-360, S: 0-100, V: 0-100."); // Updated error message
       return;
     }
     try {

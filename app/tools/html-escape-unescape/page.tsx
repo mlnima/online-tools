@@ -1,3 +1,11 @@
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'HTML Escape/Unescape | WebWizKit',
+  description: 'Easily escape or unescape special HTML characters to their corresponding entities or plain text. An online tool by WebWizKit.',
+  keywords: ['HTML Escape', 'HTML Unescape', 'HTML Entities', 'Escape HTML', 'Unescape HTML', 'Online Tool', 'WebWizKit', 'Developer Tools']
+};
+
 "use client";
 import React from "react";
 import styles from "../../styles/UnifiedToolPage.module.scss";

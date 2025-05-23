@@ -1,3 +1,11 @@
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'CSS Border Radius Generator | WebWizKit',
+  description: 'Easily generate CSS for border-radius by adjusting each corner individually. Preview your changes live and copy the CSS code. An online tool by WebWizKit.',
+  keywords: ['CSS', 'Border Radius', 'Generator', 'CSS Generator', 'Web Design', 'Frontend Tool', 'Online Tool', 'WebWizKit', 'Corner Radius']
+};
+
 "use client";
 import React, { useState } from "react";
 import styles from "../../styles/UnifiedToolPage.module.scss";
@@ -63,17 +71,12 @@ const CssBorderRadiusGenerator: React.FC = () => {
         </div>
         <div className={styles.outputColumn}>
           <label className={styles.label}>Preview:</label>
-          <div className={styles.previewBox}>
-            <div
-              /* Removed previewInner class, assuming previewBox can handle direct content or use a generic child selector */
-              style={{
-                width: '100%', /* Ensure inner div takes space for preview */
-                height: '150px', /* Example height */
-                borderRadius: `${tl}px ${tr}px ${br}px ${bl}px`,
-                background: 'var(--color-bg-tertiary)' /* Example background */
-              }}
-            />
-          </div>
+          <div
+            className={styles.borderRadiusPreview} // Applied new class
+            style={{
+              borderRadius: `${tl}px ${tr}px ${br}px ${bl}px`, // Only dynamic style remains
+            }}
+          />
           <label htmlFor="css-output" className={styles.label}>Generated CSS:</label>
           <textarea
             id="css-output"

@@ -1,22 +1,46 @@
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'HTML Unescape | Unescape HTML Entities | WebWizKit',
+  description: 'Unescape HTML entities to their original characters. Paste your escaped text to get the plain HTML version. An online tool by WebWizKit.',
+  keywords: ['HTML Unescape', 'Unescape HTML', 'HTML Entities', 'Decode HTML', 'Online Tool', 'WebWizKit', 'Developer Tools']
+};
+
 "use client";
 import React, { useState } from "react"; // Consolidated useState import
-import styles from "../../styles/UnifiedToolPage.module.scss"; // Added styles import
+import styles from "../../styles/UnifiedToolPage.module.scss"; 
 
-function unescapeHtml(str: string) {
-  return str
-    .replace(/&lt;/g, '<')
-    .replace(/&gt;/g, '>')
-    .replace(/&quot;/g, '"')
-    .replace(/&#39;/g, "'")
-    .replace(/&amp;/g, '&');
+function unescapeHtml(input: string): string { // Changed function signature
+  try {
+    const txt = document.createElement("textarea");
+    txt.innerHTML = input;
+    return txt.value;
+  } catch (e) {
+    console.error("Error in unescapeHtml:", e);
+    return input; 
+  }
 }
 
 export default function HtmlUnescape() {
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
+  const [error, setError] = useState<string | null>(null); // Added error state
 
   const handleUnescape = () => {
-    setOutput(unescapeHtml(input));
+    setError(null); // Clear previous error
+    try {
+      setOutput(unescapeHtml(input));
+    } catch (e) {
+      setError("Error during HTML unescaping.");
+      setOutput("");
+    }
+  };
+
+  // Added handleCopy function
+  const handleCopy = () => {
+    if (output) {
+      navigator.clipboard.writeText(output);
+    }
   };
 
   return (
@@ -51,8 +75,11 @@ export default function HtmlUnescape() {
       </div>
       <div className={styles.buttonRow}>
         <button onClick={handleUnescape} className={styles.actionButton}>Unescape</button>
-        {/* Optional: Add a copy button if needed */}
+        {output && (
+          <button onClick={handleCopy} className={styles.actionButton}>Copy Output</button>
+        )}
       </div>
+      {error && <div className={styles.error}>{error}</div>} {/* Added error display */}
     </div>
   );
 }

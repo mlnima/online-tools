@@ -1,3 +1,11 @@
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'HSV to CMYK Converter | WebWizKit',
+  description: 'Convert HSV (Hue, Saturation, Value) color values to CMYK (Cyan, Magenta, Yellow, Key/Black) format. An online color conversion tool by WebWizKit.',
+  keywords: ['HSV to CMYK', 'Color Converter', 'HSV', 'CMYK', 'Color Model', 'Online Tool', 'WebWizKit', 'Design', 'Print']
+};
+
 "use client";
 import React from "react";
 import styles from "../../styles/UnifiedToolPage.module.scss";
@@ -36,9 +44,15 @@ export default function HsvToCmyk() {
 
   function handleConvert() {
     setError("");
+    setOutput(""); // Clear previous output
+
+    if (isNaN(h) || isNaN(s) || isNaN(v)) {
+      setError("Please enter valid numbers for H, S, and V.");
+      return;
+    }
+
     if (h < 0 || h > 360 || s < 0 || s > 100 || v < 0 || v > 100) {
-      setError("H: 0-360, S/V: 0-100");
-      setOutput("");
+      setError("Invalid range. H: 0-360, S: 0-100, V: 0-100.");
       return;
     }
     try {

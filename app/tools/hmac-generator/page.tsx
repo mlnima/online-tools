@@ -1,22 +1,18 @@
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'HMAC Generator | SHA-256, SHA-1 | WebWizKit',
+  description: 'Generate HMAC (Hash-based Message Authentication Code) using SHA-256 or SHA-1 algorithms with a secret key. An online security tool by WebWizKit.',
+  keywords: ['HMAC Generator', 'HMAC', 'SHA-256', 'SHA-1', 'Cryptography', 'Security', 'Online Tool', 'WebWizKit', 'Message Authentication']
+};
+
 "use client";import React from "react";
 import styles from "../../styles/UnifiedToolPage.module.scss";
 
 async function hmac(message: string, key: string, algorithm: string): Promise<string> {
-  if (algorithm === "MD5") {
-    // Fallback: Simple JS MD5 implementation (not cryptographically secure)
-    // For demo purposes only; in production, use a proper library
-    function md5cycle(x: number[], k: number[]) {
-      // ... (MD5 core omitted for brevity, see libraries for full impl)
-      return [0,0,0,0];
-    }
-    function md5(s: string) {
-      // ... (MD5 core omitted for brevity)
-      return "md5hash";
-    }
-    return md5(key + message);
-  }
+  // MD5 fallback removed
   const enc = new TextEncoder();
-  const algo = { name: "HMAC", hash: {"SHA-256":"SHA-256","SHA-1":"SHA-1"}[algorithm] };
+  const algo = { name: "HMAC", hash: algorithm }; // Corrected algo object
   const cryptoKey = await window.crypto.subtle.importKey(
     "raw", enc.encode(key), algo, false, ["sign"]
   );
@@ -54,45 +50,59 @@ export default function HmacGenerator() {
   return (
     <div className={styles.toolPage}>
       <h1>HMAC Generator</h1>
-      <textarea
-        value={message}
-        onChange={e => setMessage(e.target.value)}
-        className={styles.inputArea}
-        placeholder="Message"
-        rows={2}
-        style={{ width: 320, marginBottom: 8 }}
-      />
-      <input
-        type="text"
-        value={key}
-        onChange={e => setKey(e.target.value)}
-        className={styles.inputField}
-        placeholder="Secret Key"
-        style={{ width: 320, marginBottom: 8 }}
-      />
-      <select
-        value={algorithm}
-        onChange={e => setAlgorithm(e.target.value)}
-        className={styles.inputArea}
-        style={{ width: 160, marginBottom: 8 }}
-      >
-        <option value="SHA-256">SHA-256</option>
-        <option value="SHA-1">SHA-1</option>
-        <option value="MD5">MD5</option>
-      </select>
-      <button onClick={handleConvert} className={styles.actionButton} style={{ marginBottom: 16 }} disabled={loading}>{loading ? "Generating..." : "Generate"}</button>
+      <div className={styles.formRow}>
+        <div className={styles.inputColumn}>
+          <label htmlFor="message-input" className={styles.label}>Message</label>
+          <textarea
+            id="message-input"
+            value={message}
+            onChange={e => setMessage(e.target.value)}
+            className={styles.inputArea}
+            placeholder="Message"
+            rows={3} 
+          />
+          <label htmlFor="key-input" className={styles.label}>Secret Key</label>
+          <input
+            type="text"
+            id="key-input"
+            value={key}
+            onChange={e => setKey(e.target.value)}
+            className={styles.inputField}
+            placeholder="Secret Key"
+          />
+          <label htmlFor="algo-select" className={styles.label}>Algorithm</label>
+          <select
+            id="algo-select"
+            value={algorithm}
+            onChange={e => setAlgorithm(e.target.value)}
+            className={styles.primarySelect}
+          >
+            <option value="SHA-256">SHA-256</option>
+            <option value="SHA-1">SHA-1</option>
+            {/* MD5 Option Removed */}
+          </select>
+        </div>
+        <div className={styles.outputColumn}>
+          <label htmlFor="hmac-output" className={styles.label}>HMAC Output</label>
+          <textarea
+            id="hmac-output"
+            value={result}
+            readOnly
+            className={styles.outputArea}
+            rows={3}
+            placeholder="HMAC output"
+          />
+        </div>
+      </div>
+      <div className={styles.buttonRow}>
+        <button onClick={handleConvert} className={styles.actionButton} disabled={loading}>
+          {loading ? "Generating..." : "Generate"}
+        </button>
+        {result && (
+          <button onClick={handleCopy} className={styles.actionButton}>Copy</button>
+        )}
+      </div>
       {error && <div className={styles.error}>{error}</div>}
-      <textarea
-        value={result}
-        readOnly
-        className={styles.outputArea}
-        rows={3}
-        style={{ width: 320, textAlign: 'left', fontFamily: 'monospace', fontSize: 16 }}
-        placeholder="HMAC output"
-      />
-      {result && (
-        <button onClick={handleCopy} className={styles.actionButton} style={{ marginTop: 8 }}>Copy</button>
-      )}
     </div>
   );
 }

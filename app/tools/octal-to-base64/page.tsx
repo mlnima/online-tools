@@ -1,60 +1,94 @@
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Octal to Base64 Converter | WebWizKit',
+  description: 'Convert octal strings (space-separated) to Base64 encoding. An online number system and encoding tool by WebWizKit.',
+  keywords: ['Octal to Base64', 'Octal Converter', 'Base64 Encode', 'Number System', 'Encoding', 'Online Tool', 'WebWizKit']
+};
+
 "use client";
 import React, { useState } from "react";
+import styles from "../../styles/UnifiedToolPage.module.scss"; // Added import
 
-function octalToBase64(octal: string): string {
-  try {
-    // Split by space or treat as continuous
-    let octals = octal.trim().split(/\s+/);
-    if (octals.length === 1 && octals[0].length > 3) {
-      // Try to chunk into 3-digit groups
-      octals = octals[0].match(/.{1,3}/g) || [];
-    }
-    for (const o of octals) {
-      const num = parseInt(o, 8);
-      if (isNaN(num)) return "Invalid octal input";
-    }
-    const chars = octals.map(o => String.fromCharCode(parseInt(o, 8)));
-    return btoa(chars.join(""));
-  } catch {
-    return "Invalid octal input";
+function octalToBase64(octalInput: string): string {
+  const trimmedInput = octalInput.trim();
+  if (!trimmedInput) {
+    throw new Error("Input cannot be empty.");
   }
+  const parts = trimmedInput.split(/\s+/);
+  const byteValues = parts.map(part => {
+    if (!/^[0-7]+$/.test(part)) {
+      throw new Error(`Invalid octal character in '${part}'. Only digits 0-7 allowed.`);
+    }
+    const val = parseInt(part, 8);
+    if (isNaN(val)) { 
+      throw new Error(`'${part}' is not a valid octal number.`);
+    }
+    if (val < 0 || val > 0377) { 
+      throw new Error(`Octal value '${part}' (decimal ${val}) is out of byte range (0-255).`);
+    }
+    return val;
+  });
+  const byteString = String.fromCharCode(...byteValues);
+  return btoa(byteString);
 }
 
 export default function OctalToBase64() {
   const [octal, setOctal] = useState("");
   const [base64, setBase64] = useState("");
+  const [error, setError] = useState<string | null>(null); // Added error state
 
   function handleConvert() {
-    setBase64(octalToBase64(octal));
+    setError(null); // Clear previous error
+    setBase64("");   // Clear previous output
+    try {
+      setBase64(octalToBase64(octal));
+    } catch (e) {
+      setError((e as Error).message || "An unknown error occurred.");
+    }
   }
 
   function handleCopy() {
-    if (base64 && base64 !== "Invalid octal input") navigator.clipboard.writeText(base64);
+    if (base64) { // Removed check for "Invalid octal input"
+      navigator.clipboard.writeText(base64);
+    }
   }
 
   return (
-    <div style={{ padding: 32, textAlign: "center" }}>
+    <div className={styles.toolPage}>
       <h1>Octal to Base64</h1>
-      <p>Convert octal string (space-separated or plain) to Base64 encoding.</p>
-      <textarea
-        rows={4}
-        style={{ width: "100%", fontSize: 16 }}
-        placeholder="Paste octal string (e.g. 141 142 143 or 141142143)..."
-        value={octal}
-        onChange={e => setOctal(e.target.value)}
-      />
-      <br />
-      <button onClick={handleConvert} style={{ margin: 8 }}>Convert</button>
-      <div style={{ marginTop: 16, marginBottom: 8, textAlign: "left" }}>
-        <label>Base64 Output:</label>
-        <textarea
-          rows={3}
-          style={{ width: "100%", fontSize: 16 }}
-          value={base64}
-          readOnly
-        />
-        <button onClick={handleCopy} disabled={!base64 || base64 === "Invalid octal input"} style={{ marginTop: 6 }}>Copy</button>
+      <p>Convert octal string (space-separated) to Base64 encoding.</p> {/* Updated placeholder description */}
+      <div className={styles.formRow}>
+        <div className={styles.inputColumn}>
+          <label htmlFor="octal-input" className={styles.label}>Octal Input</label>
+          <textarea
+            id="octal-input"
+            rows={4}
+            className={styles.inputArea}
+            placeholder="e.g. 141 142 143" // Updated placeholder
+            value={octal}
+            onChange={e => setOctal(e.target.value)}
+          />
+        </div>
+        <div className={styles.outputColumn}>
+          <label htmlFor="base64-output" className={styles.label}>Base64 Output</label>
+          <textarea
+            id="base64-output"
+            rows={4} // Matched input rows
+            className={styles.outputArea}
+            value={base64}
+            readOnly
+            placeholder="Base64 output..."
+          />
+        </div>
       </div>
+      <div className={styles.buttonRow}>
+        <button onClick={handleConvert} className={styles.actionButton}>Convert</button>
+        {base64 && (
+          <button onClick={handleCopy} className={styles.actionButton} disabled={!base64}>Copy</button>
+        )}
+      </div>
+      {error && <div className={styles.error}>{error}</div>}
     </div>
   );
 }

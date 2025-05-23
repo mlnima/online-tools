@@ -1,3 +1,11 @@
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'HTML Minify | HTML Minifier | WebWizKit',
+  description: 'Minify your HTML code to reduce file size and improve website performance. An online HTML minifier tool by WebWizKit.',
+  keywords: ['HTML Minify', 'HTML Minifier', 'Compress HTML', 'Optimize HTML', 'Online Tool', 'WebWizKit', 'Frontend']
+};
+
 "use client";
 import React from "react";
 import styles from "../../styles/UnifiedToolPage.module.scss";

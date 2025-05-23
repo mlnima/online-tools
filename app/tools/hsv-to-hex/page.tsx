@@ -1,3 +1,11 @@
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'HSV to HEX Converter | WebWizKit',
+  description: 'Convert HSV (Hue, Saturation, Value) color values to HEX (Hexadecimal) format. An online color conversion tool by WebWizKit.',
+  keywords: ['HSV to HEX', 'Color Converter', 'HSV', 'HEX', 'Hexadecimal', 'Color Model', 'Online Tool', 'WebWizKit', 'CSS Colors']
+};
+
 "use client";
 import React, { useState } from "react";
 import styles from "../../styles/UnifiedToolPage.module.scss";
@@ -24,9 +32,27 @@ const HsvToHex: React.FC = () => {
   const [s, setS] = useState(100);
   const [v, setV] = useState(100);
   const [hex, setHex] = useState('');
+  const [error, setError] = useState<string | null>(null); // Added error state
 
   const handleConvert = () => {
-    setHex(hsvToHex(h, s, v));
+    setError(null); // Clear previous error
+    setHex('');   // Clear previous output
+
+    if (isNaN(h) || isNaN(s) || isNaN(v)) {
+      setError("Please enter valid numbers for H, S, and V.");
+      return;
+    }
+
+    if (h < 0 || h > 360 || s < 0 || s > 100 || v < 0 || v > 100) {
+      setError("Invalid range. H: 0-360, S: 0-100, V: 0-100.");
+      return;
+    }
+
+    try {
+      setHex(hsvToHex(h, s, v));
+    } catch (e) {
+      setError("Error during color conversion."); // Generic fallback
+    }
   };
 
   const handleCopy = () => {
@@ -64,6 +90,7 @@ const HsvToHex: React.FC = () => {
           <button onClick={handleCopy} className={styles.actionButton}>Copy</button>
         )}
       </div>
+      {error && <div className={styles.error}>{error}</div>} {/* Added error display */}
     </div>
   );
 };
