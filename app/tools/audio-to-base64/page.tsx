@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import unifiedToolPageStyles from "../../styles/UnifiedToolPage.module.scss";
+import styles from "../../styles/UnifiedToolPage.module.scss";
 
 export default function AudioToBase64() {
   const [file, setFile] = useState<File | null>(null);
@@ -26,25 +26,28 @@ export default function AudioToBase64() {
   }
 
   return (
-    <div className={unifiedToolPageStyles.toolPage}>
+    <div className={styles.toolPage}>
       <h1>Audio to Base64</h1>
       <p>Convert audio files (mp3, wav, etc.) to Base64 encoding.</p>
-      <div className={unifiedToolPageStyles.formRow}>
-        <label htmlFor="audio-upload" className={unifiedToolPageStyles.label}>Audio File</label>
-        <input id="audio-upload" type="file" accept="audio/*" onChange={handleFileChange} />
-        {file && <span className={unifiedToolPageStyles.fileName}>{file.name}</span>}
+      <div className={styles.formRow}>
+        <div className={styles.inputColumn}>
+          <label htmlFor="audio-upload" className={styles.label}>Audio File</label>
+          <input id="audio-upload" type="file" accept="audio/*" onChange={handleFileChange} className={styles.inputField} />
+          {file && <span className={styles.fileName}>{file.name}</span>}
+        </div>
+        <div className={styles.outputColumn}>
+          <label htmlFor="base64-output" className={styles.label}>Base64 Output:</label>
+          <textarea
+            id="base64-output"
+            rows={5}
+            value={base64}
+            readOnly
+            className={styles.outputArea}
+          />
+        </div>
       </div>
-      <label className={unifiedToolPageStyles.label}>Base64 Output:</label>
-      <div className={unifiedToolPageStyles.formRow}>
-        <textarea
-          rows={5}
-          value={base64}
-          readOnly
-          className={unifiedToolPageStyles.outputArea}
-        />
-      </div>
-      <div className={unifiedToolPageStyles.buttonRow}>
-        <button className={unifiedToolPageStyles.actionButton} onClick={handleCopy} disabled={!base64}>
+      <div className={styles.buttonRow}>
+        <button className={styles.actionButton} onClick={handleCopy} disabled={!base64}>
           Copy
         </button>
       </div>

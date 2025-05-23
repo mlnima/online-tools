@@ -19,25 +19,39 @@ export default function JsonMinifier() {
   };
 
   return (
-    <div style={{ maxWidth: 600, margin: "40px auto", padding: 32 }}>
+    <div className={styles.toolPage}>
       <h1>JSON Minifier</h1>
-      <textarea
-        value={input}
-        onChange={e => setInput(e.target.value)}
-        rows={10}
-        style={{ width: "100%", fontFamily: "monospace", fontSize: 16 }}
-        placeholder="Paste your JSON here..."
-      />
-      <div style={{ marginTop: 16 }}>
+      <div className={styles.formRow}>
+        <div className={styles.inputColumn}>
+          <label htmlFor="json-input" className={styles.label}>JSON Input</label>
+          <textarea
+            id="json-input"
+            value={input}
+            onChange={e => setInput(e.target.value)}
+            rows={10}
+            className={styles.inputArea}
+            placeholder="Paste your JSON here..."
+          />
+        </div>
+        <div className={styles.outputColumn}>
+          {output && (
+            <>
+              <label htmlFor="minified-json-output" className={styles.label}>Minified JSON:</label>
+              <textarea 
+                id="minified-json-output"
+                value={output} 
+                readOnly 
+                rows={10} // Adjusted rows to match input for consistency
+                className={styles.outputArea}
+              />
+            </>
+          )}
+        </div>
+      </div>
+      <div className={styles.buttonRow}>
         <button onClick={minifyJson} className={styles.actionButton}>Minify</button>
       </div>
-      {error && <div style={{ color: "red", marginTop: 16 }}>{error}</div>}
-      {output && (
-        <div style={{ marginTop: 24 }}>
-          <h3>Minified JSON:</h3>
-          <textarea value={output} readOnly rows={6} style={{ width: "100%", fontFamily: "monospace", fontSize: 16 }} />
-        </div>
-      )}
+      {error && <div className={styles.error}>{error}</div>}
     </div>
   );
 }

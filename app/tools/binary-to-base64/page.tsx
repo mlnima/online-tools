@@ -44,14 +44,7 @@ export default function BinaryToBase64() {
             onChange={e => setBinary(e.target.value)}
           />
         </div>
-      </div>
-      <br />
-      <div className={styles.buttonRow}>
-        <button onClick={handleConvert} className={styles.actionButton}>Convert</button>
-        <button onClick={handleCopy} className={styles.actionButton} disabled={!base64 || base64 === "Invalid binary input"}>Copy Base64</button>
-      </div>
-      <div className={styles.formRow}>
-        <div className={styles.inputColumn}>
+        <div className={styles.outputColumn}>
           <label htmlFor="base64-output" className={styles.label}>Base64 Output</label>
           <textarea
             id="base64-output"
@@ -61,6 +54,10 @@ export default function BinaryToBase64() {
             readOnly
           />
         </div>
+      </div>
+      <div className={styles.buttonRow}>
+        <button onClick={handleConvert} className={styles.actionButton}>Convert</button>
+        <button onClick={handleCopy} className={styles.actionButton} disabled={!base64 || base64 === "Invalid binary input"}>Copy Base64</button>
       </div>
     </div>
   );

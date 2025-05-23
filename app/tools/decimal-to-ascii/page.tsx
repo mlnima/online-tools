@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import styles from "../../styles/UnifiedToolPage.module.scss";
 
 function decimalToAscii(input: string): string {
   try {
@@ -23,27 +24,35 @@ export default function DecimalToASCII() {
   }
 
   return (
-    <div style={{ padding: 32, textAlign: "center" }}>
+    <div className={styles.toolPage}>
       <h1>Decimal to ASCII</h1>
       <p>Convert decimal numbers (space, comma, or line separated) to ASCII text.</p>
-      <textarea
-        rows={4}
-        style={{ width: "100%", fontSize: 16 }}
-        placeholder="Paste decimals (e.g. 72 101 108 108 111)..."
-        value={decimal}
-        onChange={e => setDecimal(e.target.value)}
-      />
-      <br />
-      <button onClick={handleConvert} style={{ margin: 8 }}>Convert</button>
-      <div style={{ marginTop: 16, marginBottom: 8, textAlign: "left" }}>
-        <label>ASCII Output:</label>
-        <textarea
-          rows={3}
-          style={{ width: "100%", fontSize: 16 }}
-          value={ascii}
-          readOnly
-        />
-        <button onClick={handleCopy} disabled={!ascii || ascii === "Invalid decimal input"} style={{ marginTop: 6 }}>Copy</button>
+      <div className={styles.formRow}>
+        <div className={styles.inputColumn}>
+          <label htmlFor="decimal-input" className={styles.label}>Decimal Input</label>
+          <textarea
+            id="decimal-input"
+            rows={4}
+            className={styles.inputArea}
+            placeholder="Paste decimals (e.g. 72 101 108 108 111)..."
+            value={decimal}
+            onChange={e => setDecimal(e.target.value)}
+          />
+        </div>
+        <div className={styles.outputColumn}>
+          <label htmlFor="ascii-output" className={styles.label}>ASCII Output:</label>
+          <textarea
+            id="ascii-output"
+            rows={3}
+            className={styles.outputArea}
+            value={ascii}
+            readOnly
+          />
+        </div>
+      </div>
+      <div className={styles.buttonRow}>
+        <button onClick={handleConvert} className={styles.actionButton}>Convert</button>
+        <button onClick={handleCopy} disabled={!ascii || ascii === "Invalid decimal input"} className={styles.actionButton}>Copy</button>
       </div>
     </div>
   );

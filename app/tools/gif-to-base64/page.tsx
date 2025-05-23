@@ -37,31 +37,44 @@ export default function GIFToBase64() {
   }
 
   return (
-    <div style={{ padding: 32, textAlign: "center" }}>
+    <div className={styles.toolPage}>
       <h1>GIF to Base64</h1>
       <p>Upload a GIF image to convert to Base64.</p>
-      <input
-        type="file"
-        accept="image/gif"
-        ref={inputRef}
-        onChange={handleFileChange}
-        style={{ marginBottom: 8 }}
-      />
-      {fileName && <div style={{ margin: 8 }}>File: {fileName}</div>}
-      <button onClick={handleReset} className={styles.actionButton}>Reset</button>
-      {error && <div style={{ color: "red", margin: 8 }}>{error}</div>}
-      {base64 && (
-        <div style={{ marginTop: 24 }}>
-          <label>Base64 Output:</label>
-          <textarea
-            rows={5}
-            style={{ width: "100%", fontSize: 16 }}
-            value={base64}
-            readOnly
+      <div className={styles.formRow}>
+        <div className={styles.inputColumn}>
+          <label htmlFor="gif-upload" className={styles.label}>GIF File</label>
+          <input
+            type="file"
+            id="gif-upload"
+            accept="image/gif"
+            ref={inputRef}
+            onChange={handleFileChange}
+            className={styles.inputField}
           />
-          <button onClick={handleCopy} className={styles.actionButton}>Copy</button>
+          {fileName && <span className={styles.fileName}>File: {fileName}</span>}
         </div>
-      )}
+        <div className={styles.outputColumn}>
+          {base64 && (
+            <>
+              <label htmlFor="base64-output" className={styles.label}>Base64 Output:</label>
+              <textarea
+                id="base64-output"
+                rows={5}
+                className={styles.outputArea}
+                value={base64}
+                readOnly
+              />
+            </>
+          )}
+        </div>
+      </div>
+      <div className={styles.buttonRow}>
+        <button onClick={handleReset} className={styles.actionButton}>Reset</button>
+        {base64 && (
+          <button onClick={handleCopy} className={styles.actionButton}>Copy</button>
+        )}
+      </div>
+      {error && <div className={styles.error}>{error}</div>}
     </div>
   );
 }

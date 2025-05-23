@@ -41,13 +41,7 @@ export default function BinaryToText() {
             className={styles.inputArea}
           />
         </div>
-      </div>
-      <div className={styles.buttonRow}>
-        <button onClick={handleConvert} className={styles.actionButton}>Convert</button>
-      </div>
-      {error && <div className={styles.error}>{error}</div>}
-      <div className={styles.formRow}>
-        <div className={styles.inputColumn}>
+        <div className={styles.outputColumn}>
           <label htmlFor="text-output" className={styles.label}>Text Output</label>
           <textarea
             id="text-output"
@@ -59,11 +53,13 @@ export default function BinaryToText() {
           />
         </div>
       </div>
-      {output && (
-        <div className={styles.buttonRow}>
+      <div className={styles.buttonRow}>
+        <button onClick={handleConvert} className={styles.actionButton}>Convert</button>
+        {output && (
           <button onClick={handleCopy} className={styles.actionButton}>Copy</button>
-        </div>
-      )}
+        )}
+      </div>
+      {error && <div className={styles.error}>{error}</div>}
     </div>
   );
 }

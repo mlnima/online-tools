@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import unifiedToolPageStyles from "../../styles/UnifiedToolPage.module.scss";
+import styles from "../../styles/UnifiedToolPage.module.scss";
 
 function stylusToScss(stylus: string): string {
   // Naive conversion: indentation to braces, add semicolons, colons, etc.
@@ -62,30 +62,42 @@ export default function StylusToScss() {
   }
 
   return (
-    <div className={unifiedToolPageStyles.centeredBox}>
+    <div className={styles.toolPage}> {/* Changed from centeredBox */}
       <h1>Stylus to SCSS</h1>
-      <div className={unifiedToolPageStyles.warningText}>
+      <p className={styles.warningText}> {/* Used p for semantic warning text */}
         Note: This is a naive converter. Only basic indentation and property syntax are handled.
+      </p>
+      <div className={styles.formRow}>
+        <div className={styles.inputColumn}>
+          <label htmlFor="stylus-input" className={styles.label}>Stylus Input</label>
+          <textarea
+            id="stylus-input"
+            value={input}
+            onChange={e => setInput(e.target.value)}
+            rows={8}
+            placeholder="Paste Stylus code here..."
+            className={styles.inputArea}
+          />
+        </div>
+        <div className={styles.outputColumn}>
+          <label htmlFor="scss-output" className={styles.label}>SCSS Output</label>
+          <textarea
+            id="scss-output"
+            value={output}
+            readOnly
+            rows={8}
+            placeholder="SCSS output..."
+            className={styles.outputArea}
+          />
+        </div>
       </div>
-      <textarea
-        value={input}
-        onChange={e => setInput(e.target.value)}
-        rows={8}
-        placeholder="Paste Stylus code here..."
-        className={unifiedToolPageStyles.inputArea}
-      />
-      <button onClick={handleConvert} className={`${unifiedToolPageStyles.actionButton} ${unifiedToolPageStyles.marginBottom16}`}>Convert</button>
-      {error && <div className={unifiedToolPageStyles.error}>{error}</div>}
-      <textarea
-        value={output}
-        readOnly
-        rows={8}
-        placeholder="SCSS output..."
-        className={`${unifiedToolPageStyles.outputArea} ${unifiedToolPageStyles.marginTop12}`}
-      />
-      {output && (
-        <button onClick={handleCopy} className={`${unifiedToolPageStyles.actionButton} ${unifiedToolPageStyles.marginTop8}`}>Copy</button>
-      )}
+      <div className={styles.buttonRow}>
+        <button onClick={handleConvert} className={styles.actionButton}>Convert</button>
+        {output && (
+          <button onClick={handleCopy} className={styles.actionButton}>Copy</button>
+        )}
+      </div>
+      {error && <div className={styles.error}>{error}</div>}
     </div>
   );
 }

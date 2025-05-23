@@ -35,23 +35,20 @@ export default function Base64ToHTML() {
             onChange={e => setBase64(e.target.value)}
           />
         </div>
+        <div className={styles.outputColumn}>
+          <label htmlFor="html-output" className={styles.label}>HTML Output:</label>
+          <textarea
+            id="html-output"
+            rows={3}
+            className={styles.outputArea}
+            value={html}
+            readOnly
+          />
+        </div>
       </div>
-      <br />
       <div className={styles.buttonRow}>
         <button onClick={handleConvert} className={styles.actionButton}>Convert</button>
-      </div>
-      <div className={styles.formRow}>
-        <label>HTML Output:</label>
-        <textarea
-          id="html-output"
-          rows={3}
-          className={styles.outputArea}
-          value={html}
-          readOnly
-        />
-        <div className={styles.buttonRow}>
-          <button onClick={handleCopy} disabled={!html} className={styles.actionButton}>Copy</button>
-        </div>
+        <button onClick={handleCopy} disabled={!html} className={styles.actionButton}>Copy</button>
       </div>
     </div>
   );

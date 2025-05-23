@@ -15,31 +15,42 @@ const CssToScss: React.FC = () => {
   };
 
   return (
-    <div style={{ maxWidth: 700, margin: "40px auto", padding: 32 }}>
+    <div className={styles.toolPage}>
       <h1>CSS to SCSS</h1>
       <p>Paste your CSS to convert it to SCSS (CSS is valid SCSS).</p>
-      <textarea
-        value={input}
-        onChange={e => setInput(e.target.value)}
-        rows={10}
-        style={{ width: "100%", fontFamily: "monospace", fontSize: 16 }}
-        placeholder="Paste your CSS here..."
-      />
-      <div style={{ marginTop: 16 }}>
-        <button onClick={handleConvert} className={styles.actionButton}>Convert</button>
-      </div>
-      {output && (
-        <div style={{ marginTop: 24 }}>
-          <h3>SCSS Output:</h3>
+      <div className={styles.formRow}>
+        <div className={styles.inputColumn}>
+          <label htmlFor="css-input" className={styles.label}>Input CSS</label>
           <textarea
-            value={output}
-            readOnly
+            id="css-input"
+            value={input}
+            onChange={e => setInput(e.target.value)}
             rows={10}
-            style={{ width: "100%", fontFamily: "monospace", fontSize: 16 }}
+            className={styles.inputArea}
+            placeholder="Paste your CSS here..."
           />
-          <button onClick={handleCopy} className={styles.actionButton}  >Copy</button>
         </div>
-      )}
+        <div className={styles.outputColumn}>
+          {output && (
+            <>
+              <label htmlFor="scss-output" className={styles.label}>SCSS Output</label>
+              <textarea
+                id="scss-output"
+                value={output}
+                readOnly
+                rows={10}
+                className={styles.outputArea}
+              />
+            </>
+          )}
+        </div>
+      </div>
+      <div className={styles.buttonRow}>
+        <button onClick={handleConvert} className={styles.actionButton}>Convert</button>
+        {output && (
+          <button onClick={handleCopy} className={styles.actionButton}>Copy</button>
+        )}
+      </div>
     </div>
   );
 };

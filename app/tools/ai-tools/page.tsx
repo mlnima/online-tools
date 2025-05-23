@@ -1,11 +1,12 @@
 import React from "react";
 import ComingSoon from "../../components/ComingSoon";
+import styles from "../../styles/UnifiedToolPage.module.scss";
 
 export default function AITools() {
   return (
-    <div style={{ padding: 32, textAlign: "center" }}>
+    <div className={styles.toolPage}>
       <h1>AI Tools</h1>
-        <ComingSoon />
+      <ComingSoon />
     </div>
   );
 }

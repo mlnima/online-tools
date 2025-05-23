@@ -40,7 +40,7 @@ export default function Base64ToBinary() {
             className={styles.inputArea}
           />
         </div>
-        <div className={styles.inputColumn}>
+        <div className={styles.outputColumn}>
           <label htmlFor="binary-output" className={styles.label}>Binary Output</label>
           <textarea
             id="binary-output"

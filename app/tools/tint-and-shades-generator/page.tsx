@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import unifiedToolPageStyles from "../../styles/UnifiedToolPage.module.scss";
+import styles from "../../styles/UnifiedToolPage.module.scss";
 
 function generateTintsAndShades(hex: string) {
   // Validate hex
@@ -52,41 +52,55 @@ export default function TintAndShadesGenerator() {
   }
 
   return (
-    <div className={unifiedToolPageStyles.centeredBox}>
+    <div className={styles.toolPage}> {/* Changed class */}
       <h1>Tint and Shades Generator</h1>
-      <input
-        value={input}
-        onChange={e => setInput(e.target.value)}
-        placeholder="#3498db"
-        className={`${unifiedToolPageStyles.inputArea} ${unifiedToolPageStyles.swatchInput}`}
-        maxLength={7}
-      />
-      <button onClick={handleGenerate} className={`${unifiedToolPageStyles.actionButton} ${unifiedToolPageStyles.marginLeft8}`}>Generate</button>
-      {error && <div className={unifiedToolPageStyles.error}>{error}</div>}
-      {tints.length > 0 && (
-        <div className={unifiedToolPageStyles.marginTop24}>
-          <h2 className={unifiedToolPageStyles.heading18}>Tints</h2>
-          <div className={unifiedToolPageStyles.flexRowGap}>
-            {tints.map(hex => (
-              <div key={hex} className={unifiedToolPageStyles.textCenter}>
-                <div className={unifiedToolPageStyles.colorSwatch} style={{ background: hex }} />
-                <div className={unifiedToolPageStyles.font13}>{hex}</div>
-              </div>
-            ))}
-          </div>
+      <div className={styles.formRow}>
+        <div className={styles.inputColumn} style={{flexGrow: 0}}> {/* Prevent input column from taking too much space */}
+          <label htmlFor="hex-input" className={styles.label}>Base Color (HEX)</label>
+          <input
+            id="hex-input"
+            value={input}
+            onChange={e => setInput(e.target.value)}
+            placeholder="#3498db"
+            className={styles.inputField} // Changed from inputArea, removed swatchInput
+            maxLength={7}
+          />
         </div>
-      )}
-      {shades.length > 0 && (
-        <div className={unifiedToolPageStyles.marginTop24}>
-          <h2 className={unifiedToolPageStyles.heading18}>Shades</h2>
-          <div style={{ display: 'flex', gap: 12, justifyContent: 'center' }}>
-            {shades.map(hex => (
-              <div key={hex} className={unifiedToolPageStyles.textCenter}>
-                <div className={unifiedToolPageStyles.colorSwatch} style={{ background: hex }} />
-                <div className={unifiedToolPageStyles.font13}>{hex}</div>
+      </div>
+      <div className={styles.buttonRow}>
+        <button onClick={handleGenerate} className={styles.actionButton}>Generate</button>
+      </div>
+      
+      {error && <div className={styles.error}>{error}</div>}
+
+      {(tints.length > 0 || shades.length > 0) && (
+        <div className={styles.formRow} style={{marginTop: "1rem"}}>
+          {tints.length > 0 && (
+            <div className={styles.outputColumn}>
+              <h3 className={styles.label}>Tints</h3> {/* Using label class for subheading style */}
+              <div className={styles.swatchContainer}> {/* Added a wrapper for swatches */}
+                {tints.map(hexColor => (
+                  <div key={"tint-" + hexColor} className={styles.swatchItem}>
+                    <div className={styles.colorSwatch} style={{ background: hexColor }} />
+                    <div>{hexColor}</div>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
+            </div>
+          )}
+          {shades.length > 0 && (
+            <div className={styles.outputColumn}>
+              <h3 className={styles.label}>Shades</h3> {/* Using label class for subheading style */}
+              <div className={styles.swatchContainer}> {/* Added a wrapper for swatches */}
+                {shades.map(hexColor => (
+                  <div key={"shade-" + hexColor} className={styles.swatchItem}>
+                    <div className={styles.colorSwatch} style={{ background: hexColor }} />
+                    <div>{hexColor}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       )}
     </div>

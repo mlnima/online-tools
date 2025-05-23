@@ -26,33 +26,47 @@ const JsonEditor: React.FC = () => {
   })();
 
   return (
-    <div style={{ maxWidth: 700, margin: "40px auto", padding: 32 }}>
+    <div className={styles.toolPage}>
       <h1>JSON Editor</h1>
       <p>Edit and validate JSON. Pretty-print and copy!</p>
-      <textarea
-        value={input}
-        onChange={e => setInput(e.target.value)}
-        rows={10}
-        style={{ width: "100%", fontFamily: "monospace", fontSize: 16 }}
-        placeholder="Paste or write your JSON here..."
-      />
-      <div style={{ margin: "12px 0" }}>
-        <span style={{ color: isValid ? "green" : "red" }}>{isValid ? "Valid JSON" : "Invalid JSON"}</span>
-      </div>
-      <button onClick={handleFormat} className={styles.actionButton} disabled={!isValid}>Pretty Print</button>
-      {formatted && (
-        <div style={{ marginTop: 24 }}>
-          <h3>Formatted JSON:</h3>
+      <div className={styles.formRow}>
+        <div className={styles.inputColumn}>
+          <label htmlFor="json-input-editor" className={styles.label}>JSON Input/Editor</label>
           <textarea
-            value={formatted}
-            readOnly
+            id="json-input-editor"
+            value={input}
+            onChange={e => setInput(e.target.value)}
             rows={10}
-            style={{ width: "100%", fontFamily: "monospace", fontSize: 16 }}
+            className={styles.inputArea}
+            placeholder="Paste or write your JSON here..."
           />
-          <button onClick={handleCopy} className={styles.actionButton}  >Copy</button>
+          {/* Removed parent div with inline margin, margins will come from successText/error class */}
+          <span className={isValid ? styles.successText : styles.error}>
+            {isValid ? "Valid JSON" : "Invalid JSON"}
+          </span>
         </div>
-      )}
-      {error && <div style={{ color: "red", marginTop: 16 }}>{error}</div>}
+        <div className={styles.outputColumn}>
+          {formatted && (
+            <>
+              <label htmlFor="formatted-json-output" className={styles.label}>Formatted JSON:</label>
+              <textarea
+                id="formatted-json-output"
+                value={formatted}
+                readOnly
+                rows={10}
+                className={styles.outputArea}
+              />
+            </>
+          )}
+        </div>
+      </div>
+      <div className={styles.buttonRow}>
+        <button onClick={handleFormat} className={styles.actionButton} disabled={!isValid}>Pretty Print</button>
+        {formatted && (
+          <button onClick={handleCopy} className={styles.actionButton}>Copy</button>
+        )}
+      </div>
+      {error && <div className={styles.error}>{error}</div>}
     </div>
   );
 };

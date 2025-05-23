@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import unifiedToolPageStyles from '../../styles/UnifiedToolPage.module.scss';
+import styles from '../../styles/UnifiedToolPage.module.scss';
 
 export default function WebpToBase64() {
   const [output, setOutput] = useState("");
@@ -28,20 +28,36 @@ export default function WebpToBase64() {
   }
 
   return (
-    <div className={unifiedToolPageStyles.toolPage}>
+    <div className={styles.toolPage}>
       <h1>WebP to Base64</h1>
-      <input type="file" onChange={handleFile} />
-      {error && <p className={unifiedToolPageStyles.error}>{error}</p>}
-      {output && (
-        <div>
-          <h2>Base64 Output:</h2>
-          <textarea
-            className={unifiedToolPageStyles.inputArea}
-            value={output}
-            readOnly
+      <div className={styles.formRow}>
+        <div className={styles.inputColumn}>
+          <label htmlFor="webp-input" className={styles.label}>WebP File</label>
+          <input 
+            type="file" 
+            id="webp-input" 
+            accept="image/webp" 
+            onChange={handleFile} 
+            className={styles.inputField}
           />
         </div>
-      )}
+        <div className={styles.outputColumn}>
+          {output && (
+            <>
+              <label htmlFor="base64-output" className={styles.label}>Base64 Output:</label>
+              <textarea
+                id="base64-output"
+                className={styles.outputArea} /* Changed from inputArea */
+                value={output}
+                readOnly
+                rows={6} /* Added default rows */
+              />
+            </>
+          )}
+        </div>
+      </div>
+      {error && <p className={styles.error}>{error}</p>}
+      {/* Buttons can be added here if needed, e.g., a copy button */}
     </div>
   );
 }

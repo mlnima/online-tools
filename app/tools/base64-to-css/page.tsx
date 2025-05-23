@@ -33,7 +33,7 @@ export default function Base64ToCSS() {
             className={styles.inputArea}
           />
         </div>
-        <div className={styles.inputColumn}>
+        <div className={styles.outputColumn}>
           <label htmlFor="css-output" className={styles.label}>CSS Output</label>
           <textarea
             id="css-output"

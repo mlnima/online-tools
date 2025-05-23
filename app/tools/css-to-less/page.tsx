@@ -20,33 +20,38 @@ const CssToLess: React.FC = () => {
       <p>Paste your CSS to convert it to LESS (CSS is valid LESS).</p>
         <div className={styles.formRow}>
             <div className={styles.inputColumn}>
-                      <textarea
-                          value={input}
-                          onChange={e => setInput(e.target.value)}
-                          rows={10}
-                          placeholder="Paste your CSS here..."
-                      />
+                <label htmlFor="css-input" className={styles.label}>Input CSS</label>
+                <textarea
+                    id="css-input"
+                    value={input}
+                    onChange={e => setInput(e.target.value)}
+                    rows={10}
+                    className={styles.inputArea}
+                    placeholder="Paste your CSS here..."
+                />
             </div>
-            {output && (
-                <div className={styles.inputColumn}>
-                    <h3>LESS Output:</h3>
-                    <textarea
-                        value={output}
-                        readOnly
-                        rows={10}
-
-                    />
-                    <button onClick={handleCopy} className={styles.actionButton}>Copy</button>
-                </div>
-            )}
-
-
+            <div className={styles.outputColumn}>
+                {output && (
+                    <>
+                        <label htmlFor="less-output" className={styles.label}>LESS Output</label>
+                        <textarea
+                            id="less-output"
+                            value={output}
+                            readOnly
+                            rows={10}
+                            className={styles.outputArea}
+                        />
+                    </>
+                )}
+            </div>
         </div>
 
-      <div style={{ marginTop: 16 }}>
+      <div className={styles.buttonRow}>
         <button onClick={handleConvert} className={styles.actionButton}>Convert</button>
+        {output && (
+            <button onClick={handleCopy} className={styles.actionButton}>Copy</button>
+        )}
       </div>
-
     </div>
   );
 };

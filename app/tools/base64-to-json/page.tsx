@@ -1,5 +1,4 @@
 "use client";
-"use client";
 import React, { useState } from "react";
 import styles from "../../styles/UnifiedToolPage.module.scss";
 
@@ -37,23 +36,20 @@ export default function Base64ToJSON() {
             onChange={e => setBase64(e.target.value)}
           />
         </div>
+        <div className={styles.outputColumn}>
+          <label htmlFor="json-output" className={styles.label}>JSON Output:</label>
+          <textarea
+            id="json-output"
+            rows={6}
+            className={styles.outputArea}
+            value={json}
+            readOnly
+          />
+        </div>
       </div>
-      <br />
       <div className={styles.buttonRow}>
         <button onClick={handleConvert} className={styles.actionButton}>Convert</button>
-      </div>
-      <div className={styles.formRow}>
-        <label>JSON Output:</label>
-        <textarea
-          id="json-output"
-          rows={6}
-          className={styles.outputArea}
-          value={json}
-          readOnly
-        />
-        <div className={styles.buttonRow}>
-          <button onClick={handleCopy} disabled={!json} className={styles.actionButton}>Copy</button>
-        </div>
+        <button onClick={handleCopy} disabled={!json} className={styles.actionButton}>Copy</button>
       </div>
     </div>
   );

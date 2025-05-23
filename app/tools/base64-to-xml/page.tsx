@@ -35,23 +35,20 @@ export default function Base64ToXML() {
             onChange={e => setBase64(e.target.value)}
           />
         </div>
+        <div className={styles.outputColumn}>
+          <label htmlFor="xml-output" className={styles.label}>XML Output:</label>
+          <textarea
+            id="xml-output"
+            rows={3}
+            className={styles.outputArea}
+            value={xml}
+            readOnly
+          />
+        </div>
       </div>
-      <br />
       <div className={styles.buttonRow}>
         <button onClick={handleConvert} className={styles.actionButton}>Convert</button>
-      </div>
-      <div className={styles.formRow}>
-        <label>XML Output:</label>
-        <textarea
-          id="xml-output"
-          rows={3}
-          className={styles.outputArea}
-          value={xml}
-          readOnly
-        />
-        <div className={styles.buttonRow}>
-          <button onClick={handleCopy} disabled={!xml} className={styles.actionButton}>Copy</button>
-        </div>
+        <button onClick={handleCopy} disabled={!xml} className={styles.actionButton}>Copy</button>
       </div>
     </div>
   );

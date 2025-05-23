@@ -22,13 +22,35 @@ export default function ColorConverterPage() {
       <h1>Color Converter</h1>
       <p>Convert HEX color to RGB.</p>
       <div className={styles.formRow}>
-        <label>HEX:</label>
-        <input type="color" value={hex} onChange={e => setHex(e.target.value)} />
-        <input type="text" value={hex} onChange={e => setHex(e.target.value)} maxLength={7} />
-      </div>
-      <div className={styles.result}>
-        <span>RGB: <b>{`rgb(${rgb.r}, ${rgb.g}, ${rgb.b})`}</b></span>
-        <span className={styles.colorSwatch} style={{ background: hex }} />
+        <div className={styles.inputColumn}>
+          <label htmlFor="hex-color-input" className={styles.label}>HEX Color</label>
+          <input 
+            type="color" 
+            id="hex-color-input-picker" 
+            value={hex} 
+            onChange={e => setHex(e.target.value)} 
+            className={styles.inputColor} 
+          />
+          <input 
+            type="text" 
+            id="hex-color-input" 
+            value={hex} 
+            onChange={e => setHex(e.target.value)} 
+            maxLength={7} 
+            className={styles.inputField}
+          />
+        </div>
+        <div className={styles.outputColumn}>
+          <label htmlFor="rgb-output-display" className={styles.label}>RGB Output</label>
+          <input 
+            type="text" 
+            id="rgb-output-display" 
+            readOnly 
+            value={`rgb(${rgb.r}, ${rgb.g}, ${rgb.b})`} 
+            className={styles.inputField} 
+          />
+          <span className={styles.colorSwatch} style={{ background: hex }} /> 
+        </div>
       </div>
     </div>
   );

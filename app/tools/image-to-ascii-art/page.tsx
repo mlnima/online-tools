@@ -1,5 +1,6 @@
 "use client";
 import React, { useRef, useState } from "react";
+import styles from "../../styles/UnifiedToolPage.module.scss";
 
 const ASCII_CHARS = "@%#*+=-:. ";
 
@@ -54,21 +55,36 @@ export default function ImageToASCIIArt() {
   }
 
   return (
-    <div style={{ padding: 32, textAlign: "center" }}>
+    <div className={styles.toolPage}>
       <h1>Image to ASCII Art</h1>
       <p>Upload an image to convert it to ASCII art (grayscale, 80 chars wide).</p>
-      <input type="file" accept="image/*" ref={inputRef} onChange={handleFile} />
-      {error && <div style={{ color: "red", margin: 8 }}>{error}</div>}
-      <div style={{ marginTop: 16, marginBottom: 8, textAlign: "left" }}>
-        <label>ASCII Art Output:</label>
-        <textarea
-          rows={12}
-          style={{ width: "100%", fontSize: 12, fontFamily: "monospace" }}
-          value={ascii}
-          readOnly
-        />
-        <button onClick={handleCopy} disabled={!ascii} style={{ marginTop: 6 }}>Copy</button>
+      <div className={styles.formRow}>
+        <div className={styles.inputColumn}>
+          <label htmlFor="image-upload" className={styles.label}>Image File</label>
+          <input 
+            type="file" 
+            id="image-upload" 
+            accept="image/*" 
+            ref={inputRef} 
+            onChange={handleFile} 
+            className={styles.inputField}
+          />
+        </div>
+        <div className={styles.outputColumn}>
+          <label htmlFor="ascii-output" className={styles.label}>ASCII Art Output:</label>
+          <textarea
+            id="ascii-output"
+            rows={12}
+            className={styles.outputArea}
+            value={ascii}
+            readOnly
+          />
+        </div>
       </div>
+      <div className={styles.buttonRow}>
+        <button onClick={handleCopy} disabled={!ascii} className={styles.actionButton}>Copy</button>
+      </div>
+      {error && <div className={styles.error}>{error}</div>}
     </div>
   );
 }

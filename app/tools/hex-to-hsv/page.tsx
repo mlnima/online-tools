@@ -51,26 +51,36 @@ export default function HexToHsv() {
   return (
     <div className={styles.toolPage}>
       <h1>HEX to HSV</h1>
-      <input
-        type="text"
-        value={hex}
-        onChange={e => setHex(e.target.value)}
-        className={styles.inputField}
-        placeholder="#RRGGBB"
-        style={{ width: 120, marginBottom: 8 }}
-      />
-      <button onClick={handleConvert} className={styles.actionButton} >Convert</button>
+      <div className={styles.formRow}>
+        <div className={styles.inputColumn}>
+          <label htmlFor="hex-input" className={styles.label}>HEX Input</label>
+          <input
+            type="text"
+            id="hex-input"
+            value={hex}
+            onChange={e => setHex(e.target.value)}
+            className={styles.inputField}
+            placeholder="#RRGGBB"
+          />
+        </div>
+        <div className={styles.outputColumn}>
+          <label htmlFor="hsv-output" className={styles.label}>HSV Output</label>
+          <input
+            id="hsv-output"
+            value={hsv ? `H: ${hsv[0]}, S: ${hsv[1]}%, V: ${hsv[2]}%` : ""}
+            readOnly
+            className={styles.inputField} // Changed from outputField and removed inline style
+            placeholder="HSV output"
+          />
+        </div>
+      </div>
+      <div className={styles.buttonRow}>
+        <button onClick={handleConvert} className={styles.actionButton}>Convert</button>
+        {hsv && (
+          <button onClick={handleCopy} className={styles.actionButton}>Copy</button>
+        )}
+      </div>
       {error && <div className={styles.error}>{error}</div>}
-      <input
-        value={hsv ? `H: ${hsv[0]}, S: ${hsv[1]}%, V: ${hsv[2]}%` : ""}
-        readOnly
-        className={styles.outputField}
-        style={{ width: 240, textAlign: 'center', fontFamily: 'monospace', fontSize: 16 }}
-        placeholder="HSV output"
-      />
-      {hsv && (
-        <button onClick={handleCopy} className={styles.actionButton}  >Copy</button>
-      )}
     </div>
   );
 }
