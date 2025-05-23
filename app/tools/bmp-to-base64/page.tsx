@@ -40,28 +40,41 @@ export default function BMPToBase64() {
     <div className={styles.toolPage}>
       <h1>BMP to Base64</h1>
       <p>Upload a BMP image to convert to Base64.</p>
-      <input
-        type="file"
-        accept="image/bmp"
-        ref={inputRef}
-        onChange={handleFileChange}
-        
-      />
-      {fileName && <div >File: {fileName}</div>}
-      <button onClick={handleReset} className={styles.actionButton} >Reset</button>
-      {error && <div >{error}</div>}
-      {base64 && (
-        <div >
-          <label>Base64 Output:</label>
-          <textarea
-            rows={5}
-            className={styles.outputArea}
-            value={base64}
-            readOnly
+      <div className={styles.formRow}>
+        <div className={styles.inputColumn}>
+          <label htmlFor="bmp-upload" className={styles.label}>BMP File</label>
+          <input
+            type="file"
+            id="bmp-upload"
+            accept="image/bmp"
+            ref={inputRef}
+            onChange={handleFileChange}
+            className={styles.inputField}
           />
-          <button onClick={handleCopy} className={styles.actionButton}>Copy</button>
+          {fileName && <span className={styles.fileName}>File: {fileName}</span>}
         </div>
-      )}
+        <div className={styles.outputColumn}>
+          {base64 && (
+            <>
+              <label htmlFor="base64-output" className={styles.label}>Base64 Output:</label>
+              <textarea
+                id="base64-output"
+                rows={5}
+                className={styles.outputArea}
+                value={base64}
+                readOnly
+              />
+            </>
+          )}
+        </div>
+      </div>
+      <div className={styles.buttonRow}>
+        <button onClick={handleReset} className={styles.actionButton}>Reset</button>
+        {base64 && (
+          <button onClick={handleCopy} className={styles.actionButton}>Copy</button>
+        )}
+      </div>
+      {error && <div className={styles.error}>{error}</div>}
     </div>
   );
 }

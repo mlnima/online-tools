@@ -18,32 +18,42 @@ export default function PantoneToHsv() {
   }
 
   return (
-    <div style={{ padding: 32, textAlign: "center" }}>
+    <div className={styles.toolPage}>
       <h1>Pantone to HSV</h1>
-      <div style={{ fontSize: 13, color: 'var(--color-warning)', marginBottom: 12 }}>
+      <p className={styles.warningText}> {/* Using warningText class */}
         Pantone to HSV conversion is not natively supported in browser JavaScript. This is a placeholder.
+      </p>
+      <div className={styles.formRow}>
+        <div className={styles.inputColumn}>
+          <label htmlFor="pantone-input" className={styles.label}>Pantone Code</label>
+          <textarea
+            id="pantone-input"
+            value={input}
+            onChange={e => setInput(e.target.value)}
+            rows={2}
+            placeholder="Enter Pantone code (e.g. 17-1463)"
+            className={styles.inputArea}
+          />
+        </div>
+        <div className={styles.outputColumn}>
+          <label htmlFor="hsv-output" className={styles.label}>HSV Output</label>
+          <textarea
+            id="hsv-output"
+            value={output}
+            readOnly
+            rows={2}
+            placeholder="HSV output..."
+            className={styles.outputArea}
+          />
+        </div>
       </div>
-      <textarea
-        value={input}
-        onChange={e => setInput(e.target.value)}
-        rows={2}
-        placeholder="Enter Pantone code (e.g. 17-1463)"
-        className={styles.inputArea}
-        style={{ width: '100%', marginBottom: 16 }}
-      />
-      <button onClick={handleConvert} className={styles.actionButton} style={{ marginBottom: 16 }}>Convert</button>
+      <div className={styles.buttonRow}>
+        <button onClick={handleConvert} className={styles.actionButton}>Convert</button>
+        {output && (
+          <button onClick={handleCopy} className={styles.actionButton}>Copy</button>
+        )}
+      </div>
       {error && <div className={styles.error}>{error}</div>}
-      <textarea
-        value={output}
-        readOnly
-        rows={2}
-        placeholder="HSV output..."
-        className={styles.outputArea}
-        style={{ width: '100%', marginTop: 12 }}
-      />
-      {output && (
-        <button onClick={handleCopy} className={styles.actionButton} style={{ marginTop: 8 }}>Copy</button>
-      )}
     </div>
   );
 }

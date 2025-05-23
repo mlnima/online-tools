@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import unifiedToolPageStyles from "../../styles/UnifiedToolPage.module.scss";
+import styles from "../../styles/UnifiedToolPage.module.scss";
 
 export default function Base64ToImage() {
   const [base64, setBase64] = useState("");
@@ -28,35 +28,35 @@ export default function Base64ToImage() {
   }
 
   return (
-    <div className={unifiedToolPageStyles.toolPage}>
+    <div className={styles.toolPage}>
       <h1>Base64 to Image</h1>
       <p>Paste a Base64 string to see the image.</p>
-      <div className={unifiedToolPageStyles.formRow}>
-        <div className={unifiedToolPageStyles.inputColumn}>
-          <label htmlFor="base64-input" className={unifiedToolPageStyles.label}>Base64 Input</label>
+      <div className={styles.formRow}>
+        <div className={styles.inputColumn}>
+          <label htmlFor="base64-input" className={styles.label}>Base64 Input</label>
           <textarea
             id="base64-input"
             rows={4}
-            className={unifiedToolPageStyles.inputArea}
+            className={styles.inputArea}
             placeholder="Paste Base64 image string..."
             value={base64}
             onChange={e => setBase64(e.target.value)}
           />
         </div>
-      </div>
-      <br />
-      <div className={unifiedToolPageStyles.buttonRow}>
-        <button onClick={handleConvert} className={unifiedToolPageStyles.actionButton}>Convert</button>
-        <button onClick={handleCopy} className={unifiedToolPageStyles.actionButton} disabled={!base64}>Copy Base64</button>
-      </div>
-      {error && <div className={unifiedToolPageStyles.error}>{error}</div>}
-      {imgSrc && (
-        <div className={unifiedToolPageStyles.formRow}>
-          <div className={unifiedToolPageStyles.inputColumn}>
-            <img src={imgSrc} alt="Decoded" className={unifiedToolPageStyles.imagePreview} />
-          </div>
+        <div className={styles.outputColumn}>
+          {imgSrc && (
+            <>
+              <label htmlFor="image-preview-output" className={styles.label}>Image Preview</label>
+              <img id="image-preview-output" src={imgSrc} alt="Decoded" className={styles.imagePreview} />
+            </>
+          )}
         </div>
-      )}
+      </div>
+      <div className={styles.buttonRow}>
+        <button onClick={handleConvert} className={styles.actionButton}>Convert</button>
+        <button onClick={handleCopy} className={styles.actionButton} disabled={!base64}>Copy Base64</button>
+      </div>
+      {error && <div className={styles.error}>{error}</div>}
     </div>
   );
 }

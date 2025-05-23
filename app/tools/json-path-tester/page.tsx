@@ -33,33 +33,46 @@ const JsonPathTester: React.FC = () => {
   };
 
   return (
-    <div style={{ maxWidth: 700, margin: "40px auto", padding: 32 }}>
+    <div className={styles.toolPage}>
       <h1>JSON Path Tester</h1>
       <p>Test JSONPath expressions (dot/bracket notation only).</p>
-      <textarea
-        value={json}
-        onChange={e => setJson(e.target.value)}
-        rows={8}
-        style={{ width: "100%", fontFamily: "monospace", fontSize: 16 }}
-        placeholder="Paste your JSON here..."
-      />
-      <div style={{ margin: "16px 0" }}>
-        <input
-          type="text"
-          value={path}
-          onChange={e => setPath(e.target.value)}
-          style={{ fontSize: 16, width: 400, fontFamily: "monospace" }}
-          placeholder="Enter JSONPath (e.g. a.b[0].c)"
-        />
-        <button onClick={handleTest} className={styles.actionButton} style={{ marginLeft: 16 }}>Test</button>
+      <div className={styles.formRow}>
+        <div className={styles.inputColumn}>
+          <label htmlFor="json-input" className={styles.label}>JSON Input</label>
+          <textarea
+            id="json-input"
+            value={json}
+            onChange={e => setJson(e.target.value)}
+            rows={8}
+            className={styles.inputArea}
+            placeholder="Paste your JSON here..."
+          />
+          <label htmlFor="jsonpath-input" className={styles.label}>JSONPath Expression</label>
+          <input
+            type="text"
+            id="jsonpath-input"
+            value={path}
+            onChange={e => setPath(e.target.value)}
+            className={styles.inputField}
+            placeholder="Enter JSONPath (e.g. a.b[0].c)"
+          />
+        </div>
+        {/* The output will be in a separate section below buttons */}
       </div>
+      <div className={styles.buttonRow}>
+        <button onClick={handleTest} className={styles.actionButton}>Test</button>
+      </div>
+      
+      {error && <div className={styles.error}>{error}</div>}
+
       {result && (
-        <div style={{ marginTop: 24 }}>
-          <h3>Result:</h3>
-          <pre style={{ background: "#f8f8f8", padding: 16, borderRadius: 8 }}>{result}</pre>
+        <div className={styles.formRow}> {/* New formRow for the output section */}
+          <div className={styles.outputColumn}> {/* Ensure outputColumn takes full width */}
+            <label htmlFor="jsonpath-result" className={styles.label}>Result:</label>
+            <pre id="jsonpath-result" className={styles.codeBlock}>{result}</pre>
+          </div>
         </div>
       )}
-      {error && <div style={{ color: "red", marginTop: 16 }}>{error}</div>}
     </div>
   );
 };

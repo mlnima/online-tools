@@ -59,24 +59,38 @@ export default function CmykToHsv() {
   return (
     <div className={styles.toolPage}>
       <h1>CMYK to HSV</h1>
-      <div style={{ display: 'flex', gap: 8, marginBottom: 16 }}>
-        <input type="number" min={0} max={100} value={c} onChange={e => setC(Number(e.target.value))} className={styles.inputField} placeholder="C" style={{ width: 60 }} />
-        <input type="number" min={0} max={100} value={m} onChange={e => setM(Number(e.target.value))} className={styles.inputField} placeholder="M" style={{ width: 60 }} />
-        <input type="number" min={0} max={100} value={y} onChange={e => setY(Number(e.target.value))} className={styles.inputField} placeholder="Y" style={{ width: 60 }} />
-        <input type="number" min={0} max={100} value={k} onChange={e => setK(Number(e.target.value))} className={styles.inputField} placeholder="K" style={{ width: 60 }} />
+      <div className={styles.formRow}>
+        <div className={styles.inputColumn}>
+          <label htmlFor="cmyk-c-hsv" className={styles.label}>C (Cyan %)</label>
+          <input type="number" id="cmyk-c-hsv" min={0} max={100} value={c} onChange={e => setC(Number(e.target.value))} className={styles.inputField} placeholder="0-100" />
+          
+          <label htmlFor="cmyk-m-hsv" className={styles.label}>M (Magenta %)</label>
+          <input type="number" id="cmyk-m-hsv" min={0} max={100} value={m} onChange={e => setM(Number(e.target.value))} className={styles.inputField} placeholder="0-100" />
+          
+          <label htmlFor="cmyk-y-hsv" className={styles.label}>Y (Yellow %)</label>
+          <input type="number" id="cmyk-y-hsv" min={0} max={100} value={y} onChange={e => setY(Number(e.target.value))} className={styles.inputField} placeholder="0-100" />
+          
+          <label htmlFor="cmyk-k-hsv" className={styles.label}>K (Key/Black %)</label>
+          <input type="number" id="cmyk-k-hsv" min={0} max={100} value={k} onChange={e => setK(Number(e.target.value))} className={styles.inputField} placeholder="0-100" />
+        </div>
+        <div className={styles.outputColumn}>
+          <label htmlFor="hsv-output" className={styles.label}>HSV Output (H, S, V)</label>
+          <input
+            id="hsv-output"
+            value={hsv ? `${hsv.h}, ${hsv.s}, ${hsv.v}` : ""}
+            readOnly
+            className={styles.inputField}
+            placeholder="H, S, V"
+          />
+        </div>
       </div>
-      <button onClick={handleConvert} className={styles.actionButton} >Convert</button>
+      <div className={styles.buttonRow}>
+        <button onClick={handleConvert} className={styles.actionButton}>Convert</button>
+        {hsv && (
+          <button onClick={handleCopy} className={styles.actionButton}>Copy</button>
+        )}
+      </div>
       {error && <div className={styles.error}>{error}</div>}
-      <input
-        value={hsv ? `${hsv.h}, ${hsv.s}, ${hsv.v}` : ""}
-        readOnly
-        className={styles.outputField}
-        style={{ width: 180, marginTop: 12, textAlign: 'center', fontWeight: 'bold', fontFamily: 'monospace', fontSize: 20 }}
-        placeholder="H, S, V"
-      />
-      {hsv && (
-        <button onClick={handleCopy} className={styles.actionButton}  >Copy</button>
-      )}
     </div>
   );
 }

@@ -41,34 +41,44 @@ export default function ImageToBase64() {
   return (
     <div className={styles.toolPage}>
       <h1>Image to Base64</h1>
-      <input
-        type="file"
-        accept="image/*"
-        onChange={handleFile}
-        className={styles.inputFile}
-        style={{ marginBottom: 12 }}
-      />
-      <label style={{ display: 'block', marginBottom: 8 }}>
-        <input type="checkbox" checked={dataUri} onChange={() => setDataUri(v => !v)} />
-        &nbsp;Output as Data URI
-      </label>
-      {imgSrc && (
-        <div style={{ marginBottom: 12 }}>
-          <img src={imgSrc} alt="preview" style={{ maxWidth: 180, maxHeight: 180, borderRadius: 8, border: '1px solid #ccc' }} />
-          <div style={{ fontSize: 13, color: '#888', marginTop: 4 }}>{fileName}</div>
+      <div className={styles.formRow}>
+        <div className={styles.inputColumn}>
+          <label htmlFor="image-upload" className={styles.label}>Image File</label>
+          <input
+            type="file"
+            id="image-upload"
+            accept="image/*"
+            onChange={handleFile}
+            className={styles.inputField}
+          />
+          <label className={styles.label}> 
+            <input type="checkbox" checked={dataUri} onChange={() => setDataUri(v => !v)} />
+            &nbsp;Output as Data URI
+          </label>
+          {imgSrc && (
+            <>
+              <img src={imgSrc} alt="preview" className={styles.imagePreview} />
+              {fileName && <span className={styles.fileName}>{fileName}</span>}
+            </>
+          )}
         </div>
-      )}
+        <div className={styles.outputColumn}>
+          <label htmlFor="base64-output" className={styles.label}>Base64 Output</label>
+          <textarea
+            id="base64-output"
+            value={base64}
+            readOnly
+            className={styles.outputArea}
+            rows={6}
+            placeholder="Base64 output will appear here"
+          />
+        </div>
+      </div>
       {error && <div className={styles.error}>{error}</div>}
-      <textarea
-        value={base64}
-        readOnly
-        className={styles.outputArea}
-        rows={6}
-        style={{ width: 340, fontFamily: 'monospace', fontSize: 13, background: 'var(--color-bg-secondary)' }}
-        placeholder="Base64 output will appear here"
-      />
       {base64 && (
-        <button onClick={handleCopy} className={styles.actionButton} style={{ marginTop: 8 }}>Copy</button>
+        <div className={styles.buttonRow}>
+          <button onClick={handleCopy} className={styles.actionButton}>Copy</button>
+        </div>
       )}
     </div>
   );

@@ -27,25 +27,36 @@ export default function ChecksumCalculator() {
   return (
     <div className={styles.toolPage}>
       <h1>Checksum Calculator</h1>
-      <textarea
-        value={input}
-        onChange={e => setInput(e.target.value)}
-        rows={4}
-        placeholder="Enter text..."
-        className={styles.inputArea}
-        
-      />
-      <button onClick={handleConvert} className={styles.actionButton} >Calculate</button>
+      <div className={styles.formRow}>
+        <div className={styles.inputColumn}>
+          <label htmlFor="text-input" className={styles.label}>Input Text</label>
+          <textarea
+            id="text-input"
+            value={input}
+            onChange={e => setInput(e.target.value)}
+            rows={4}
+            placeholder="Enter text..."
+            className={styles.inputArea}
+          />
+        </div>
+        <div className={styles.outputColumn}>
+          <label htmlFor="checksum-output" className={styles.label}>Checksum</label>
+          <input
+            id="checksum-output"
+            value={checksum}
+            readOnly
+            className={styles.inputField} // Changed from outputField
+            placeholder="Checksum"
+          />
+        </div>
+      </div>
+      <div className={styles.buttonRow}>
+        <button onClick={handleConvert} className={styles.actionButton}>Calculate</button>
+        {checksum && (
+          <button onClick={handleCopy} className={styles.actionButton}>Copy</button>
+        )}
+      </div>
       {error && <div className={styles.error}>{error}</div>}
-      <input
-        value={checksum}
-        readOnly
-        className={styles.outputField}
-        placeholder="Checksum"
-      />
-      {checksum && (
-        <button onClick={handleCopy} className={styles.actionButton} >Copy</button>
-      )}
     </div>
   );
 }

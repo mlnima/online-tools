@@ -34,7 +34,7 @@ export default function Base64ToCSV() {
             className={styles.inputArea}
           />
         </div>
-        <div className={styles.inputColumn}>
+        <div className={styles.outputColumn}>
           <label htmlFor="csv-output" className={styles.label}>CSV Output</label>
           <textarea
             id="csv-output"

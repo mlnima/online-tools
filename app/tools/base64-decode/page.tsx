@@ -25,15 +25,13 @@ export default function Base64Decode() {
           <label className={styles.label} htmlFor="base64input">Base64 Input</label>
           <textarea id="base64input" className={styles.inputArea} placeholder="Paste Base64 string here..." value={input} onChange={e => setInput(e.target.value)} />
         </div>
+        <div className={styles.outputColumn}>
+          <label className={styles.label} htmlFor="base64output">Decoded Output</label>
+          <textarea id="base64output" className={styles.outputArea} value={output} readOnly />
+        </div>
       </div>
       <div className={styles.buttonRow}>
         <button onClick={handleDecode} className={styles.actionButton}>Decode</button>
-      </div>
-      <div className={styles.formRow}>
-        <div className={styles.inputColumn}>
-          <label className={styles.label}>Decoded Output</label>
-          <textarea className={styles.outputArea} value={output} readOnly />
-        </div>
       </div>
       {error && <div className={styles.error}>{error}</div>}
     </div>

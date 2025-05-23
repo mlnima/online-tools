@@ -31,23 +31,34 @@ export default function Sha256HashGenerator() {
   return (
     <div className={styles.toolPage}>
       <h1>SHA256 Hash Generator</h1>
-      <textarea
-        value={input}
-        onChange={e => setInput(e.target.value)}
-        rows={4}
-        placeholder="Enter text..."
-        className={styles.inputArea}
-      />
-      <button onClick={handleHash} className={styles.actionButton} disabled={loading}>{loading ? "Hashing..." : "Generate Hash"}</button>
+      <div className={styles.formRow}>
+        <div className={styles.inputColumn}>
+          <label htmlFor="text-input" className={styles.label}>Input Text</label>
+          <textarea
+            id="text-input"
+            value={input}
+            onChange={e => setInput(e.target.value)}
+            rows={4}
+            placeholder="Enter text..."
+            className={styles.inputArea}
+          />
+        </div>
+        <div className={styles.outputColumn}>
+          <label htmlFor="sha256-output" className={styles.label}>SHA256 Hash</label>
+          <input
+            type="text"
+            id="sha256-output"
+            value={output}
+            readOnly
+            className={styles.inputField} /* Changed from outputArea to inputField */
+            placeholder="SHA256 hash will appear here..."
+          />
+        </div>
+      </div>
+      <div className={styles.buttonRow}>
+        <button onClick={handleHash} className={styles.actionButton} disabled={loading}>{loading ? "Hashing..." : "Generate Hash"}</button>
+      </div>
       {error && <div className={styles.error}>{error}</div>}
-      <input
-        type="text"
-        value={output}
-        readOnly
-        className={styles.outputArea}
-        style={{ marginTop: 16, width: "100%", fontSize: 16 }}
-        placeholder="SHA256 hash will appear here..."
-      />
     </div>
   );
 }

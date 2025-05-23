@@ -1,6 +1,5 @@
 "use client";
 import React, { useState } from "react";
-import unifiedToolPageStyles from "../../styles/UnifiedToolPage.module.scss";
 import styles from "../../styles/UnifiedToolPage.module.scss";
 
 function textToAscii(input: string): string {
@@ -24,27 +23,34 @@ export default function TextToASCII() {
   }
 
   return (
-    <div className={unifiedToolPageStyles.toolPage}>
+    <div className={styles.toolPage}>
       <h1>Text to ASCII</h1>
       <p>Convert text to ASCII codes (space separated).</p>
-      <textarea
-        rows={4}
-        className={unifiedToolPageStyles.inputArea}
-        placeholder="Paste text..."
-        value={text}
-        onChange={e => setText(e.target.value)}
-      />
-      <div className={unifiedToolPageStyles.buttonRow}>
-        <button className={unifiedToolPageStyles.actionButton} onClick={handleConvert}>Convert</button>
+      <div className={styles.formRow}>
+        <div className={styles.inputColumn}>
+          <label htmlFor="text-input" className={styles.label}>Text Input</label>
+          <textarea
+            id="text-input"
+            rows={4}
+            className={styles.inputArea}
+            placeholder="Paste text..."
+            value={text}
+            onChange={e => setText(e.target.value)}
+          />
+        </div>
+        <div className={styles.outputColumn}>
+          <label htmlFor="ascii-output" className={styles.label}>ASCII Output:</label>
+          <textarea
+            id="ascii-output"
+            rows={4} /* Adjusted rows to match input for consistency */
+            className={styles.outputArea} /* Corrected class */
+            value={ascii}
+            readOnly
+          />
+        </div>
       </div>
-      <div className={unifiedToolPageStyles.outputArea}>
-        <label>ASCII Output:</label>
-        <textarea
-          rows={3}
-          className={unifiedToolPageStyles.inputArea}
-          value={ascii}
-          readOnly
-        />
+      <div className={styles.buttonRow}>
+        <button className={styles.actionButton} onClick={handleConvert}>Convert</button>
         <button onClick={handleCopy} disabled={!ascii || ascii === "Invalid text input"} className={styles.actionButton}>Copy</button>
       </div>
     </div>

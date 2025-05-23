@@ -39,7 +39,7 @@ export default function ASCIIToText() {
             onChange={e => setAscii(e.target.value)}
           />
         </div>
-        <div className={styles.inputColumn}>
+        <div className={styles.outputColumn}>
           <label htmlFor="text-output" className={styles.label}>Text Output</label>
           <textarea
             id="text-output"

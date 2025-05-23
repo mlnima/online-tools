@@ -43,37 +43,57 @@ const JsonDiff: React.FC = () => {
   };
 
   return (
-    <div style={{ maxWidth: 900, margin: "40px auto", padding: 32 }}>
+    <div className={styles.toolPage}>
       <h1>JSON Diff</h1>
       <p>Compare two JSON objects and see the differences.</p>
-      <div style={{ display: "flex", gap: 16, marginBottom: 16 }}>
-        <textarea
-          value={inputA}
-          onChange={e => setInputA(e.target.value)}
-          rows={10}
-          style={{ width: "50%", fontFamily: "monospace", fontSize: 16 }}
-          placeholder="First JSON..."
-        />
-        <textarea
-          value={inputB}
-          onChange={e => setInputB(e.target.value)}
-          rows={10}
-          style={{ width: "50%", fontFamily: "monospace", fontSize: 16 }}
-          placeholder="Second JSON..."
-        />
+      <div className={styles.formRow}>
+        <div className={styles.inputColumn}>
+          <label htmlFor="json-input-a" className={styles.label}>First JSON</label>
+          <textarea
+            id="json-input-a"
+            value={inputA}
+            onChange={e => setInputA(e.target.value)}
+            rows={10}
+            className={styles.inputArea}
+            placeholder="First JSON..."
+          />
+        </div>
+        <div className={styles.outputColumn}> {/* Using outputColumn for the second input area */}
+          <label htmlFor="json-input-b" className={styles.label}>Second JSON</label>
+          <textarea
+            id="json-input-b"
+            value={inputB}
+            onChange={e => setInputB(e.target.value)}
+            rows={10}
+            className={styles.inputArea} // Still an input for the user
+            placeholder="Second JSON..."
+          />
+        </div>
       </div>
-      <button onClick={handleCompare} className={styles.actionButton}>Compare</button>
-      {error && <div style={{ color: "red", marginTop: 16 }}>{error}</div>}
+      <div className={styles.buttonRow}>
+        <button onClick={handleCompare} className={styles.actionButton}>Compare</button>
+      </div>
+      {error && <div className={styles.error}>{error}</div>}
       {diffs.length > 0 && (
-        <div style={{ marginTop: 24 }}>
-          <h3>Differences:</h3>
-          <ul style={{ textAlign: "left", fontFamily: "monospace", fontSize: 16 }}>
-            {diffs.map((d, i) => <li key={i}>{d}</li>)}
-          </ul>
+        <div className={styles.formRow}> {/* New formRow for the output */}
+            <div className={styles.outputColumn}> {/* Output column spans full width */}
+            <label htmlFor="diff-output" className={styles.label}>Differences:</label>
+            <textarea
+                id="diff-output"
+                value={diffs.join("\\n")}
+                readOnly
+                rows={8}
+                className={styles.outputArea}
+            />
+            </div>
         </div>
       )}
-      {diffs.length === 0 && !error && (
-        <div style={{ marginTop: 24, color: "green" }}>No differences found.</div>
+      {diffs.length === 0 && !error && inputA && inputB && ( // Show only if comparison has been run
+        <div className={styles.formRow}>
+            <div className={styles.outputColumn}>
+                <p>No differences found.</p>
+            </div>
+        </div>
       )}
     </div>
   );

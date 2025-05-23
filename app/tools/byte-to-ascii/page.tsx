@@ -39,23 +39,20 @@ export default function ByteToASCII() {
             onChange={e => setBytes(e.target.value)}
           />
         </div>
+        <div className={styles.outputColumn}>
+          <label htmlFor="ascii-output" className={styles.label}>ASCII Output:</label>
+          <textarea
+            id="ascii-output"
+            rows={3}
+            className={styles.outputArea}
+            value={ascii}
+            readOnly
+          />
+        </div>
       </div>
-      <br />
       <div className={styles.buttonRow}>
         <button onClick={handleConvert} className={styles.actionButton}>Convert</button>
-      </div>
-      <div className={styles.formRow}>
-        <label>ASCII Output:</label>
-        <textarea
-          id="ascii-output"
-          rows={3}
-          className={styles.outputArea}
-          value={ascii}
-          readOnly
-        />
-        <div className={styles.buttonRow}>
-          <button onClick={handleCopy} disabled={!ascii || ascii === "Invalid byte input"} className={styles.actionButton}>Copy</button>
-        </div>
+        <button onClick={handleCopy} disabled={!ascii || ascii === "Invalid byte input"} className={styles.actionButton}>Copy</button>
       </div>
     </div>
   );

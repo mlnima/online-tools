@@ -55,29 +55,41 @@ export default function CmykToPantone() {
   return (
     <div className={styles.toolPage}>
       <h1>CMYK to Pantone</h1>
-      <div style={{ display: 'flex', gap: 8, marginBottom: 16 }}>
-        <input type="number" min={0} max={100} value={c} onChange={e => setC(Number(e.target.value))} className={styles.inputField} placeholder="C" style={{ width: 60 }} />
-        <input type="number" min={0} max={100} value={m} onChange={e => setM(Number(e.target.value))} className={styles.inputField} placeholder="M" style={{ width: 60 }} />
-        <input type="number" min={0} max={100} value={y} onChange={e => setY(Number(e.target.value))} className={styles.inputField} placeholder="Y" style={{ width: 60 }} />
-        <input type="number" min={0} max={100} value={k} onChange={e => setK(Number(e.target.value))} className={styles.inputField} placeholder="K" style={{ width: 60 }} />
-      </div>
-      <button onClick={handleConvert} className={styles.actionButton} style={{ marginBottom: 16 }}>Convert</button>
-      {error && <div className={styles.error}>{error}</div>}
-      <input
-        value={pantone ? `${pantone.code} (${pantone.name})` : ""}
-        readOnly
-        className={styles.outputField}
-        style={{ width: 260, marginTop: 12, textAlign: 'center', fontWeight: 'bold', fontFamily: 'monospace', fontSize: 16 }}
-        placeholder="Pantone Code (Name)"
-      />
-      {pantone && (
-        <button onClick={handleCopy} className={styles.actionButton} style={{ marginTop: 8 }}>Copy</button>
-      )}
-      {pantone && (
-        <div style={{ marginTop: 16 }}>
-          <span style={{ display: 'inline-block', width: 40, height: 40, background: pantone.hex, border: '1px solid #ccc', borderRadius: 8 }} />
+      <div className={styles.formRow}>
+        <div className={styles.inputColumn}>
+          <label htmlFor="cmyk-c-pantone" className={styles.label}>C (Cyan %)</label>
+          <input type="number" id="cmyk-c-pantone" min={0} max={100} value={c} onChange={e => setC(Number(e.target.value))} className={styles.inputField} placeholder="0-100" />
+          
+          <label htmlFor="cmyk-m-pantone" className={styles.label}>M (Magenta %)</label>
+          <input type="number" id="cmyk-m-pantone" min={0} max={100} value={m} onChange={e => setM(Number(e.target.value))} className={styles.inputField} placeholder="0-100" />
+          
+          <label htmlFor="cmyk-y-pantone" className={styles.label}>Y (Yellow %)</label>
+          <input type="number" id="cmyk-y-pantone" min={0} max={100} value={y} onChange={e => setY(Number(e.target.value))} className={styles.inputField} placeholder="0-100" />
+          
+          <label htmlFor="cmyk-k-pantone" className={styles.label}>K (Key/Black %)</label>
+          <input type="number" id="cmyk-k-pantone" min={0} max={100} value={k} onChange={e => setK(Number(e.target.value))} className={styles.inputField} placeholder="0-100" />
         </div>
-      )}
+        <div className={styles.outputColumn}>
+          <label htmlFor="pantone-output" className={styles.label}>Pantone Output</label>
+          <input
+            id="pantone-output"
+            value={pantone ? `${pantone.code} (${pantone.name})` : ""}
+            readOnly
+            className={styles.inputField}
+            placeholder="Pantone Code (Name)"
+          />
+          {pantone && (
+            <span className={styles.colorSwatch} /> 
+          )}
+        </div>
+      </div>
+      <div className={styles.buttonRow}>
+        <button onClick={handleConvert} className={styles.actionButton}>Convert</button>
+        {pantone && (
+          <button onClick={handleCopy} className={styles.actionButton}>Copy</button>
+        )}
+      </div>
+      {error && <div className={styles.error}>{error}</div>}
     </div>
   );
 }

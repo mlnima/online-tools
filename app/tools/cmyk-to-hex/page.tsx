@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
-
-import unifiedToolPageStyles from "../../styles/UnifiedToolPage.module.scss";
+import styles from "../../styles/UnifiedToolPage.module.scss";
 
 export default function CmykToHex() {
   const [c, setC] = React.useState(0);
@@ -39,30 +38,43 @@ export default function CmykToHex() {
   }
 
   return (
-    <div className={unifiedToolPageStyles.toolPage}>
+    <div className={styles.toolPage}>
       <h1>CMYK to HEX</h1>
-      <div className={unifiedToolPageStyles.buttonRow}>
-        <input type="number" min={0} max={100} value={c} onChange={e => setC(Number(e.target.value))} className={unifiedToolPageStyles.inputField} placeholder="C" />
-        <input type="number" min={0} max={100} value={m} onChange={e => setM(Number(e.target.value))} className={unifiedToolPageStyles.inputField} placeholder="M" />
-        <input type="number" min={0} max={100} value={y} onChange={e => setY(Number(e.target.value))} className={unifiedToolPageStyles.inputField} placeholder="Y" />
-        <input type="number" min={0} max={100} value={k} onChange={e => setK(Number(e.target.value))} className={unifiedToolPageStyles.inputField} placeholder="K" />
-      </div>
-      <button onClick={handleConvert} className={unifiedToolPageStyles.actionButton} >Convert</button>
-      {error && <div className={unifiedToolPageStyles.error}>{error}</div>}
-      <input
-        value={hex}
-        readOnly
-        className={unifiedToolPageStyles.outputField}
-        placeholder="#RRGGBB"
-      />
-      {hex && (
-        <button onClick={handleCopy} className={unifiedToolPageStyles.actionButton} >Copy</button>
-      )}
-      {hex && (
-        <div className={unifiedToolPageStyles.hexSwatchWrapper}>
-          <span className={unifiedToolPageStyles.hexSwatch} style={{background: hex}} />
+      <div className={styles.formRow}>
+        <div className={styles.inputColumn}>
+          <label htmlFor="cmyk-c-input" className={styles.label}>C (Cyan %)</label>
+          <input type="number" id="cmyk-c-input" min={0} max={100} value={c} onChange={e => setC(Number(e.target.value))} className={styles.inputField} placeholder="0-100" />
+          
+          <label htmlFor="cmyk-m-input" className={styles.label}>M (Magenta %)</label>
+          <input type="number" id="cmyk-m-input" min={0} max={100} value={m} onChange={e => setM(Number(e.target.value))} className={styles.inputField} placeholder="0-100" />
+          
+          <label htmlFor="cmyk-y-input" className={styles.label}>Y (Yellow %)</label>
+          <input type="number" id="cmyk-y-input" min={0} max={100} value={y} onChange={e => setY(Number(e.target.value))} className={styles.inputField} placeholder="0-100" />
+          
+          <label htmlFor="cmyk-k-input" className={styles.label}>K (Key/Black %)</label>
+          <input type="number" id="cmyk-k-input" min={0} max={100} value={k} onChange={e => setK(Number(e.target.value))} className={styles.inputField} placeholder="0-100" />
         </div>
-      )}
+        <div className={styles.outputColumn}>
+          <label htmlFor="hex-output" className={styles.label}>HEX Output</label>
+          <input
+            id="hex-output"
+            value={hex}
+            readOnly
+            className={styles.inputField}
+            placeholder="#RRGGBB"
+          />
+          {hex && (
+            <span className={styles.colorSwatch} /> 
+          )}
+        </div>
+      </div>
+      <div className={styles.buttonRow}>
+        <button onClick={handleConvert} className={styles.actionButton}>Convert</button>
+        {hex && (
+          <button onClick={handleCopy} className={styles.actionButton}>Copy</button>
+        )}
+      </div>
+      {error && <div className={styles.error}>{error}</div>}
     </div>
   );
 }

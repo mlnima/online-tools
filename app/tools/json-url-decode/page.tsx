@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import unifiedToolPageStyles from "../../styles/UnifiedToolPage.module.scss";
+import styles from "../../styles/UnifiedToolPage.module.scss";
 
 export default function JsonUrlDecode() {
   const [input, setInput] = useState("");
@@ -19,29 +19,39 @@ export default function JsonUrlDecode() {
     }
   }
   return (
-    <div className={unifiedToolPageStyles.toolPage}>
+    <div className={styles.toolPage}>
       <h1>JSON URL Decode</h1>
-      <textarea
-        value={input}
-        onChange={e => setInput(e.target.value)}
-        rows={3}
-        placeholder="Paste URL-encoded JSON here..."
-        className={unifiedToolPageStyles.inputArea}
-        style={{ width: '100%', marginBottom: 16 }}
-      />
-      <button onClick={handleDecode} className={unifiedToolPageStyles.actionButton} style={{ marginBottom: 16 }}>Decode</button>
-      {error && <div className={unifiedToolPageStyles.error}>{error}</div>}
-      <textarea
-        value={output}
-        readOnly
-        rows={6}
-        placeholder="Decoded JSON output..."
-        className={unifiedToolPageStyles.outputArea}
-        
-      />
-      {output && (
-        <button onClick={() => navigator.clipboard.writeText(output)} className={unifiedToolPageStyles.actionButton} >Copy</button>
-      )}
+      <div className={styles.formRow}>
+        <div className={styles.inputColumn}>
+          <label htmlFor="url-json-input" className={styles.label}>URL-encoded JSON</label>
+          <textarea
+            id="url-json-input"
+            value={input}
+            onChange={e => setInput(e.target.value)}
+            rows={3}
+            placeholder="Paste URL-encoded JSON here..."
+            className={styles.inputArea}
+          />
+        </div>
+        <div className={styles.outputColumn}>
+          <label htmlFor="decoded-json-output" className={styles.label}>Decoded JSON</label>
+          <textarea
+            id="decoded-json-output"
+            value={output}
+            readOnly
+            rows={6}
+            placeholder="Decoded JSON output..."
+            className={styles.outputArea}
+          />
+        </div>
+      </div>
+      <div className={styles.buttonRow}>
+        <button onClick={handleDecode} className={styles.actionButton}>Decode</button>
+        {output && (
+          <button onClick={() => navigator.clipboard.writeText(output)} className={styles.actionButton}>Copy</button>
+        )}
+      </div>
+      {error && <div className={styles.error}>{error}</div>}
     </div>
   );
 }

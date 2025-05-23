@@ -1,12 +1,17 @@
 "use client";
 import React, { useState } from "react";
-import unifiedToolPageStyles from "../../styles/UnifiedToolPage.module.scss";
-import ComingSoon from "../../components/ComingSoon";
+import styles from "../../styles/UnifiedToolPage.module.scss";
+// Removed ComingSoon import
 
 export default function YamlFormatter() {
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
   const [error, setError] = useState("");
+
+  // Added handleCopy function
+  function handleCopy() {
+    if (output) navigator.clipboard.writeText(output);
+  }
 
   function handleFormat() {
     setError("");
@@ -24,9 +29,39 @@ export default function YamlFormatter() {
     }
   }
   return (
-    <div className={unifiedToolPageStyles.toolPage}>
+    <div className={styles.toolPage}>
       <h1>YAML Formatter</h1>
-      <ComingSoon />
+      <div className={styles.formRow}>
+        <div className={styles.inputColumn}>
+          <label htmlFor="yaml-input" className={styles.label}>YAML Input</label>
+          <textarea
+            id="yaml-input"
+            value={input}
+            onChange={e => setInput(e.target.value)}
+            rows={10}
+            placeholder="Paste YAML here..."
+            className={styles.inputArea}
+          />
+        </div>
+        <div className={styles.outputColumn}>
+          <label htmlFor="yaml-output" className={styles.label}>Formatted YAML</label>
+          <textarea
+            id="yaml-output"
+            value={output}
+            readOnly
+            rows={10}
+            placeholder="Formatted YAML output..."
+            className={styles.outputArea}
+          />
+        </div>
+      </div>
+      <div className={styles.buttonRow}>
+        <button onClick={handleFormat} className={styles.actionButton}>Format</button>
+        {output && (
+          <button onClick={handleCopy} className={styles.actionButton}>Copy</button>
+        )}
+      </div>
+      {error && <div className={styles.error}>{error}</div>}
     </div>
   );
 }

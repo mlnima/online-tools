@@ -20,26 +20,34 @@ export default function CSVToBase64() {
   }
 
   return (
-    <div style={{ padding: 32, textAlign: "center" }}>
+    <div className={styles.toolPage}>
       <h1>CSV to Base64</h1>
       <p>Encode CSV text to Base64 (UTF-8 encoded).</p>
-      <textarea
-        rows={4}
-        style={{ width: "100%", fontSize: 16 }}
-        placeholder="Paste CSV text..."
-        value={csv}
-        onChange={e => setCsv(e.target.value)}
-      />
-      <br />
-      <button onClick={handleConvert} className={styles.actionButton}>Convert</button>
-      <div style={{ marginTop: 16, marginBottom: 8, textAlign: "left" }}>
-        <label>Base64 Output:</label>
-        <textarea
-          rows={3}
-          style={{ width: "100%", fontSize: 16 }}
-          value={base64}
-          readOnly
-        />
+      <div className={styles.formRow}>
+        <div className={styles.inputColumn}>
+          <label htmlFor="csv-input" className={styles.label}>CSV Input</label>
+          <textarea
+            id="csv-input"
+            rows={4}
+            className={styles.inputArea}
+            placeholder="Paste CSV text..."
+            value={csv}
+            onChange={e => setCsv(e.target.value)}
+          />
+        </div>
+        <div className={styles.outputColumn}>
+          <label htmlFor="base64-output" className={styles.label}>Base64 Output:</label>
+          <textarea
+            id="base64-output"
+            rows={3}
+            className={styles.outputArea}
+            value={base64}
+            readOnly
+          />
+        </div>
+      </div>
+      <div className={styles.buttonRow}>
+        <button onClick={handleConvert} className={styles.actionButton}>Convert</button>
         <button onClick={handleCopy} disabled={!base64} className={styles.actionButton}>Copy</button>
       </div>
     </div>

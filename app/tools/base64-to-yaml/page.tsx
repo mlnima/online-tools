@@ -24,7 +24,7 @@ export default function Base64ToYAML() {
       <h1>Base64 to YAML</h1>
       <p>Decode Base64 string to YAML text.</p>
       <div className={styles.formRow}>
-          <div className={styles.inputColumn}>
+        <div className={styles.inputColumn}>
           <label htmlFor="base64-input" className={styles.label}>Base64 Input</label>
           <textarea
             id="base64-input"
@@ -35,25 +35,21 @@ export default function Base64ToYAML() {
             onChange={e => setBase64(e.target.value)}
           />
         </div>
-          <div className={styles.buttonRow}>
-              <button onClick={handleConvert} className={styles.actionButton}>Convert</button>
-          </div>
-          <div className={styles.inputColumn}>
-              <label>YAML Output:</label>
-              <textarea
-                  id="yaml-output"
-                  rows={3}
-                  className={styles.outputArea}
-                  value={yaml}
-                  readOnly
-              />
-          </div>
-
-      </div>
-
-        <div className={styles.buttonRow}>
-            <button onClick={handleCopy} disabled={!yaml} className={styles.actionButton}>Copy</button>
+        <div className={styles.outputColumn}>
+          <label htmlFor="yaml-output" className={styles.label}>YAML Output:</label>
+          <textarea
+            id="yaml-output"
+            rows={3}
+            className={styles.outputArea}
+            value={yaml}
+            readOnly
+          />
         </div>
+      </div>
+      <div className={styles.buttonRow}>
+        <button onClick={handleConvert} className={styles.actionButton}>Convert</button>
+        <button onClick={handleCopy} disabled={!yaml} className={styles.actionButton}>Copy</button>
+      </div>
     </div>
   );
 }

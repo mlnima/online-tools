@@ -29,7 +29,7 @@ export default function Base64EncodePage() {
             placeholder="Enter text to encode..."
           />
         </div>
-        <div className={styles.inputColumn}>
+        <div className={styles.outputColumn}>
           <label htmlFor="base64-output" className={styles.label}>Output</label>
           <textarea
             id="base64-output"

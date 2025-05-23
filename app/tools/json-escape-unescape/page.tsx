@@ -32,33 +32,44 @@ const JsonEscapeUnescape: React.FC = () => {
   };
 
   return (
-    <div style={{ maxWidth: 700, margin: "40px auto", padding: 32 }}>
+    <div className={styles.toolPage}>
       <h1>JSON Escape/Unescape</h1>
       <p>Escape or unescape text for JSON string usage.</p>
-      <textarea
-        value={input}
-        onChange={e => setInput(e.target.value)}
-        rows={6}
-        style={{ width: "100%", fontFamily: "monospace", fontSize: 16 }}
-        placeholder="Enter text to escape/unescape..."
-      />
-      <div style={{ margin: "16px 0" }}>
-        <button onClick={handleEscape} className={styles.actionButton} style={{ marginRight: 8 }}>Escape</button>
-        <button onClick={handleUnescape} className={styles.actionButton}>Unescape</button>
-      </div>
-      {output && (
-        <div style={{ marginTop: 24 }}>
-          <h3>Result:</h3>
+      <div className={styles.formRow}>
+        <div className={styles.inputColumn}>
+          <label htmlFor="json-escape-input" className={styles.label}>Input Text</label>
           <textarea
-            value={output}
-            readOnly
+            id="json-escape-input"
+            value={input}
+            onChange={e => setInput(e.target.value)}
             rows={6}
-            style={{ width: "100%", fontFamily: "monospace", fontSize: 16 }}
+            className={styles.inputArea}
+            placeholder="Enter text to escape/unescape..."
           />
-          <button onClick={handleCopy} className={styles.actionButton} style={{ marginTop: 8 }}>Copy</button>
         </div>
-      )}
-      {error && <div style={{ color: "red", marginTop: 16 }}>{error}</div>}
+        <div className={styles.outputColumn}>
+          {output && (
+            <>
+              <label htmlFor="json-escape-output" className={styles.label}>Result:</label>
+              <textarea
+                id="json-escape-output"
+                value={output}
+                readOnly
+                rows={6}
+                className={styles.outputArea}
+              />
+            </>
+          )}
+        </div>
+      </div>
+      <div className={styles.buttonRow}>
+        <button onClick={handleEscape} className={styles.actionButton}>Escape</button>
+        <button onClick={handleUnescape} className={styles.actionButton}>Unescape</button>
+        {output && (
+          <button onClick={handleCopy} className={styles.actionButton}>Copy</button>
+        )}
+      </div>
+      {error && <div className={styles.error}>{error}</div>}
     </div>
   );
 };

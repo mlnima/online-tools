@@ -45,26 +45,36 @@ export default function HexToCmyk() {
   return (
     <div className={styles.toolPage}>
       <h1>HEX to CMYK</h1>
-      <input
-        type="text"
-        value={hex}
-        onChange={e => setHex(e.target.value)}
-        className={styles.inputField}
-        placeholder="#RRGGBB"
-        style={{ width: 120, marginBottom: 8 }}
-      />
-      <button onClick={handleConvert} className={styles.actionButton}  >Convert</button>
+      <div className={styles.formRow}>
+        <div className={styles.inputColumn}>
+          <label htmlFor="hex-input" className={styles.label}>HEX Input</label>
+          <input
+            type="text"
+            id="hex-input"
+            value={hex}
+            onChange={e => setHex(e.target.value)}
+            className={styles.inputField}
+            placeholder="#RRGGBB"
+          />
+        </div>
+        <div className={styles.outputColumn}>
+          <label htmlFor="cmyk-output" className={styles.label}>CMYK Output</label>
+          <input
+            id="cmyk-output"
+            value={cmyk ? `C: ${cmyk[0]}%, M: ${cmyk[1]}%, Y: ${cmyk[2]}%, K: ${cmyk[3]}%` : ""}
+            readOnly
+            className={styles.inputField} // Changed from outputField and removed inline style
+            placeholder="CMYK output"
+          />
+        </div>
+      </div>
+      <div className={styles.buttonRow}>
+        <button onClick={handleConvert} className={styles.actionButton}>Convert</button>
+        {cmyk && (
+          <button onClick={handleCopy} className={styles.actionButton}>Copy</button>
+        )}
+      </div>
       {error && <div className={styles.error}>{error}</div>}
-      <input
-        value={cmyk ? `C: ${cmyk[0]}%, M: ${cmyk[1]}%, Y: ${cmyk[2]}%, K: ${cmyk[3]}%` : ""}
-        readOnly
-        className={styles.outputField}
-        style={{ width: 240, textAlign: 'center', fontFamily: 'monospace', fontSize: 16 }}
-        placeholder="CMYK output"
-      />
-      {cmyk && (
-        <button onClick={handleCopy} className={styles.actionButton} style={{ marginTop: 8 }}>Copy</button>
-      )}
     </div>
   );
 }

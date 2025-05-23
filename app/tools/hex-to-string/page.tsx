@@ -35,27 +35,37 @@ export default function HexToString() {
   return (
     <div className={styles.toolPage}>
       <h1>Hex to String</h1>
-      <textarea
-        value={hex}
-        onChange={e => setHex(e.target.value)}
-        className={styles.inputArea}
-        placeholder="68656c6c6f20776f726c64"
-        rows={3}
-        style={{ width: 320, marginBottom: 8 }}
-      />
-      <button onClick={handleConvert} className={styles.actionButton} >Convert</button>
+      <div className={styles.formRow}>
+        <div className={styles.inputColumn}>
+          <label htmlFor="hex-input" className={styles.label}>Hex Input</label>
+          <textarea
+            id="hex-input"
+            value={hex}
+            onChange={e => setHex(e.target.value)}
+            className={styles.inputArea}
+            placeholder="68656c6c6f20776f726c64"
+            rows={3}
+          />
+        </div>
+        <div className={styles.outputColumn}>
+          <label htmlFor="string-output" className={styles.label}>String Output</label>
+          <textarea
+            id="string-output"
+            value={result}
+            readOnly
+            className={styles.outputArea}
+            rows={3}
+            placeholder="String output"
+          />
+        </div>
+      </div>
+      <div className={styles.buttonRow}>
+        <button onClick={handleConvert} className={styles.actionButton}>Convert</button>
+        {result && (
+          <button onClick={handleCopy} className={styles.actionButton}>Copy</button>
+        )}
+      </div>
       {error && <div className={styles.error}>{error}</div>}
-      <textarea
-        value={result}
-        readOnly
-        className={styles.outputArea}
-        rows={3}
-        style={{ width: 320, textAlign: 'left', fontFamily: 'monospace', fontSize: 16 }}
-        placeholder="String output"
-      />
-      {result && (
-        <button onClick={handleCopy} className={styles.actionButton}  >Copy</button>
-      )}
     </div>
   );
 }

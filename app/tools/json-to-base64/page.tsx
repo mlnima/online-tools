@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import styles from "../../styles/UnifiedToolPage.module.scss";
 
 export default function JSONToBase64() {
   const [json, setJson] = useState("");
@@ -20,27 +21,35 @@ export default function JSONToBase64() {
   }
 
   return (
-    <div style={{ padding: 32, textAlign: "center" }}>
+    <div className={styles.toolPage}>
       <h1>JSON to Base64</h1>
       <p>Encode JSON to Base64 (UTF-8 encoded).</p>
-      <textarea
-        rows={6}
-        style={{ width: "100%", fontSize: 16 }}
-        placeholder="Paste JSON..."
-        value={json}
-        onChange={e => setJson(e.target.value)}
-      />
-      <br />
-      <button onClick={handleConvert} style={{ margin: 8 }}>Convert</button>
-      <div style={{ marginTop: 16, marginBottom: 8, textAlign: "left" }}>
-        <label>Base64 Output:</label>
-        <textarea
-          rows={3}
-          style={{ width: "100%", fontSize: 16 }}
-          value={base64}
-          readOnly
-        />
-        <button onClick={handleCopy} disabled={!base64} style={{ marginTop: 6 }}>Copy</button>
+      <div className={styles.formRow}>
+        <div className={styles.inputColumn}>
+          <label htmlFor="json-input" className={styles.label}>JSON Input</label>
+          <textarea
+            id="json-input"
+            rows={6}
+            className={styles.inputArea}
+            placeholder="Paste JSON..."
+            value={json}
+            onChange={e => setJson(e.target.value)}
+          />
+        </div>
+        <div className={styles.outputColumn}>
+          <label htmlFor="base64-output" className={styles.label}>Base64 Output:</label>
+          <textarea
+            id="base64-output"
+            rows={3}
+            className={styles.outputArea}
+            value={base64}
+            readOnly
+          />
+        </div>
+      </div>
+      <div className={styles.buttonRow}>
+        <button onClick={handleConvert} className={styles.actionButton}>Convert</button>
+        <button onClick={handleCopy} disabled={!base64} className={styles.actionButton}>Copy</button>
       </div>
     </div>
   );

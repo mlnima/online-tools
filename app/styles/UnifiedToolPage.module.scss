@@ -108,7 +108,23 @@
 .previewBox{
   background: var(--color-bg-secondary);
   color: var(--color-text);
+  // Consider adding common padding/border-radius here if most previews need it
 }
+
+.codeBlock {
+  background: var(--color-bg-secondary);
+  color: var(--color-text);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  white-space: pre-wrap; // Important for <pre> behavior
+  font-family: var(--font-mono, monospace); // Assuming --font-mono might be added to global.scss later, else monospace
+  font-size: 0.9rem;
+  margin-top: 0.5rem; // Or adjust as needed
+  width: 100%;
+  box-sizing: border-box;
+  word-break: break-all; // To break long unbroken strings
+}
+
 .generatedCss{
   @extend .baseArea;
   width: 100%;
@@ -166,6 +182,14 @@
 
 .error {
   color: var(--color-error);
+  font-size: 0.98rem;
+  margin-bottom: 1rem;
+  margin-top: 0.2rem;
+  text-align: center;
+}
+
+.successText {
+  color: var(--color-success);
   font-size: 0.98rem;
   margin-bottom: 1rem;
   margin-top: 0.2rem;

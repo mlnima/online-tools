@@ -38,27 +38,26 @@ export default function Base64ToText() {
             onChange={e => setBase64(e.target.value)}
           />
         </div>
+        <div className={styles.outputColumn}>
+          {text && (
+            <>
+              <label htmlFor="decoded-text" className={styles.label}>Decoded Text:</label>
+              <textarea
+                id="decoded-text"
+                rows={4}
+                className={styles.outputArea}
+                value={text}
+                readOnly
+              />
+            </>
+          )}
+        </div>
       </div>
-      <br />
       <div className={styles.buttonRow}>
         <button onClick={handleConvert} className={styles.actionButton}>Convert</button>
         <button onClick={handleCopy} className={styles.actionButton} disabled={!text}>Copy Text</button>
       </div>
       {error && <div className={styles.error}>{error}</div>}
-      {text && (
-        <div className={styles.formRow}>
-          <div className={styles.inputColumn}>
-            <label htmlFor="decoded-text" className={styles.label}>Decoded Text:</label>
-            <textarea
-              id="decoded-text"
-              rows={4}
-              className={styles.outputArea}
-              value={text}
-              readOnly
-            />
-          </div>
-        </div>
-      )}
     </div>
   );
 }

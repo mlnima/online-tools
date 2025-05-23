@@ -29,26 +29,34 @@ export default function HexadecimalToBase64() {
   }
 
   return (
-    <div style={{ padding: 32, textAlign: "center" }}>
+    <div className={styles.toolPage}>
       <h1>Hexadecimal to Base64</h1>
       <p>Convert hexadecimal string to Base64 encoding.</p>
-      <textarea
-        rows={4}
-        style={{ width: "100%", fontSize: 16 }}
-        placeholder="Paste hexadecimal string..."
-        value={hex}
-        onChange={e => setHex(e.target.value)}
-      />
-      <br />
-      <button onClick={handleConvert} style={{ margin: 8 }}>Convert</button>
-      <div style={{ marginTop: 16, marginBottom: 8, textAlign: "left" }}>
-        <label>Base64 Output:</label>
-        <textarea
-          rows={3}
-          style={{ width: "100%", fontSize: 16 }}
-          value={base64}
-          readOnly
-        />
+      <div className={styles.formRow}>
+        <div className={styles.inputColumn}>
+          <label htmlFor="hex-input" className={styles.label}>Hexadecimal Input</label>
+          <textarea
+            id="hex-input"
+            rows={4}
+            className={styles.inputArea}
+            placeholder="Paste hexadecimal string..."
+            value={hex}
+            onChange={e => setHex(e.target.value)}
+          />
+        </div>
+        <div className={styles.outputColumn}>
+          <label htmlFor="base64-output" className={styles.label}>Base64 Output:</label>
+          <textarea
+            id="base64-output"
+            rows={3}
+            className={styles.outputArea}
+            value={base64}
+            readOnly
+          />
+        </div>
+      </div>
+      <div className={styles.buttonRow}>
+        <button onClick={handleConvert} className={styles.actionButton}>Convert</button>
         <button className={styles.actionButton} onClick={handleCopy} disabled={!base64 || base64 === "Invalid hex input"}>
           Copy
         </button>
