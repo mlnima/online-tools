@@ -1,3 +1,11 @@
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'HTML Formatter | Pretty Print HTML | WebWizKit',
+  description: 'Format and pretty-print your HTML code for better readability. An online HTML beautifier tool by WebWizKit.',
+  keywords: ['HTML Formatter', 'HTML Beautifier', 'Pretty Print HTML', 'Format HTML', 'Code Formatter', 'Online Tool', 'WebWizKit']
+};
+
 "use client";
 import React, { useState } from "react";
 import styles from "../../styles/UnifiedToolPage.module.scss";
@@ -32,35 +40,44 @@ const HtmlFormatter: React.FC = () => {
   };
 
   return (
-  <div>
-    <h1>HTML Formatter</h1>
+    <div className={styles.toolPage}> {/* Added toolPage class */}
+      <h1>HTML Formatter</h1>
       <p>Format and pretty-print your HTML code.</p>
-      <div className={styles.responsiveRow}>
-      <textarea
-        value={input}
-        onChange={e => setInput(e.target.value)}
-        rows={10}
-        className={styles.inputArea}
-        placeholder="Paste HTML here..."
-      />
-      {output && (
-        <div>
-          <h3>Formatted HTML:</h3>
+      <div className={styles.formRow}> {/* Changed from responsiveRow */}
+        <div className={styles.inputColumn}>
+          <label htmlFor="html-input-format" className={styles.label}>HTML Input</label>
           <textarea
-            value={output}
-            readOnly
+            id="html-input-format"
+            value={input}
+            onChange={e => setInput(e.target.value)}
             rows={10}
-            className={styles.outputArea}
-            placeholder="Formatted HTML will appear here..."
+            className={styles.inputArea}
+            placeholder="Paste HTML here..."
           />
-          <button onClick={handleCopy} className={styles.actionButton} style={{ marginTop: 8 }}>Copy</button>
         </div>
-      )}
-    </div>
-    <div style={{ display: 'flex', justifyContent: 'center', margin: '24px 0 0 0' }}>
-      <button onClick={handleFormat} className={styles.actionButton} style={{ minWidth: 140, fontSize: 17 }}>Format</button>
-    </div>
-      {error && <div style={{ color: "red", marginTop: 16 }}>{error}</div>}
+        <div className={styles.outputColumn}>
+          {output && (
+            <>
+              <label htmlFor="html-output-format" className={styles.label}>Formatted HTML:</label>
+              <textarea
+                id="html-output-format"
+                value={output}
+                readOnly
+                rows={10}
+                className={styles.outputArea}
+                placeholder="Formatted HTML will appear here..."
+              />
+            </>
+          )}
+        </div>
+      </div>
+      <div className={styles.buttonRow}> {/* Changed div to buttonRow */}
+        <button onClick={handleFormat} className={styles.actionButton}>Format</button>
+        {output && (
+          <button onClick={handleCopy} className={styles.actionButton}>Copy</button>
+        )}
+      </div>
+      {error && <div className={styles.error}>{error}</div>} {/* Removed inline style */}
     </div>
   );
 };

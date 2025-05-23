@@ -1,6 +1,14 @@
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'CSS Border Radius Generator | WebWizKit',
+  description: 'Easily generate CSS for border-radius by adjusting each corner individually. Preview your changes live and copy the CSS code. An online tool by WebWizKit.',
+  keywords: ['CSS', 'Border Radius', 'Generator', 'CSS Generator', 'Web Design', 'Frontend Tool', 'Online Tool', 'WebWizKit', 'Corner Radius']
+};
+
 "use client";
 import React, { useState } from "react";
-import unifiedToolPageStyles from "../../styles/UnifiedToolPage.module.scss";
+import styles from "../../styles/UnifiedToolPage.module.scss";
 
 const CssBorderRadiusGenerator: React.FC = () => {
   const [tl, setTl] = useState(16);
@@ -15,72 +23,72 @@ const CssBorderRadiusGenerator: React.FC = () => {
   };
 
   return (
-    <div className={unifiedToolPageStyles.toolPage}>
+    <div className={styles.toolPage}>
       <h1>CSS Border Radius Generator</h1>
       <p>Adjust each corner's radius, preview the result, and copy the CSS!</p>
-      <div className={unifiedToolPageStyles.flexRow}>
-        <div>
-          <label>Top Left:</label>
+      <div className={styles.formRow}>
+        <div className={styles.inputColumn}>
+          <label htmlFor="tl-radius" className={styles.label}>Top Left Radius (px):</label>
           <input
             type="number"
+            id="tl-radius"
             min={0}
             max={128}
             value={tl}
             onChange={e => setTl(Number(e.target.value))}
-            className={unifiedToolPageStyles.inputArea}
-          /> px
-        </div>
-        <div>
-          <label>Top Right:</label>
+            className={styles.inputField} 
+          />
+          <label htmlFor="tr-radius" className={styles.label}>Top Right Radius (px):</label>
           <input
             type="number"
+            id="tr-radius"
             min={0}
             max={128}
             value={tr}
             onChange={e => setTr(Number(e.target.value))}
-            className={unifiedToolPageStyles.inputArea}
-          /> px
-        </div>
-        <div>
-          <label>Bottom Right:</label>
+            className={styles.inputField}
+          />
+          <label htmlFor="br-radius" className={styles.label}>Bottom Right Radius (px):</label>
           <input
             type="number"
+            id="br-radius"
             min={0}
             max={128}
             value={br}
             onChange={e => setBr(Number(e.target.value))}
-            className={unifiedToolPageStyles.inputArea}
-          /> px
-        </div>
-        <div>
-          <label>Bottom Left:</label>
+            className={styles.inputField}
+          />
+          <label htmlFor="bl-radius" className={styles.label}>Bottom Left Radius (px):</label>
           <input
             type="number"
+            id="bl-radius"
             min={0}
             max={128}
             value={bl}
             onChange={e => setBl(Number(e.target.value))}
-            className={unifiedToolPageStyles.inputArea}
-          /> px
+            className={styles.inputField}
+          />
+        </div>
+        <div className={styles.outputColumn}>
+          <label className={styles.label}>Preview:</label>
+          <div
+            className={styles.borderRadiusPreview} // Applied new class
+            style={{
+              borderRadius: `${tl}px ${tr}px ${br}px ${bl}px`, // Only dynamic style remains
+            }}
+          />
+          <label htmlFor="css-output" className={styles.label}>Generated CSS:</label>
+          <textarea
+            id="css-output"
+            value={css}
+            readOnly
+            rows={3} /* Adjusted rows */
+            className={styles.outputArea}
+          />
         </div>
       </div>
-      <div className={unifiedToolPageStyles.previewBox}>
-        <div
-          className={unifiedToolPageStyles.previewInner}
-          style={{
-            borderRadius: `${tl}px ${tr}px ${br}px ${bl}px`,
-          }}
-        />
-      </div>
-      <div className={unifiedToolPageStyles.marginTop24}>
-        <h3>Generated CSS:</h3>
-        <textarea
-          value={css}
-          readOnly
-          rows={2}
-          className={unifiedToolPageStyles.outputArea}
-        />
-        <button onClick={handleCopy} className={unifiedToolPageStyles.actionButton}>Copy</button>
+      <div className={styles.buttonRow}>
+        <button onClick={handleCopy} className={styles.actionButton}>Copy CSS</button>
       </div>
     </div>
   );

@@ -1,3 +1,11 @@
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Base64 to Image Converter | WebWizKit',
+  description: 'Convert Base64 strings to images. Paste your Base64 data and instantly preview the decoded image. An online tool by WebWizKit.',
+  keywords: ['Base64 to Image', 'Image Converter', 'Base64 Decoder', 'Online Tool', 'Developer Tools', 'WebWizKit', 'Data URI']
+};
+
 "use client";
 import React, { useState } from "react";
 import styles from "../../styles/UnifiedToolPage.module.scss";

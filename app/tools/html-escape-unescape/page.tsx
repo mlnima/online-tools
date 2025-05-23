@@ -1,3 +1,11 @@
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'HTML Escape/Unescape | WebWizKit',
+  description: 'Easily escape or unescape special HTML characters to their corresponding entities or plain text. An online tool by WebWizKit.',
+  keywords: ['HTML Escape', 'HTML Unescape', 'HTML Entities', 'Escape HTML', 'Unescape HTML', 'Online Tool', 'WebWizKit', 'Developer Tools']
+};
+
 "use client";
 import React from "react";
 import styles from "../../styles/UnifiedToolPage.module.scss";
@@ -43,30 +51,38 @@ export default function HtmlEscapeUnescape() {
   return (
     <div className={styles.toolPage}>
       <h1>HTML Escape/Unescape</h1>
-      <textarea
-        value={input}
-        onChange={e => setInput(e.target.value)}
-        className={styles.inputField}
-        placeholder="<div>Hello &amp; welcome!</div>"
-        rows={3}
-        style={{ width: 320, marginBottom: 8, background: 'var(--color-bg-secondary)' }}
-      />
-      <div style={{ display: 'flex', gap: 8, marginBottom: 8, justifyContent: 'center' }}>
+      <div className={styles.formRow}>
+        <div className={styles.inputColumn}>
+          <label htmlFor="escape-input" className={styles.label}>Input Text</label>
+          <textarea
+            id="escape-input"
+            value={input}
+            onChange={e => setInput(e.target.value)}
+            className={styles.inputArea} /* Changed from inputField */
+            placeholder="<div>Hello &amp; welcome!</div>"
+            rows={6} /* Increased rows */
+          />
+        </div>
+        <div className={styles.outputColumn}>
+          <label htmlFor="escape-output" className={styles.label}>Output Text</label>
+          <textarea
+            id="escape-output"
+            value={output}
+            readOnly
+            className={styles.outputArea}
+            rows={6} /* Increased rows */
+            placeholder="Output"
+          />
+        </div>
+      </div>
+      <div className={styles.buttonRow}>
         <button onClick={handleEscape} className={styles.actionButton}>Escape</button>
         <button onClick={handleUnescape} className={styles.actionButton}>Unescape</button>
+        {output && (
+          <button onClick={handleCopy} className={styles.actionButton}>Copy</button>
+        )}
       </div>
       {error && <div className={styles.error}>{error}</div>}
-      <textarea
-        value={output}
-        readOnly
-        className={styles.outputArea}
-        rows={3}
-        style={{ width: 320, textAlign: 'left', fontFamily: 'monospace', fontSize: 16, background: 'var(--color-bg-secondary)' }}
-        placeholder="Output"
-      />
-      {output && (
-        <button onClick={handleCopy} className={styles.actionButton} style={{ marginTop: 8 }}>Copy</button>
-      )}
     </div>
   );
 }

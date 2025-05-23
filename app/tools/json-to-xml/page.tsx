@@ -1,3 +1,11 @@
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'JSON to XML Converter | WebWizKit',
+  description: 'Convert JSON data structures to XML format. An online data transformation tool by WebWizKit.',
+  keywords: ['JSON to XML', 'JSON Converter', 'XML Converter', 'Data Transformation', 'Online Tool', 'WebWizKit', 'Developer Tools']
+};
+
 "use client";
 import React, { useState } from "react";
 import styles from "../../styles/UnifiedToolPage.module.scss";
@@ -7,13 +15,39 @@ export default function JsonToXml() {
   const [output, setOutput] = useState("");
   const [error, setError] = useState("");
 
+  function escapeXmlText(text: unknown): string {
+    return String(text)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  function sanitizeTagName(key: string): string {
+    if (!key || String(key).trim() === "") return "item";
+    let tagName = String(key).replace(/[^a-zA-Z0-9_.-]+/g, '_');
+    if (/^([0-9.-]|xml)/i.test(tagName)) {
+      tagName = '_' + tagName;
+    }
+    if (tagName.length === 0 || /^([_.-]*|[0-9.-]+)$/.test(tagName) && tagName !== "_" && tagName !== "-" && tagName !== ".") {
+      return "item";
+    }
+    return tagName;
+  }
+
   function toXml(obj: any, tag = "root"): string {
+    const validTag = sanitizeTagName(tag);
+
     if (Array.isArray(obj)) {
-      return obj.map(item => toXml(item, tag)).join("");
+      return obj.map(item => toXml(item, validTag)).join(""); // Using parent's sanitized tag for array items
     } else if (typeof obj === 'object' && obj !== null) {
-      return `<${tag}>` + Object.entries(obj).map(([k, v]) => toXml(v, k)).join("") + `</${tag}>`;
+      const children = Object.entries(obj)
+        .map(([k, v]) => toXml(v, k)) // Key 'k' will be sanitized in the recursive call
+        .join("");
+      return `<${validTag}>${children}</${validTag}>`;
     } else {
-      return `<${tag}>${String(obj)}</${tag}>`;
+      return `<${validTag}>${escapeXmlText(obj)}</${validTag}>`;
     }
   }
 
@@ -28,37 +62,37 @@ export default function JsonToXml() {
     }
   }
   return (
-    <div className={styles.toolPage} style={{ width: '100%', maxWidth: 'none', margin: '0 auto', padding: 0 }}>
+    <div className={styles.toolPage}>
       <h1>JSON to XML</h1>
-      <div className={styles.formRow} style={{ display: 'flex', flexDirection: 'row', gap: 40, alignItems: 'flex-start', justifyContent: 'center', width: '100%', maxWidth: 1900, margin: '0 auto', flexWrap: 'wrap' }}>
-        <div style={{ flex: 1, minWidth: 380, maxWidth: 900, display: 'flex', flexDirection: 'column', alignItems: 'stretch' }}>
-          <label htmlFor="json-input" style={{ fontWeight: 600, marginBottom: 6 }}>JSON Input</label>
+      <div className={styles.formRow}>
+        <div className={styles.inputColumn}>
+          <label htmlFor="json-input" className={styles.label}>JSON Input</label>
           <textarea
             id="json-input"
             value={input}
             onChange={e => setInput(e.target.value)}
             className={styles.inputArea}
-            style={{ width: '100%', minHeight: 380, fontSize: 18, resize: 'vertical' }}
+            rows={10} // Default rows
             placeholder="Enter JSON..."
           />
         </div>
-        <div style={{ flex: 1, minWidth: 380, maxWidth: 900, display: 'flex', flexDirection: 'column', alignItems: 'stretch' }}>
-          <label htmlFor="xml-output" style={{ fontWeight: 600, marginBottom: 6 }}>XML Output</label>
+        <div className={styles.outputColumn}>
+          <label htmlFor="xml-output" className={styles.label}>XML Output</label>
           <textarea
             id="xml-output"
             value={output}
             readOnly
             className={styles.outputArea}
-            style={{ width: '100%', minHeight: 380, fontSize: 18, resize: 'vertical' }}
+            rows={10} // Default rows
             placeholder="XML output..."
           />
         </div>
       </div>
-      <div style={{ display: 'flex', justifyContent: 'center', margin: '24px 0 0 0' }}>
-        <button onClick={handleConvert} className={styles.actionButton}  >Convert</button>
-        <button onClick={() => navigator.clipboard.writeText(output)} className={styles.actionButton}   disabled={!output}>Copy Output</button>
+      <div className={styles.buttonRow}>
+        <button onClick={handleConvert} className={styles.actionButton}>Convert</button>
+        <button onClick={() => navigator.clipboard.writeText(output)} className={styles.actionButton} disabled={!output}>Copy Output</button>
       </div>
-      {error && <div className={styles.error} style={{ marginTop: 16, textAlign: 'center' }}>{error}</div>}
+      {error && <div className={styles.error}>{error}</div>}
     </div>
   );
 }

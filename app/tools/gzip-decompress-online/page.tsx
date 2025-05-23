@@ -1,3 +1,11 @@
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'GZip Decompress Online | WebWizKit',
+  description: 'Decompress GZip files or Base64 encoded GZip strings online. Fast and easy GZip unarchiver. An online tool by WebWizKit.',
+  keywords: ['GZip Decompress', 'UnGzip', 'GZip Online', 'Decompress File', 'Base64 GZip', 'Online Tool', 'WebWizKit', 'Unarchiver']
+};
+
 "use client";
 import React from "react";
 import styles from "../../styles/UnifiedToolPage.module.scss";
@@ -57,31 +65,46 @@ export default function GzipDecompressOnline() {
   return (
     <div className={styles.toolPage}>
       <h1>GZip Decompress Online</h1>
-      <textarea
-        value={input}
-        onChange={e => setInput(e.target.value)}
-        rows={4}
-        placeholder="Paste Base64-encoded GZip string or upload a .gz file"
-        className={styles.inputArea}
-        style={{ width: '100%' }}
-      />
-      <div style={{ margin: '12px 0' }}>
-        <input type="file" accept=".gz" onChange={handleFile} className={styles.inputArea} />
-        {filename && <div style={{ fontSize: 13, marginTop: 4 }}>File: {filename}</div>}
+      <div className={styles.formRow}>
+        <div className={styles.inputColumn}>
+          <label htmlFor="gzip-base64-input" className={styles.label}>Base64-encoded GZip String</label>
+          <textarea
+            id="gzip-base64-input"
+            value={input}
+            onChange={e => setInput(e.target.value)}
+            rows={4}
+            placeholder="Paste Base64-encoded GZip string..."
+            className={styles.inputArea}
+          />
+          <label htmlFor="gzip-file-input" className={styles.label} style={{marginTop: "1rem"}}>Or Upload .gz File</label>
+          <input 
+            type="file" 
+            id="gzip-file-input" 
+            accept=".gz" 
+            onChange={handleFile} 
+            className={styles.inputField} 
+          />
+          {filename && <span className={styles.fileName}>File: {filename}</span>}
+        </div>
+        <div className={styles.outputColumn}>
+          <label htmlFor="gzip-output" className={styles.label}>Decompressed Output</label>
+          <textarea
+            id="gzip-output"
+            value={output}
+            readOnly
+            rows={10} /* Adjusted rows */
+            className={styles.outputArea}
+            placeholder="Decompressed output"
+          />
+        </div>
       </div>
-      <button onClick={handleConvert} className={styles.actionButton} style={{ marginBottom: 16 }}>Decompress</button>
+      <div className={styles.buttonRow}>
+        <button onClick={handleConvert} className={styles.actionButton}>Decompress</button>
+        {output && (
+          <button onClick={handleCopy} className={styles.actionButton}>Copy</button>
+        )}
+      </div>
       {error && <div className={styles.error}>{error}</div>}
-      <textarea
-        value={output}
-        readOnly
-        rows={6}
-        className={styles.outputArea}
-        style={{ width: '100%', marginTop: 12, fontFamily: 'monospace' }}
-        placeholder="Decompressed output"
-      />
-      {output && (
-        <button onClick={handleCopy} className={styles.actionButton} style={{ marginTop: 8 }}>Copy</button>
-      )}
     </div>
   );
 }

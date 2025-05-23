@@ -1,3 +1,11 @@
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'HTML Minify | HTML Minifier | WebWizKit',
+  description: 'Minify your HTML code to reduce file size and improve website performance. An online HTML minifier tool by WebWizKit.',
+  keywords: ['HTML Minify', 'HTML Minifier', 'Compress HTML', 'Optimize HTML', 'Online Tool', 'WebWizKit', 'Frontend']
+};
+
 "use client";
 import React from "react";
 import styles from "../../styles/UnifiedToolPage.module.scss";
@@ -33,31 +41,39 @@ export default function HtmlMinify() {
   }
 
   return (
-    <div>
+    <div className={styles.toolPage}> {/* Added toolPage class */}
       <h1>HTML Minify</h1>
-      <div className={styles.responsiveRow}>
-        <textarea
-          value={input}
-          onChange={e => setInput(e.target.value)}
-          className={styles.inputArea}
-          rows={5}
-          placeholder="Paste HTML here..."
-        />
-        <textarea
-          value={output}
-          readOnly
-          className={styles.outputArea}
-          rows={5}
-          placeholder="Minified output"
-        />
+      <div className={styles.formRow}> {/* Changed from responsiveRow */}
+        <div className={styles.inputColumn}>
+          <label htmlFor="html-input-minify" className={styles.label}>HTML Input</label>
+          <textarea
+            id="html-input-minify"
+            value={input}
+            onChange={e => setInput(e.target.value)}
+            className={styles.inputArea}
+            rows={5}
+            placeholder="Paste HTML here..."
+          />
+        </div>
+        <div className={styles.outputColumn}>
+          <label htmlFor="html-output-minify" className={styles.label}>Minified Output</label>
+          <textarea
+            id="html-output-minify"
+            value={output}
+            readOnly
+            className={styles.outputArea}
+            rows={5}
+            placeholder="Minified output"
+          />
+        </div>
       </div>
-      <div style={{ display: 'flex', justifyContent: 'center', margin: '24px 0 0 0' }}>
-        <button onClick={handleMinify} className={styles.actionButton}  >Minify</button>
+      <div className={styles.buttonRow}> {/* Changed div to buttonRow */}
+        <button onClick={handleMinify} className={styles.actionButton}>Minify</button>
         {output && (
-          <button onClick={handleCopy} className={styles.actionButton}  >Copy Output</button>
+          <button onClick={handleCopy} className={styles.actionButton}>Copy Output</button>
         )}
       </div>
-      {error && <div className={styles.error} style={{ marginTop: 16, textAlign: 'center' }}>{error}</div>}
+      {error && <div className={styles.error}>{error}</div>} {/* Removed inline style */}
     </div>
   );
 }
