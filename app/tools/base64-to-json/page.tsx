@@ -1,57 +1,13 @@
-"use client";
-import React, { useState } from "react";
-import styles from "../../styles/UnifiedToolPage.module.scss";
+import type { Metadata } from 'next';
+import Base64ToJsonClient from './client';
 
-export default function Base64ToJSON() {
-  const [base64, setBase64] = useState("");
-  const [json, setJson] = useState("");
+export const metadata: Metadata = {
+  title: "Base64 to JSON Converter | WebWizKit",
+  description: "Decode Base64 encoded strings to JSON objects (pretty-printed).",
+  keywords: ["base64 to json", "base64 decode", "data converter", "developer tools", "json decoder"],
+};
 
-  function handleConvert() {
-    try {
-      const decoded = decodeURIComponent(escape(atob(base64)));
-      const obj = JSON.parse(decoded);
-      setJson(JSON.stringify(obj, null, 2));
-    } catch (e) {
-      setJson("Invalid Base64 or JSON input");
-    }
-  }
-
-  function handleCopy() {
-    if (json) navigator.clipboard.writeText(json);
-  }
-
-  return (
-    <div className={styles.toolPage}>
-      <h1>Base64 to JSON</h1>
-      <p>Decode Base64 string to JSON (pretty print).</p>
-      <div className={styles.formRow}>
-        <div className={styles.inputColumn}>
-          <label htmlFor="base64-input" className={styles.label}>Base64 Input</label>
-          <textarea
-            id="base64-input"
-            rows={4}
-            className={styles.inputArea}
-            placeholder="Paste Base64 string..."
-            value={base64}
-            onChange={e => setBase64(e.target.value)}
-          />
-        </div>
-        <div className={styles.outputColumn}>
-          <label htmlFor="json-output" className={styles.label}>JSON Output:</label>
-          <textarea
-            id="json-output"
-            rows={6}
-            className={styles.outputArea}
-            value={json}
-            readOnly
-          />
-        </div>
-      </div>
-      <div className={styles.buttonRow}>
-        <button onClick={handleConvert} className={styles.actionButton}>Convert</button>
-        <button onClick={handleCopy} disabled={!json} className={styles.actionButton}>Copy</button>
-      </div>
-    </div>
-  );
-}
-
+const Base64ToJsonPage = () => {
+  return <Base64ToJsonClient />;
+};
+export default Base64ToJsonPage;

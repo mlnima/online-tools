@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   keywords: ["color converter", "hex to rgb", "rgb to hex", "css colors", "developer tools"],
 };
 
-export default function ColorConverterPage() {
+const ColorConverterPage = () => {
   return <ColorConverterClient />;
-}
+};
+export default ColorConverterPage;
