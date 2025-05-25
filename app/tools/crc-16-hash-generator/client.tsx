@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import styles from "../../styles/UnifiedToolPage.module.scss";
 
 const crc16ccitt = (str: string) => {
@@ -19,9 +19,9 @@ const crc16ccitt = (str: string) => {
 };
 
 const Crc16HashGeneratorClient = () => {
-  const [input, setInput] = React.useState("");
-  const [hash, setHash] = React.useState("");
-  const [error, setError] = React.useState("");
+  const [input, setInput] = useState("");
+  const [hash, setHash] = useState("");
+  const [error, setError] = useState("");
 
   const handleConvert = () => {
     setError("");
