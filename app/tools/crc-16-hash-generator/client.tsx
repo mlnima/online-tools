@@ -28,7 +28,7 @@ const Crc16HashGeneratorClient = () => {
     try {
       if (!input) throw new Error("Input cannot be empty.");
       setHash(crc16ccitt(input));
-    } catch (e) {
+    } catch (e: any) {
       setError((e as Error).message || "Error calculating CRC-16.");
       setHash("");
     }
