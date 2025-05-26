@@ -1,65 +1,16 @@
-"use client";
+import type { Metadata } from 'next';
 import React from "react";
-import styles from "../../styles/UnifiedToolPage.module.scss";
+import JavascriptToBase64AltClient from './javascript-to-base64-alt-client';
 
-function encodeBase64(str: string) {
-  try {
-    return btoa(unescape(encodeURIComponent(str)));
-  } catch {
-    return "";
-  }
-}
+export const metadata: Metadata = {
+  title: "JavaScript to Base64 (Alt) Encoder | Online Tool",
+  description: "Encode JavaScript code to Base64 using an alternative method. Free, secure, and easy-to-use online converter.",
+};
 
-export default function JavascriptToBase64Alt() {
-  const [input, setInput] = React.useState("");
-  const [output, setOutput] = React.useState("");
-  const [error, setError] = React.useState("");
-
-  function handleConvert() {
-    setError("");
-    if (!input.trim()) {
-      setError("Input cannot be empty");
-      setOutput("");
-      return;
-    }
-    try {
-      const encoded = encodeBase64(input);
-      if (!encoded) throw new Error("Encoding failed");
-      setOutput(encoded);
-    } catch (e) {
-      setError((e as Error).message || "Encoding failed");
-      setOutput("");
-    }
-  }
-
-  function handleCopy() {
-    if (output) navigator.clipboard.writeText(output);
-  }
-
+const JavascriptToBase64AltPage = () => {
   return (
-    <div className={styles.toolPage}>
-      <h1>Javascript to Base64 (Alt)</h1>
-      <textarea
-        value={input}
-        onChange={e => setInput(e.target.value)}
-        className={styles.inputArea}
-        rows={6}
-        style={{ width: 340, fontFamily: 'monospace', fontSize: 13, background: 'var(--color-bg-secondary)' }}
-        placeholder="Paste your JavaScript code here"
-      />
-      <button onClick={handleConvert} className={styles.actionButton} style={{ marginBottom: 16, marginTop: 8 }}>Convert</button>
-      {error && <div className={styles.error}>{error}</div>}
-      <textarea
-        value={output}
-        readOnly
-        className={styles.outputArea}
-        rows={4}
-        style={{ width: 340, fontFamily: 'monospace', fontSize: 13, background: 'var(--color-bg-secondary)' }}
-        placeholder="Base64 output will appear here"
-      />
-      {output && (
-        <button onClick={handleCopy} className={styles.actionButton} style={{ marginTop: 8 }}>Copy</button>
-      )}
-    </div>
+    <JavascriptToBase64AltClient />
   );
-}
+};
+
+export default JavascriptToBase64AltPage;

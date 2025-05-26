@@ -1,61 +1,16 @@
-"use client";
 import React from "react";
-import styles from "../../styles/UnifiedToolPage.module.scss";
+import Base64ToJavascriptAltClient from "./base64-to-javascript-alt-client";
+import type { Metadata } from 'next';
 
-export default function Base64ToJavascriptAlt() {
-  const [input, setInput] = React.useState("");
-  const [output, setOutput] = React.useState("");
-  const [error, setError] = React.useState("");
+export const metadata: Metadata = {
+  title: "Base64 to JavaScript (Alt) Converter | Free Online Tool",
+  description: "Convert Base64 encoded strings to JavaScript code (alternative method) quickly and easily with our free online tool.",
+};
 
-  function handleConvert() {
-    setError("");
-    try {
-      const decoded = decodeURIComponent(escape(atob(input)));
-      setOutput(decoded);
-    } catch {
-      setError("Invalid Base64 input.");
-      setOutput("");
-    }
-  }
-
-  function handleCopy() {
-    if (output) navigator.clipboard.writeText(output);
-  }
-
+const Base64ToJavascriptAltPage = () => {
   return (
-    <div className={styles.toolPage}>
-      <h1>Base64 to Javascript (Alt)</h1>
-      <div className={styles.formRow}>
-        <div className={styles.inputColumn}>
-          <label htmlFor="base64-input" className={styles.label}>Base64 Input</label>
-          <textarea
-            id="base64-input"
-            value={input}
-            onChange={e => setInput(e.target.value)}
-            rows={4}
-            placeholder="Enter Base64 string..."
-            className={styles.inputArea}
-          />
-        </div>
-        <div className={styles.outputColumn}>
-          <label htmlFor="js-output" className={styles.label}>Decoded Javascript</label>
-          <textarea
-            id="js-output"
-            value={output}
-            readOnly
-            rows={8}
-            placeholder="Decoded Javascript code..."
-            className={styles.outputArea}
-          />
-        </div>
-      </div>
-      <div className={styles.buttonRow}>
-        <button onClick={handleConvert} className={styles.actionButton}>Convert</button>
-        {output && (
-          <button onClick={handleCopy} className={styles.actionButton}>Copy</button>
-        )}
-      </div>
-      {error && <div className={styles.error}>{error}</div>}
-    </div>
+    <Base64ToJavascriptAltClient />
   );
-}
+};
+
+export default Base64ToJavascriptAltPage;

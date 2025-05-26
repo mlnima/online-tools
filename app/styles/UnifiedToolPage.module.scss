@@ -248,6 +248,149 @@
   display: block;
 }
 
+.inputRowContainer {
+  display: flex;
+  gap: 8px; /* Or use theme variable if available */
+  justify-content: center;
+  margin-bottom: 8px; /* Or use theme variable */
+}
+
+.hexInput {
+  width: 120px;
+}
+
+.alphaInput {
+  width: 80px;
+}
+
+.rgbaOutput {
+  width: 260px;
+  text-align: center;
+  font-family: var(--font-mono, monospace);
+  font-size: 16px; /* Consider using rem or em */
+}
+
+.hsvInputContainer {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.hsvInput { /* Applied alongside inputField */
+  width: 70px;
+}
+
+.convertButtonMargin { /* Applied alongside actionButton */
+  margin-bottom: 16px;
+}
+
+.pantoneResultContainer {
+  margin: 0 auto;
+  max-width: 320px;
+  display: flex;
+  flex-direction: column; /* Stack color info and copy button */
+  align-items: center; /* Center items including the button */
+  gap: 12px; /* Gap between color info and button */
+}
+
+.pantoneColorInfo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: 8px; /* Original margin from inline style */
+}
+
+.pantoneColorPreview {
+  width: 36px;
+  height: 36px;
+  border: 1px solid #ccc; /* Consider using CSS variables for border color */
+  border-radius: 6px;
+}
+
+.pantoneDetails {
+  text-align: left;
+}
+
+.pantoneName {
+  font-weight: 600;
+}
+
+.pantoneCode {
+  font-size: 14px; /* Consider using rem or em */
+}
+
+.pantoneHexValue {
+  font-family: var(--font-mono, monospace);
+  font-size: 14px; /* Consider using rem or em */
+}
+
+.colorInput { /* Applied alongside inputField */
+  width: 220px;
+  margin-bottom: 8px;
+}
+
+.resultContainer {
+  margin: 16px auto 0 auto; /* Added top margin for spacing from error/button */
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.colorPreviewInfo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: 8px; /* As per original inline style */
+}
+
+.colorSwatch {
+  width: 36px;
+  height: 36px;
+  border: 1px solid #ccc; /* Consider using CSS variables */
+  border-radius: 6px;
+}
+
+.colorValues {
+  text-align: left;
+}
+
+.hexValueOutput {
+  font-weight: 600;
+}
+
+.rgbValueOutput {
+  font-family: var(--font-mono, monospace);
+  font-size: 14px; /* Consider using rem or em */
+}
+
+.copyButtonGroup {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+/* Styles for javascript-to-base64-alt */
+.jsBase64Textarea { /* Applied alongside inputArea and outputArea */
+  width: 340px;
+  font-family: var(--font-mono, monospace);
+  font-size: 13px; /* Consider using rem or em */
+  background: var(--color-bg-secondary);
+}
+
+.jsBase64ConvertButton { /* Applied alongside actionButton */
+  margin-bottom: 16px;
+  margin-top: 8px;
+}
+
+.jsBase64CopyButton { /* Applied alongside actionButton */
+  margin-top: 8px;
+}
+
 @media (min-width: 480px) {
   .toolPage {
     font-size: 15px;
