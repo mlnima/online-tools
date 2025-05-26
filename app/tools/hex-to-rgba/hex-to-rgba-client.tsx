@@ -37,19 +37,19 @@ const HexToRgbaClient = () => {
   return (
     <div className={styles.toolPage}>
       <h1>HEX to RGBA</h1>
-      <div className={styles.inputRowContainer}> {/* New class for this div */}
+      <div className={styles.inputRowContainer}>
         <input
           type="text"
           value={hex}
           onChange={e => setHex(e.target.value)}
-          className={`${styles.inputField} ${styles.hexInput}`} {/* Existing + New class */}
+          className={`${styles.inputField} ${styles.hexInput}`}
           placeholder="#RRGGBB"
         />
         <input
           type="number"
           value={alpha}
           onChange={e => setAlpha(e.target.value)}
-          className={`${styles.inputField} ${styles.alphaInput}`} {/* Existing + New class */}
+          className={`${styles.inputField} ${styles.alphaInput}`}
           placeholder="Alpha (0-1)"
           min="0"
           max="1"
@@ -61,7 +61,7 @@ const HexToRgbaClient = () => {
       <input
         value={rgba}
         readOnly
-        className={`${styles.outputField} ${styles.rgbaOutput}`} {/* Existing + New class */}
+        className={`${styles.outputField} ${styles.rgbaOutput}`}
         placeholder="RGBA output"
       />
       {rgba && (
