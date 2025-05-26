@@ -1,53 +1,13 @@
-"use client";
-import React, { useState } from "react";
-import styles from "../../styles/UnifiedToolPage.module.scss";
+import type { Metadata } from 'next';
+import AsciiToBase64AltClient from './client';
 
-export default function AsciiToBase64Alt() {
-  const [ascii, setAscii] = useState("");
-  const [base64, setBase64] = useState("");
+export const metadata: Metadata = {
+  title: "ASCII to Base64 (Alt) | WebWizKit",
+  description: "Alternative online tool to convert ASCII text to Base64 encoding.",
+  keywords: ["ascii to base64 alt", "base64 encode", "text converter", "developer tools"],
+};
 
-  function handleConvert() {
-    try {
-      const encoded = btoa(unescape(encodeURIComponent(ascii)));
-      setBase64(encoded);
-    } catch (e) {
-      setBase64("Invalid ASCII input");
-    }
-  }
-
-  function handleCopy() {
-    if (base64) navigator.clipboard.writeText(base64);
-  }
-
-  return (
-    <div className={styles.toolPage}>
-      <h1>Ascii to Base64</h1>
-      <p>Convert ASCII text to Base64 encoding.</p>
-      <div className={styles.formRow}>
-        <div className={styles.inputColumn}>
-          <label htmlFor="ascii-input" className={styles.label}>ASCII Input</label>
-          <textarea
-            id="ascii-input"
-            placeholder="Enter ASCII text..."
-            value={ascii}
-            onChange={e => setAscii(e.target.value)}
-            className={styles.inputArea}
-          />
-        </div>
-        <div className={styles.outputColumn}>
-          <label htmlFor="base64-output" className={styles.label}>Base64 Output</label>
-          <textarea
-            id="base64-output"
-            value={base64}
-            readOnly
-            className={styles.outputArea}
-          />
-        </div>
-      </div>
-      <div className={styles.buttonRow}>
-        <button onClick={handleConvert} className={styles.actionButton}>Convert</button>
-        <button onClick={handleCopy} className={styles.actionButton} disabled={!base64}>Copy Output</button>
-      </div>
-    </div>
-  );
-}
+const ASCIIToBase64AltPage = () => {
+  return <AsciiToBase64AltClient />;
+};
+export default ASCIIToBase64AltPage;
