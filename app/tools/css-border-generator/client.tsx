@@ -73,10 +73,12 @@ const CssBorderGeneratorClient: React.FC = () => {
           style={{
             border: `${width}px ${style} ${color}`,
             borderRadius: `${radius}px`,
+            width: '200px'  ,
+            height: '100px'
           }}
         />
       </div>
-      <div className={styles.outputColumnFull}>
+      <div className={styles.outputColumn}>
         <label htmlFor="css-output-border" className={styles.label}>Generated CSS:</label>
         <textarea
           id="css-output-border"
