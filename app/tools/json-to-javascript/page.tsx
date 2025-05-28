@@ -17,24 +17,29 @@ export default function JsonToJavascript() {
       setOutput("");
     }
   }
+
   return (
-  <div>
+      <div className={styles.toolPage}>
     <h1>JSON to JavaScript</h1>
-    <div className={styles.responsiveRow}>
-      <textarea
-        value={input}
-        onChange={e => setInput(e.target.value)}
-        rows={8}
-        className={styles.inputArea}
-        placeholder="Enter JSON..."
-      />
-      <textarea
-        value={output}
-        readOnly
-        rows={8}
-        className={styles.outputArea}
-        placeholder="JavaScript output..."
-      />
+    <div className={styles.formRow}>
+      <div className={styles.inputColumn}>
+              <textarea
+                  value={input}
+                  onChange={e => setInput(e.target.value)}
+                  rows={8}
+                  className={styles.inputArea}
+                  placeholder="Enter JSON..."
+              />
+      </div>
+      <div className={styles.inputColumn}>
+              <textarea
+                  value={output}
+                  readOnly
+                  rows={8}
+                  className={styles.outputArea}
+                  placeholder="JavaScript output..."
+              />
+      </div>
     </div>
     <div style={{ display: 'flex', justifyContent: 'center', margin: '24px 0 0 0' }}>
       <button onClick={handleConvert} className={styles.actionButton} style={{ minWidth: 140, fontSize: 17 }}>Convert</button>

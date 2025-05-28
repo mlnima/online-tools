@@ -17,7 +17,7 @@ function renderHtml(obj: any): JSX.Element {
         <tbody>
           {Object.entries(obj).map(([k, v]) => (
             <tr key={k}>
-              <th style={{ textAlign: "left", background: "#f8f8f8" }}>{k}</th>
+              <th style={{ textAlign: "left" }}>{k}</th>
               <td>{renderHtml(v)}</td>
             </tr>
           ))}
@@ -46,27 +46,28 @@ export default function JsonToHtml() {
   };
 
   return (
-  <div>
+      <div className={styles.toolPage}>
     <h1>JSON to HTML</h1>
-    <div className={styles.responsiveRow}>
-      <textarea
-        value={input}
-        onChange={e => setInput(e.target.value)}
-        rows={10}
-        className={styles.inputArea}
-        placeholder="Paste your JSON here..."
-      />
-      <div style={{flex: 1}}>
-        <h3>HTML Output:</h3>
-        <div style={{ background: "#fafafa", padding: 16, borderRadius: 4, overflowX: "auto", minHeight: 180 }}>
-          {output ? renderHtml(output) : <span style={{color: '#888'}}>HTML will appear here</span>}
-        </div>
+    <div className={styles.formRow}>
+      <div className={styles.inputColumn}>
+          <textarea
+              value={input}
+              onChange={e => setInput(e.target.value)}
+              rows={10}
+              className={styles.inputArea}
+              placeholder="Paste your JSON here..."
+          />
+      </div>
+      <div className={styles.inputColumn}>
+          <div className={styles.outputArea}>
+            {output ? renderHtml(output) : <span style={{color: '#888'}}>HTML will appear here</span>}
+          </div>
       </div>
     </div>
-    <div style={{ display: 'flex', justifyContent: 'center', margin: '24px 0 0 0' }}>
+    <div className={styles.buttonRow}>
       <button onClick={convert} className={styles.actionButton} >Convert</button>
     </div>
-    {error && <div className={styles.error} style={{ marginTop: 16, textAlign: 'center' }}>{error}</div>}
+    {error && <div className={styles.error}>{error}</div>}
   </div>
 );
 }
