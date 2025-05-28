@@ -67,42 +67,48 @@ export default function TintAndShadesGenerator() {
           />
         </div>
       </div>
+
+      <div className={styles.formRow}>
+        <div className={styles.outputColumn}>
+        {(tints.length > 0 || shades.length > 0) && (
+            <div  className={styles.outputArea}>
+              {tints.length > 0 && (
+                  <>
+                    <h3 className={styles.label}>Tints</h3> {/* Using label class for subheading style */}
+                    <div className={styles.swatchContainer}> {/* Added a wrapper for swatches */}
+                      {tints.map(hexColor => (
+                          <div key={"tint-" + hexColor} className={styles.swatchItem}>
+                            <div className={styles.colorSwatch} style={{ background: hexColor }} />
+                            <div>{hexColor}</div>
+                          </div>
+                      ))}
+                    </div>
+                  </>
+              )}
+              {shades.length > 0 && (
+                  <>
+                    <h3 className={styles.label}>Shades</h3> {/* Using label class for subheading style */}
+                    <div className={styles.swatchContainer}> {/* Added a wrapper for swatches */}
+                      {shades.map(hexColor => (
+                          <div key={"shade-" + hexColor} className={styles.swatchItem}>
+                            <div className={styles.colorSwatch} style={{ background: hexColor }} />
+                            <div>{hexColor}</div>
+                          </div>
+                      ))}
+                    </div>
+                  </>
+              )}
+            </div>
+        )}
+      </div>
+      </div>
       <div className={styles.buttonRow}>
         <button onClick={handleGenerate} className={styles.actionButton}>Generate</button>
       </div>
       
       {error && <div className={styles.error}>{error}</div>}
 
-      {(tints.length > 0 || shades.length > 0) && (
-        <div className={styles.formRow} style={{marginTop: "1rem"}}>
-          {tints.length > 0 && (
-            <div className={styles.outputColumn}>
-              <h3 className={styles.label}>Tints</h3> {/* Using label class for subheading style */}
-              <div className={styles.swatchContainer}> {/* Added a wrapper for swatches */}
-                {tints.map(hexColor => (
-                  <div key={"tint-" + hexColor} className={styles.swatchItem}>
-                    <div className={styles.colorSwatch} style={{ background: hexColor }} />
-                    <div>{hexColor}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-          {shades.length > 0 && (
-            <div className={styles.outputColumn}>
-              <h3 className={styles.label}>Shades</h3> {/* Using label class for subheading style */}
-              <div className={styles.swatchContainer}> {/* Added a wrapper for swatches */}
-                {shades.map(hexColor => (
-                  <div key={"shade-" + hexColor} className={styles.swatchItem}>
-                    <div className={styles.colorSwatch} style={{ background: hexColor }} />
-                    <div>{hexColor}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-        </div>
-      )}
+
     </div>
   );
 }
