@@ -1,0 +1,115 @@
+/* Styles for PNT Editor */
+
+.topSection {
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.uploadArea {
+  border: 2px dashed var(--color-border);
+  border-radius: 1rem;
+  padding: 2rem;
+  text-align: center;
+  transition: background-color 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--color-bg-secondary);
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+.uploadButtons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.controlsRow {
+  display: grid;
+  /* Changed minmax to a safer value to prevent overlap */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  align-items: flex-end;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.dimensionInputs {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap; /* Allow wrapping on very small screens */
+}
+
+.dimensionInput {
+  width: 80px;
+  min-width: 70px;
+  text-align: center;
+}
+
+.aspectLock {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  cursor: pointer;
+  user-select: none;
+  font-size: 0.9rem;
+}
+
+.mainContent {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+  width: 100%;
+
+  @media (max-width: 992px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.cropperColumn {
+  min-width: 0;
+}
+
+.previewsColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  min-width: 0;
+}
+
+.previewBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .label {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+}
+
+.cropWrapper {
+  width: 100%;
+  .ReactCrop__image {
+    max-width: 100%;
+    max-height: 60vh;
+  }
+}
+
+.pixelatedPreview {
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: -webkit-crisp-edges;
+  background-color: var(--color-bg-secondary);
+}

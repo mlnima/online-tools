@@ -120,6 +120,7 @@
   "pantone-to-rgb",
   "password-generator",
   "png-to-base64",
+  "pnt-editor",
   "random-json-generator",
   "random-number-generator",
   "rgb-to-cmyk",
@@ -173,5 +174,6 @@
   "yaml-formatter",
   "yaml-minify",
   "yaml-to-base64",
+
   "zlib-decompress-online"
 ]

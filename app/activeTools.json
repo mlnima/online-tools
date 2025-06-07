@@ -115,6 +115,7 @@
   { "name": "Pantone to RGB", "slug": "pantone-to-rgb", "description": "Online Pantone to RGB Tool." },
   { "name": "Password Generator", "slug": "password-generator", "description": "Online Password Generator Tool." },
   { "name": "PNG to Base64", "slug": "png-to-base64", "description": "Online PNG to Base64 Tool." },
+  { "name": "PNT Editor", "slug": "pnt-editor", "description": "Online PNT editor Tool." },
   { "name": "Random JSON Generator", "slug": "random-json-generator", "description": "Online Random JSON Generator Tool." },
   { "name": "Random Number Generator", "slug": "random-number-generator", "description": "Online Random Number Generator Tool." },
   { "name": "RGB to CMYK", "slug": "rgb-to-cmyk", "description": "Online RGB to CMYK Tool." },

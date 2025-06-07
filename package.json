@@ -13,14 +13,17 @@
     "@fortawesome/free-solid-svg-icons": "^6.5.1",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@monaco-editor/react": "^4.7.0",
+    "crypto-js": "^4.2.0",
     "mongoose": "^8.2.1",
     "next": "^15.0.0",
     "pako": "^2.1.0",
     "react": "^18.3.0",
     "react-dom": "^18.3.0",
+    "react-image-crop": "^11.0.10",
     "sass": "^1.69.7"
   },
   "devDependencies": {
+    "@types/crypto-js": "^4.2.2",
     "@types/js-yaml": "^4.0.9",
     "@types/node": "^20.11.30",
     "@types/pako": "^2.0.3",
