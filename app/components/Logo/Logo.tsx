@@ -9,7 +9,7 @@ interface IProps {
 const Logo: FC<IProps> = ({}) => {
     return (
         <span className={styles.logo}>
-            <Link href="/public" aria-label="Go to Home Page" title="Go to Home Page">
+            <Link href="/" aria-label="Go to Home Page" title="Go to Home Page">
 
               <Image
                   src="/logo.png"
