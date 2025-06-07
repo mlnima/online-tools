@@ -1,0 +1,10 @@
+{
+  "name": "WebWizKit",
+  "title": "WebWizKit – Free Online Web Tools",
+  "description": "WebWizKit offers a modern suite of free online tools for developers, designers, and everyone. Convert, generate, beautify, and optimize your data quickly and securely!",
+  "url": "https://www.webwizkit.com",
+  "ogImage": "/og-image.png",
+  "favicon": "/favicon.ico",
+  "themeColor": "#ffffff",
+  "backgroundColor": "#000"
+}
