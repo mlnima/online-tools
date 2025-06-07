@@ -76,6 +76,7 @@
   "html-unescape",
   "image-to-ascii-art",
   "image-to-base64",
+  "image-to-ico",
   "invert-colors",
   "javascript-to-base64",
   "javascript-to-base64-alt",

@@ -385,6 +385,11 @@
     "description": "Convert images to Base64."
   },
   {
+    "name": "Image To .ico",
+    "slug": "image-to-ico",
+    "description": "Convert images to .ico."
+  },
+  {
     "name": "Invert Colors",
     "slug": "invert-colors",
     "description": "Online Invert Colors Tool."
